@@ -10,7 +10,7 @@ import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
 
-public class Controller1 {
+public class MainMenuController {
 
     @FXML
     private Button btn1;

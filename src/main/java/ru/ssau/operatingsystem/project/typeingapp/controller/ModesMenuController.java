@@ -10,7 +10,7 @@ import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
 
-public class Controller2 {
+public class ModesMenuController {
 
     @FXML
     private AnchorPane pane1;

@@ -1,4 +1,4 @@
 package ru.ssau.operatingsystem.project.typeingapp.controller;
 
-public class Controller3 {
+public class TypingController {
 }
