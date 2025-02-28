@@ -28,6 +28,7 @@ public class TypingController {
     }
     public void handleKeyPressed(KeyEvent event) {
         // Пример обработки нажатия клавиши
+        // Пока только для логгирования
         infoLabel.setText("Нажата клавиша: " + event.getText());
         System.out.println("Нажата клавиша: " + event.getText());
     }
