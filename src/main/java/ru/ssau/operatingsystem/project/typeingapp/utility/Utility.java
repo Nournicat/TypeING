@@ -9,13 +9,6 @@ public class Utility {
     private Utility() {
     }
 
-    public static Stage getPrimaryStage() {
-        if(primaryStage == null)
-            throw new NullPointerException("Primary Stage is not initialized");
-
-        return primaryStage;
-    }
-
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
     }
