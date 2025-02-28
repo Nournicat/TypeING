@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController"/>
+<VBox fx:id="backstage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController">
+   <children>
+      <Label fx:id="infoLabel" alignment="CENTER" prefHeight="33.0" prefWidth="600.0" text="Наберите текст ниже. Скорость набора появится здесь.&#10;" wrapText="true">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </Label>
+      <AnchorPane fx:id="AreaText" prefHeight="205.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" />
+            <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" text="Label" textFill="#acacac" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

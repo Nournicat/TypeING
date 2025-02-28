@@ -8,7 +8,9 @@ public class Utility {
 
     private Utility() {
     }
-
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
     }
