@@ -33,7 +33,9 @@ public class ModesMenuController {
 //        RandomTextProvider textProvider = new RandomTextProvider(10, stringGenerator);
 //        System.out.println(textProvider.generate());
 
-         Utility.changeScene(scene);
+        Utility.changeScene(scene);
+        TypingController controller = fxmlLoader.getController();
+        controller.initialize();
     }
 
 }
