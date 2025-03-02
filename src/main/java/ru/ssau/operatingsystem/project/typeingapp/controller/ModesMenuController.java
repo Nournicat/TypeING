@@ -2,6 +2,8 @@ package ru.ssau.operatingsystem.project.typeingapp.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +36,18 @@ public class ModesMenuController {
 //        System.out.println(textProvider.generate());
 
          Utility.changeScene(scene);
+    }
+
+    @FXML
+    void pane1Enter(MouseEvent event) {
+        Scene scene = ((Node)event.getSource()).getScene();
+        scene.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    void pane1Exit(MouseEvent event) {
+        Scene scene = ((Node)event.getSource()).getScene();
+        scene.setCursor(Cursor.DEFAULT);
     }
 
 }

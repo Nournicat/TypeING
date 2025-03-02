@@ -13,9 +13,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B1E6FB;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.ModesMenuController">
    <children>
+      <ScrollBar layoutX="586.0" layoutY="66.0" orientation="VERTICAL" prefHeight="335.0" prefWidth="14.0" style="-fx-background-color: #13adec;">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX">
+               <color>
+                  <Color opacity="0.19847328960895538" />
+               </color>
+            </DropShadow>
+         </effect></ScrollBar>
       <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #13adec;">
          <effect>
             <DropShadow>
@@ -26,44 +35,59 @@
          </effect>
          <children>
             <RadioButton layoutX="14.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Меню" />
-            <RadioButton layoutX="377.0" layoutY="24.0" mnemonicParsing="false" opacity="0.98" text="Настройки" />
-            <RadioButton layoutX="469.0" layoutY="24.0" mnemonicParsing="false" text="Личный кабинет" />
-            <RadioButton layoutX="176.0" layoutY="24.0" mnemonicParsing="false" />
-            <RadioButton layoutX="204.0" layoutY="24.0" mnemonicParsing="false" />
-            <RadioButton layoutX="232.0" layoutY="24.0" mnemonicParsing="false" />
-            <Label layoutX="189.0" layoutY="6.0" text="Режимы" />
-            <HBox alignment="CENTER" layoutX="14.0" layoutY="17.0" prefHeight="30.0" prefWidth="81.0" spacing="10.0">
+            <RadioButton layoutX="377.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Настройки" />
+            <RadioButton layoutX="469.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Личный кабинет" />
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="18.0" prefHeight="30.0" prefWidth="81.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0">
                      <image>
                         <Image url="@./images/more.png" />
                      </image>
                   </ImageView>
-                  <Label text="Меню" />
+                  <Label text="МЕНЮ">
+                     <font>
+                        <Font name="Bebas Neue Regular" size="20.0" />
+                     </font></Label>
                </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <HBox alignment="CENTER" layoutX="369.0" layoutY="10.0" prefHeight="44.0" prefWidth="200.0">
+            <HBox alignment="CENTER" layoutX="344.0" layoutY="10.0" prefHeight="44.0" prefWidth="225.0" spacing="10.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="113.0" prefWidth="100.0">
+                  <HBox alignment="CENTER" prefHeight="113.0" prefWidth="112.0" spacing="8.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
-                              <Image url="@./images/user.png" />
+                              <Image url="@images/settings.png" />
                            </image>
                         </ImageView>
+                        <Label text="Настройки">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="20.0" />
+                           </font></Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="113.0" prefWidth="100.0" spacing="8.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                           <image>
+                              <Image url="@images/use.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Профиль">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="20.0" />
+                           </font></Label>
+                     </children></HBox>
                </children>
             </HBox>
          </children>
       </AnchorPane>
-      <GridPane layoutX="-1.0" layoutY="66.0" prefHeight="335.0" prefWidth="587.0">
+      <GridPane gridLinesVisible="true" layoutX="-1.0" layoutY="66.0" prefHeight="335.0" prefWidth="587.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -74,34 +98,82 @@
          <children>
             <AnchorPane prefHeight="112.0" prefWidth="213.0">
                <children>
-                  <AnchorPane fx:id="pane1" layoutX="77.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="1.0" layoutY="16.0" onMouseClicked="#pane1Click" onMouseEntered="#pane1Enter" onMouseExited="#pane1Exit" prefHeight="102.0" prefWidth="195.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №1" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutX="12.0" layoutY="11.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="62.0" layoutY="14.0" text="Русский язык" textFill="WHITE" />
+                        <Label layoutX="80.0" layoutY="48.0" text="ВА ОЛ" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="82.0" text="00:00" textFill="WHITE" />
+                        <HBox alignment="CENTER_RIGHT" layoutX="110.0" layoutY="78.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE" />
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <AnchorPane layoutX="77.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
-                     <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №3" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <AnchorPane layoutX="77.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
                      <children>
                         <Label layoutX="45.0" layoutY="24.0" text="Язык №4" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №6" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <AnchorPane layoutX="77.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №7" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №9" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <AnchorPane fx:id="pane11" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №3" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <AnchorPane fx:id="pane12" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №2" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane fx:id="pane121" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
                      <children>
                         <Label layoutX="45.0" layoutY="24.0" text="Язык №5" />
                      </children>
@@ -110,15 +182,14 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <AnchorPane layoutX="77.0" layoutY="15.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane fx:id="pane1211" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №6" />
+                        <Label layoutX="45.0" layoutY="24.0" text="Язык №8" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </GridPane>
-      <ScrollBar layoutX="586.0" layoutY="66.0" orientation="VERTICAL" prefHeight="335.0" prefWidth="14.0" />
    </children>
 </AnchorPane>
