@@ -39,15 +39,91 @@ public class ModesMenuController {
     }
 
     @FXML
-    void pane1Enter(MouseEvent event) {
-        Scene scene = ((Node)event.getSource()).getScene();
-        scene.setCursor(Cursor.HAND);
+    void mouseChangeEventEnter(MouseEvent event) {
+        Utility.changeCursor(Cursor.HAND);
     }
 
     @FXML
-    void pane1Exit(MouseEvent event) {
-        Scene scene = ((Node)event.getSource()).getScene();
-        scene.setCursor(Cursor.DEFAULT);
+    void mouseChangeEventExit(MouseEvent event) {
+        Utility.changeCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
+    void changeSceneToMenu(MouseEvent event) {
+        Scene scene;
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("1.fxml"));
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Utility.changeScene(scene);
+    }
+
+    @FXML
+    void changeSceneToProfile(MouseEvent event) {
+
+    }
+
+    @FXML
+    void changeSceneToSettings(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventEnglishAlphabet(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventEnglishLetters(MouseEvent event) {
+        RandomTextProvider textProvider = letterGenerator("dfjk");
+
+        System.out.println(textProvider.generate());
+    }
+
+    @FXML
+    void mouseClickEventEnglishWords(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventProgrammingCplus(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventProgrammingJava(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventProgrammingPython(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventRussianAlphabet(MouseEvent event) {
+
+    }
+
+    @FXML
+    void mouseClickEventRussianLetters(MouseEvent event) {
+        RandomTextProvider textProvider = letterGenerator("ваол");
+
+        System.out.println(textProvider.generate());
+    }
+
+    @FXML
+    void mouseClickEventRussianWords(MouseEvent event) {
+
+    }
+
+    RandomTextProvider letterGenerator(String str){
+        RandomString stringGenerator = new RandomString(6, new SecureRandom(), str);
+
+        return new RandomTextProvider(100, stringGenerator);
     }
 
 }

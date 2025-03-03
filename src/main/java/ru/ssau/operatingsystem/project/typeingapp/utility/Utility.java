@@ -1,5 +1,6 @@
 package ru.ssau.operatingsystem.project.typeingapp.utility;
 
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -18,5 +19,9 @@ public class Utility {
             throw new NullPointerException("Primary Stage is not initialized");
 
         primaryStage.setScene(scene);
+    }
+
+    public static void changeCursor(Cursor cursor){
+        primaryStage.getScene().setCursor(cursor);
     }
 }

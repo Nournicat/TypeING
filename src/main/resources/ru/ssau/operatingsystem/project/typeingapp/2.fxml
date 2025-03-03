@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B1E6FB;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.ModesMenuController">
    <children>
-      <ScrollBar layoutX="586.0" layoutY="66.0" orientation="VERTICAL" prefHeight="335.0" prefWidth="14.0" style="-fx-background-color: #13adec;">
+      <ScrollBar layoutX="586.0" layoutY="66.0" max="0.0" orientation="VERTICAL" prefHeight="335.0" prefWidth="14.0" style="-fx-background-color: #13adec;">
          <effect>
             <DropShadow blurType="TWO_PASS_BOX">
                <color>
@@ -37,7 +37,7 @@
             <RadioButton layoutX="14.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Меню" />
             <RadioButton layoutX="377.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Настройки" />
             <RadioButton layoutX="469.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Личный кабинет" />
-            <HBox alignment="CENTER" layoutX="14.0" layoutY="18.0" prefHeight="30.0" prefWidth="81.0" spacing="10.0">
+            <HBox alignment="CENTER" layoutX="18.0" layoutY="18.0" onMouseClicked="#changeSceneToMenu" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="88.0" spacing="10.0">
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0">
                      <image>
@@ -53,9 +53,9 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <HBox alignment="CENTER" layoutX="344.0" layoutY="10.0" prefHeight="44.0" prefWidth="225.0" spacing="10.0">
+            <HBox alignment="CENTER" layoutX="357.0" layoutY="10.0" prefHeight="44.0" prefWidth="225.0" spacing="10.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="113.0" prefWidth="112.0" spacing="8.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeSceneToSettings" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="112.0" spacing="8.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -68,7 +68,7 @@
                            </font></Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="113.0" prefWidth="100.0" spacing="8.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeSceneToProfile" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="100.0" spacing="8.0">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -96,21 +96,34 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="112.0" prefWidth="213.0">
+            <AnchorPane prefHeight="112.0" prefWidth="0.0">
                <children>
-                  <AnchorPane layoutX="1.0" layoutY="16.0" onMouseClicked="#pane1Click" onMouseEntered="#pane1Enter" onMouseExited="#pane1Exit" prefHeight="102.0" prefWidth="195.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventRussianLetters" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutX="12.0" layoutY="11.0">
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
                            <image>
                               <Image url="@images/Group%201.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="62.0" layoutY="14.0" text="Русский язык" textFill="WHITE" />
-                        <Label layoutX="80.0" layoutY="48.0" text="ВА ОЛ" textFill="WHITE" />
-                        <Label layoutX="20.0" layoutY="82.0" text="00:00" textFill="WHITE" />
-                        <HBox alignment="CENTER_RIGHT" layoutX="110.0" layoutY="78.0" prefHeight="24.0" prefWidth="66.0">
+                        <Label layoutX="49.0" layoutY="5.0" text="Русский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="73.0" layoutY="39.0" text="ВА ОЛ" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
                            <children>
-                              <Label text="0%" textFill="WHITE" />
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </children>
@@ -119,72 +132,264 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventEnglishLetters" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №4" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="39.0" layoutY="5.0" text="Английский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="75.0" layoutY="39.0" text="DF JK" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventEnglishAlphabet" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №6" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="39.0" layoutY="5.0" text="Английский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="64.0" layoutY="39.0" text="Alphabet" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="9.0" onMouseClicked="#mouseClickEventProgrammingCplus" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №7" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="17.0" layoutY="5.0" text="Языки программирования" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="78.0" layoutY="38.0" text="C++" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <AnchorPane layoutX="28.0" layoutY="24.0" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="9.0" onMouseClicked="#mouseClickEventProgrammingPython" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №9" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="15.0" layoutY="5.0" text="Языки программирования" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="70.0" layoutY="38.0" text="Python" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <AnchorPane fx:id="pane11" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventRussianAlphabet" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №3" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="49.0" layoutY="5.0" text="Русский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="65.0" layoutY="39.0" text="Алфавит" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <AnchorPane fx:id="pane12" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventRussianWords" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №2" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="50.0" layoutY="6.0" text="Русский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="50.0" layoutY="39.0" text="Короткие слова" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <AnchorPane fx:id="pane121" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="10.0" onMouseClicked="#mouseClickEventEnglishWords" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №5" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="39.0" layoutY="5.0" text="Английский язык" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="57.0" layoutY="39.0" text="Short words" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <AnchorPane fx:id="pane1211" layoutX="28.0" layoutY="24.0" onMouseClicked="#pane1Click" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: #777;">
+                  <AnchorPane layoutX="12.0" layoutY="9.0" onMouseClicked="#mouseClickEventProgrammingJava" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="91.0" prefWidth="172.0">
                      <children>
-                        <Label layoutX="45.0" layoutY="24.0" text="Язык №8" />
+                        <ImageView fitHeight="91.0" fitWidth="172.0" layoutY="2.0">
+                           <image>
+                              <Image url="@images/Group%201.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="15.0" layoutY="5.0" text="Языки программирования" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="75.0" layoutY="39.0" text="Java" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="11.0" layoutY="70.0" text="00:00" textFill="WHITE">
+                           <font>
+                              <Font name="Bebas Neue Regular" size="14.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_RIGHT" layoutX="99.0" layoutY="67.0" prefHeight="24.0" prefWidth="66.0">
+                           <children>
+                              <Label text="0%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue Regular" size="14.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
