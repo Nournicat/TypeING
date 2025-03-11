@@ -2,42 +2,71 @@ package ru.ssau.operatingsystem.project.typeingapp.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.RandomTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStatisticsCalculator;
 import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStats;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class TypingController {
+
     @FXML
     private VBox backstage;
     @FXML
     private Label infoLabel;
-
+    private final String infoText = "Наберите текст ниже. Скорость набора появится здесь.";
 
     @FXML
     private Label enteredText;
+
     @FXML
     private Label overlayText;
+
+
+    @FXML
+    private VBox resultPanel;
+
 
     TypingStats statistic = new TypingStats(0, 0, 0);
     TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
 
+    @FXML
     public void initialize(){
             System.out.println("Запущено");
+            restartScene();
+
             String text = getText();
             overlayText.setText(text);
+
             Scene scene = Utility.getPrimaryStage().getScene();
             scene.setOnKeyTyped(this::handleKeyPressed);
             backstage.requestFocus();
     }
+
+    @FXML
+    private void exitScene(){
+        Scene scene;
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Utility.changeScene(scene);
+    }
     private void handleKeyPressed(KeyEvent event) {
+
         // Пример обработки нажатия клавиши
         if (event.getCharacter().isEmpty()) return;
 
@@ -45,9 +74,6 @@ public class TypingController {
 
         // Пока только для логгирования
 //        infoLabel.setText("Нажата клавиша: " + enteredKey);
-
-        if (overlayText.getText().isEmpty())
-            return;
 
         char currentKey = overlayText.getText().charAt(0);
         if (enteredKey == currentKey){
@@ -63,6 +89,11 @@ public class TypingController {
         }
         calculator.calculateStats(enteredText.getText(), statistic);
         statistic.updateStats(infoLabel);
+
+        if (overlayText.getText().isEmpty()){
+            resultPanel.setVisible(true);
+            return;
+        }
     }
 
     private String getText(){
@@ -73,6 +104,13 @@ public class TypingController {
         RandomTextProvider randomText = new RandomTextProvider(countWords, gen);
 
         return randomText.generate();
+    }
+
+    private void restartScene(){
+        resultPanel.setVisible(false);
+        enteredText.setText("");
+
+        infoLabel.setText(infoText);
     }
 
 }
