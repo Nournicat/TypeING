@@ -3,6 +3,7 @@ package ru.ssau.operatingsystem.project.typeingapp.controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,9 +17,11 @@ import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStats;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class TypingController {
+public class TypingController implements Initializable {
 
     @FXML
     private VBox backstage;
@@ -40,17 +43,29 @@ public class TypingController {
     TypingStats statistic = new TypingStats(0, 0, 0);
     TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        backstage.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.setOnKeyTyped(this::handleKeyPressed);
+                backstage.requestFocus();
+                startTyping();
+            }
+        });
+
+    }
+
     @FXML
-    public void initialize(){
-            System.out.println("Запущено");
-            restartScene();
+    private void startTyping(){
+        System.out.println("Запущено");
+        restartScene();
 
-            String text = getText();
-            overlayText.setText(text);
+        String text = getText();
+        overlayText.setText(text);
 
-            Scene scene = Utility.getPrimaryStage().getScene();
-            scene.setOnKeyTyped(this::handleKeyPressed);
-            backstage.requestFocus();
+        Scene scene = Utility.getPrimaryStage().getScene();
+        scene.setOnKeyTyped(this::handleKeyPressed);
+        backstage.requestFocus();
     }
 
     @FXML
