@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -39,11 +40,11 @@
             <RadioButton layoutX="469.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" text="Личный кабинет" />
             <HBox alignment="CENTER" layoutX="18.0" layoutY="18.0" onMouseClicked="#changeSceneToMenu" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="88.0" spacing="10.0">
                <children>
-                  <ImageView fitHeight="24.0" fitWidth="24.0">
-                     <image>
-                        <Image url="@./images/more.png" />
-                     </image>
-                  </ImageView>
+                  <FontAwesomeIconView glyphName="BARS" size="20">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </FontAwesomeIconView>
                   <Label text="МЕНЮ">
                      <font>
                         <Font name="Bebas Neue Regular" size="20.0" />
@@ -57,11 +58,7 @@
                <children>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeSceneToSettings" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="112.0" spacing="8.0">
                      <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0">
-                           <image>
-                              <Image url="@images/settings.png" />
-                           </image>
-                        </ImageView>
+                        <FontAwesomeIconView glyphName="GEARS" size="20" />
                         <Label text="Настройки">
                            <font>
                               <Font name="Bebas Neue Regular" size="20.0" />
@@ -70,11 +67,7 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeSceneToProfile" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="100.0" spacing="8.0">
                      <children>
-                        <ImageView fitHeight="24.0" fitWidth="24.0">
-                           <image>
-                              <Image url="@images/use.png" />
-                           </image>
-                        </ImageView>
+                        <FontAwesomeIconView glyphName="USER" size="20" />
                         <Label text="Профиль">
                            <font>
                               <Font name="Bebas Neue Regular" size="20.0" />

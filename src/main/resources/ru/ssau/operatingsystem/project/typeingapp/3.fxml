@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox fx:id="backstage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController">
    <children>
@@ -15,8 +16,14 @@
       </Label>
       <AnchorPane fx:id="AreaText" prefHeight="205.0" prefWidth="600.0">
          <children>
-            <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="-1797.0" layoutY="68.0" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="2104.0" />
-            <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" text="Label" textFill="#acacac" />
+            <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="-2693.0" layoutY="68.0" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="3000.0">
+               <font>
+                  <Font size="25.0" />
+               </font></Label>
+            <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" text="Label" textFill="#acacac">
+               <font>
+                  <Font size="25.0" />
+               </font></Label>
             <VBox fx:id="resultPanel" alignment="TOP_CENTER" layoutX="42.0" prefHeight="200.0" prefWidth="520.0" visible="false">
                <children>
                   <Label alignment="CENTER" prefHeight="18.0" prefWidth="523.0" text="Тестовое окно завершения ">
@@ -24,7 +31,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="restartButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" text="Restart">
+                  <Button fx:id="restartButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#restartTyping" text="Restart">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
