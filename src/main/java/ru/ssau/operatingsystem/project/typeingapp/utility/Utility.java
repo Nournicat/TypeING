@@ -17,7 +17,7 @@ public class Utility {
     }
 
     public static void changeScene(Scene scene){
-        if(primaryStage == null)
+        if (primaryStage == null)
             throw new NullPointerException("Primary Stage is not initialized");
 
         primaryStage.setScene(scene);

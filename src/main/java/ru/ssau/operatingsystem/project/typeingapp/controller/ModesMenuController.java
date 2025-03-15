@@ -27,6 +27,7 @@ public class ModesMenuController {
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
         } catch (IOException e) {
+            System.out.println("Ошибка");
             throw new RuntimeException(e);
         }
 
@@ -36,8 +37,6 @@ public class ModesMenuController {
 //        System.out.println(textProvider.generate());
 
         Utility.changeScene(scene);
-        TypingController controller = fxmlLoader.getController();
-        controller.initialize();
     }
 
     @FXML

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,8 +15,27 @@
       </Label>
       <AnchorPane fx:id="AreaText" prefHeight="205.0" prefWidth="600.0">
          <children>
-            <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" />
+            <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="-1797.0" layoutY="68.0" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="2104.0" />
             <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" text="Label" textFill="#acacac" />
+            <VBox fx:id="resultPanel" alignment="TOP_CENTER" layoutX="42.0" prefHeight="200.0" prefWidth="520.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="523.0" text="Тестовое окно завершения ">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="restartButton" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#startTyping" text="Restart">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitScene" text="Exit">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>
