@@ -62,8 +62,6 @@ public class TypingController implements Initializable {
         String text = getText(stringProvider);
         overlayText.setText(text);
 
-        bindLabelWidth(enteredText, 10);
-
         Scene scene = Utility.getPrimaryStage().getScene();
         scene.setOnKeyTyped(this::handleKeyPressed);
         backstage.requestFocus();
@@ -124,22 +122,6 @@ public class TypingController implements Initializable {
 //        RandomTextProvider randomText = new RandomTextProvider(countWords, gen);
 
         return stringProvider.generate();
-    }
-
-    private void bindLabelWidth(Label label, double offset) {
-        // Убираем перенос строк
-        label.setWrapText(false);
-        // Создаём скрытый объект для измерения ширины текста
-        Text textMeasure = new Text();
-        textMeasure.textProperty().bind(label.textProperty());
-        textMeasure.fontProperty().bind(label.fontProperty());
-
-        // Привязываем preferredWidth лейбла к вычисленной ширине текста плюс отступ
-        label.prefWidthProperty().bind(Bindings.createDoubleBinding(() -> {
-            // Применяем стили для корректного вычисления
-            textMeasure.applyCss();
-            return textMeasure.getLayoutBounds().getWidth() + offset;
-        }, label.textProperty(), textMeasure.layoutBoundsProperty()));
     }
 
     private void restartScene(){
