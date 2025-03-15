@@ -81,7 +81,7 @@ public class ModesMenuController {
     void mouseClickEventEnglishLetters(MouseEvent event) {
         RandomTextProvider textProvider = letterGenerator("dfjk");
 
-        System.out.println(textProvider.generate());
+        Utility.startTyping(textProvider);
     }
 
     @FXML
@@ -113,7 +113,7 @@ public class ModesMenuController {
     void mouseClickEventRussianLetters(MouseEvent event) {
         RandomTextProvider textProvider = letterGenerator("ваол");
 
-        System.out.println(textProvider.generate());
+        Utility.startTyping(textProvider);
     }
 
     @FXML
@@ -124,7 +124,7 @@ public class ModesMenuController {
     RandomTextProvider letterGenerator(String str){
         RandomString stringGenerator = new RandomString(6, new SecureRandom(), str);
 
-        return new RandomTextProvider(100, stringGenerator);
+        return new RandomTextProvider(10, stringGenerator);
     }
 
 }

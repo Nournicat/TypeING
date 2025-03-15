@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.RandomTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStatisticsCalculator;
 import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStats;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
@@ -49,18 +50,17 @@ public class TypingController implements Initializable {
             if (newScene != null) {
                 newScene.setOnKeyTyped(this::handleKeyPressed);
                 backstage.requestFocus();
-                startTyping();
             }
         });
 
     }
 
-    @FXML
-    private void startTyping(){
+
+    public void startTyping(TypingTextProvider stringProvider){
         System.out.println("Запущено");
         restartScene();
 
-        String text = getText();
+        String text = getText(stringProvider);
         overlayText.setText(text);
 
         Scene scene = Utility.getPrimaryStage().getScene();
@@ -111,14 +111,14 @@ public class TypingController implements Initializable {
         }
     }
 
-    private String getText(){
+    private String getText(TypingTextProvider stringProvider){
         Random random = new Random();
         int lengthWord = random.nextInt(4, 6);
         int countWords = random.nextInt(5, 10);
         RandomString gen = new RandomString(lengthWord, random);
         RandomTextProvider randomText = new RandomTextProvider(countWords, gen);
 
-        return randomText.generate();
+        return stringProvider.generate();
     }
 
     private void restartScene(){
