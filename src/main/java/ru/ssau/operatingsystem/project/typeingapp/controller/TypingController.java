@@ -1,11 +1,9 @@
 package ru.ssau.operatingsystem.project.typeingapp.controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -28,7 +26,6 @@ public class TypingController implements Initializable {
     private VBox backstage;
     @FXML
     private Label infoLabel;
-    private final String infoText = "Наберите текст ниже. Скорость набора появится здесь.";
 
     @FXML
     private Label enteredText;
@@ -46,7 +43,7 @@ public class TypingController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        backstage.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        backstage.sceneProperty().addListener((_, _, newScene) -> {
             if (newScene != null) {
                 newScene.setOnKeyTyped(this::handleKeyPressed);
                 backstage.requestFocus();
@@ -105,10 +102,8 @@ public class TypingController implements Initializable {
         calculator.calculateStats(enteredText.getText(), statistic);
         statistic.updateStats(infoLabel);
 
-        if (overlayText.getText().isEmpty()){
+        if (overlayText.getText().isEmpty())
             resultPanel.setVisible(true);
-            return;
-        }
     }
 
     private String getText(TypingTextProvider stringProvider){
@@ -125,6 +120,7 @@ public class TypingController implements Initializable {
         resultPanel.setVisible(false);
         enteredText.setText("");
 
+        String infoText = "Наберите текст ниже. Скорость набора появится здесь.";
         infoLabel.setText(infoText);
     }
 
