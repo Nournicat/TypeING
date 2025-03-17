@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -18,18 +20,6 @@
    <children>
       <AnchorPane layoutX="86.0" prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: #30d5c8;">
          <children>
-            <Button fx:id="btn1" layoutX="22.0" layoutY="163.0" mnemonicParsing="false" onAction="#btn1Press" style="-fx-background-color: #30d5c8;" text="Language selection" textFill="#318325">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></Button>
-            <Button fx:id="btn2" layoutX="60.0" layoutY="225.0" mnemonicParsing="false" style="-fx-background-color: #30d5c8;" text="Button" textFill="#328226">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Button fx:id="btn3" layoutX="60.0" layoutY="286.0" mnemonicParsing="false" style="-fx-background-color: #30d5c8;" text="Button" textFill="#328226">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
             <Label layoutX="34.0" layoutY="-28.0" prefHeight="168.0" prefWidth="120.0" text="TYPEING">
                <font>
                   <Font size="31.0" />
@@ -70,6 +60,34 @@
                      </light>
                   </Lighting>
                </effect></Separator>
+            <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="106.0" prefHeight="294.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0">
+               <children>
+                  <Button fx:id="btn1" mnemonicParsing="false" onAction="#btn1Press" style="-fx-background-color: #30d5c8;" text="Выбор режима" textFill="#318325">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn2" mnemonicParsing="false" style="-fx-background-color: #30d5c8;" text="Настройки" textFill="#328226">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn3" mnemonicParsing="false" style="-fx-background-color: #30d5c8;" text="Выход" textFill="#328226">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
          </children>
          <effect>
             <DropShadow>
@@ -79,8 +97,5 @@
             </DropShadow>
          </effect>
       </AnchorPane>
-      <Label alignment="TOP_LEFT" layoutX="299.0" layoutY="68.0" prefHeight="25.0" prefWidth="287.0" text="Здесь будет находиться размыленное (возможно" />
-      <Label layoutX="299.0" layoutY="85.0" text="наклонённое) изображение второго окна " />
-      <Label layoutX="299.0" layoutY="102.0" text="с тайлами языков. Анимированное" />
    </children>
 </AnchorPane>
