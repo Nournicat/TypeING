@@ -1,9 +1,0 @@
-@font-face {
-    font-family: "BebasNeue-Regular";
-    src: url("/fonts/BebasNeue-Regular.ttf");
-}
-
-* {
-    -fx-font-family: "BebasNeue-Regular";
-    -fx-font-size: 14px;
-}
