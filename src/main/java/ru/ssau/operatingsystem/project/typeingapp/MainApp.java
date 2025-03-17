@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
+
 import java.io.IOException;
 
 public class MainApp extends Application {
@@ -19,6 +20,9 @@ public class MainApp extends Application {
         stage.setTitle("TypingApp");
         stage.getIcons().add(new Image("Keyboard.png"));
         stage.setScene(splashScene);
+
+        splashScene.getStylesheets().add((MainApp.class.getResource("styles.css")).toExternalForm());
+
         stage.show();
         Utility.setPrimaryStage(stage);
     }
