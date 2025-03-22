@@ -42,6 +42,17 @@ public class Utility {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public static void backToMenu(){
+        Scene scene;
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Utility.changeScene(scene);
     }
 }

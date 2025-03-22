@@ -2,6 +2,7 @@ module ru.ssau.operatingsystem.project.typeingapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires jdk.jshell;
+    requires java.sql;
 
 
     opens ru.ssau.operatingsystem.project.typeingapp to javafx.fxml;

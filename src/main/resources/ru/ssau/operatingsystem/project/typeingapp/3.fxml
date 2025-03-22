@@ -14,13 +14,14 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Label>
+      <Label fx:id="timerLabel" alignment="CENTER" prefHeight="18.0" prefWidth="615.0" text="0 : 00" />
       <AnchorPane fx:id="AreaText" prefHeight="205.0" prefWidth="600.0">
          <children>
             <Label fx:id="enteredText" alignment="CENTER_RIGHT" layoutX="-2693.0" layoutY="68.0" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="3000.0">
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="34.0" prefWidth="306.0" text="Label" textFill="#acacac">
+            <Label fx:id="overlayText" layoutX="307.0" layoutY="68.0" prefHeight="36.0" prefWidth="1595.0" text="Label" textFill="#acacac">
                <font>
                   <Font size="25.0" />
                </font></Label>

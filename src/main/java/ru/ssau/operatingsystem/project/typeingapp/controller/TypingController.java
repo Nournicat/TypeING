@@ -1,25 +1,20 @@
 package ru.ssau.operatingsystem.project.typeingapp.controller;
 
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
-import ru.ssau.operatingsystem.project.typeingapp.RandomString;
-import ru.ssau.operatingsystem.project.typeingapp.RandomTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStatisticsCalculator;
-import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStats;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class TypingController implements Initializable {
@@ -28,6 +23,9 @@ public class TypingController implements Initializable {
     private VBox backstage;
     @FXML
     private Label infoLabel;
+
+    @FXML
+    private Label timerLabel;
 
     @FXML
     private Label enteredText;
@@ -40,16 +38,16 @@ public class TypingController implements Initializable {
     private VBox resultPanel;
     private TypingTextProvider provider;
 
-
-    TypingStats statistic = new TypingStats(0, 0, 0);
-    TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
+    private TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
         backstage.sceneProperty().addListener((_, _, newScene) -> {
             if (newScene != null) {
-                newScene.setOnKeyTyped(this::handleKeyPressed);
+//                newScene.setOnKeyTyped(this::handleKeyPressed);
+                calculator.startTimer(timerLabel);
                 backstage.requestFocus();
+//                bindLabelWidth(enteredText, 10);
             }
         });
     }
@@ -63,36 +61,23 @@ public class TypingController implements Initializable {
         overlayText.setText(text);
 
         Scene scene = Utility.getPrimaryStage().getScene();
+
         scene.setOnKeyTyped(this::handleKeyPressed);
+//        scene.setOnKeyPressed(this::handleKeyPressed);  на будущее для получения кодов всех клавиш через getCode(),
+//        но без игнорирования специальных комбинаций клавиш по типу Alt+Shift и т.д
         backstage.requestFocus();
     }
 
-    @FXML
-    private void restartTyping(){
-        restartScene();
-        overlayText.setText(provider.generate());
-    }
-
-    @FXML
-    private void exitScene(){
-        Scene scene;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
-        try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Utility.changeScene(scene);
-    }
     private void handleKeyPressed(KeyEvent event) {
+        if (overlayText.getText().isEmpty()) return;
 
         // Пример обработки нажатия клавиши
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
 
-        // Пока только для логгирования
+        if (!overlayText.getText().isEmpty())
+            System.out.println(event.getCharacter());
 //        infoLabel.setText("Нажата клавиша: " + enteredKey);
 
         char currentKey = overlayText.getText().charAt(0);
@@ -107,11 +92,13 @@ public class TypingController implements Initializable {
                 overlayText.setText(deletedChar + overlayText.getText());
             }
         }
-        calculator.calculateStats(enteredText.getText(), statistic);
-        statistic.updateStats(infoLabel);
+        calculator.calculateStats(enteredText.getText());
+        calculator.updateStats(infoLabel);
 
-        if (overlayText.getText().isEmpty())
+        if (overlayText.getText().isEmpty()){
+            calculator.stopTimer();
             resultPanel.setVisible(true);
+        }
     }
 
     private String getText(TypingTextProvider stringProvider){
@@ -129,7 +116,20 @@ public class TypingController implements Initializable {
         enteredText.setText("");
 
         String infoText = "Наберите текст ниже. Скорость набора появится здесь.";
+        String timerText = "0 : 00";
         infoLabel.setText(infoText);
+        timerLabel.setText(timerText);
     }
 
+    @FXML
+    private void restartTyping(){
+        restartScene();
+        overlayText.setText(provider.generate());
+        calculator.startTimer(timerLabel);
+    }
+
+    @FXML
+    private void exitScene(){
+        Utility.backToMenu();
+    }
 }
