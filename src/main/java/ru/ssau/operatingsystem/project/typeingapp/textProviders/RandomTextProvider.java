@@ -1,4 +1,4 @@
-package ru.ssau.operatingsystem.project.typeingapp;
+package ru.ssau.operatingsystem.project.typeingapp.textProviders;
 
 public class RandomTextProvider implements TypingTextProvider {
     private int count_words;

@@ -1,23 +1,19 @@
 package ru.ssau.operatingsystem.project.typeingapp.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import ru.ssau.operatingsystem.project.typeingapp.MainApp;
-import ru.ssau.operatingsystem.project.typeingapp.TypingTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStatisticsCalculator;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TypingController implements Initializable {
+public class TypingController implements Initializable, Controllers {
 
     @FXML
     private VBox backstage;
@@ -33,7 +29,6 @@ public class TypingController implements Initializable {
     @FXML
     private Label overlayText;
 
-
     @FXML
     private VBox resultPanel;
     private TypingTextProvider provider;
@@ -45,9 +40,10 @@ public class TypingController implements Initializable {
         backstage.sceneProperty().addListener((_, _, newScene) -> {
             if (newScene != null) {
 //                newScene.setOnKeyTyped(this::handleKeyPressed);
-                calculator.startTimer(timerLabel);
+                calculator.getTimeline().startTimer(timerLabel);
                 backstage.requestFocus();
 //                bindLabelWidth(enteredText, 10);
+
             }
         });
     }
@@ -96,7 +92,7 @@ public class TypingController implements Initializable {
         calculator.updateStats(infoLabel);
 
         if (overlayText.getText().isEmpty()){
-            calculator.stopTimer();
+            calculator.getTimeline().stopTimer();
             resultPanel.setVisible(true);
         }
     }
@@ -125,7 +121,7 @@ public class TypingController implements Initializable {
     private void restartTyping(){
         restartScene();
         overlayText.setText(provider.generate());
-        calculator.startTimer(timerLabel);
+        calculator.getTimeline().startTimer(timerLabel);
     }
 
     @FXML

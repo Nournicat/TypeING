@@ -5,7 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
-import ru.ssau.operatingsystem.project.typeingapp.TypingTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.controller.TypingController;
 
 import java.io.IOException;

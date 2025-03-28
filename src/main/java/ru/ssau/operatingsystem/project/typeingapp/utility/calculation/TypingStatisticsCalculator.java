@@ -1,12 +1,7 @@
-package ru.ssau.operatingsystem.project.typeingapp.utility;
+package ru.ssau.operatingsystem.project.typeingapp.utility.calculation;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
-
-import java.sql.Time;
+import ru.ssau.operatingsystem.project.typeingapp.utility.stats.TypingStats;
 
 public class TypingStatisticsCalculator {
     private long startTime;
@@ -14,7 +9,7 @@ public class TypingStatisticsCalculator {
 
     private TypingStats currStatistic = new TypingStats(0, 0, 0);
 
-    private Timeline timeline;
+    private Timer timeline = new Timer();
 
     public TypingStatisticsCalculator(){
         this.started = false;
@@ -40,34 +35,12 @@ public class TypingStatisticsCalculator {
         currStatistic.setWpm(wpm);
     }
 
-    public void startTimer(Label timerLabel){
-        startTime = System.currentTimeMillis();
-
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer(timerLabel)));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
-
-    private void updateTimer(Label timerLabel){
-        long elapsedMillis = System.currentTimeMillis() - startTime;
-        timerLabel.setText(formatTime(elapsedMillis));
-    }
-
-    private String formatTime(long millis){
-        long seconds = millis / 1000;
-        long minutes = seconds / 60;
-        seconds %= 60;
-        return String.format("%02d : %02d", minutes, seconds);
-    }
-
-    public void stopTimer(){
-        if (timeline != null){
-            timeline.stop();
-        }
-    }
-
     public void updateStats(Label infoLabel){
         infoLabel.setText(String.format("Символов: %d, Слов: %d, Скорость: %.1f слов/мин",
                                         currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getWpm()));
+    }
+
+    public Timer getTimeline(){
+        return timeline;
     }
 }

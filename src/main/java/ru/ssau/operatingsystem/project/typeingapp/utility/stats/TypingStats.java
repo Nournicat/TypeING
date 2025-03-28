@@ -1,8 +1,6 @@
-package ru.ssau.operatingsystem.project.typeingapp.utility;
+package ru.ssau.operatingsystem.project.typeingapp.utility.stats;
 
-import javafx.scene.control.Label;
-
-public class TypingStats {
+public class TypingStats implements IStatistic {
     private int characterCount;
     private int wordCount;
     private double wpm;
@@ -37,8 +35,4 @@ public class TypingStats {
         return wpm;
     }
 
-    public void updateStats(Label infoLabel){
-        infoLabel.setText(String.format("Символов: %d, Слов: %d, Скорость: %.1f слов/мин",
-                                        this.characterCount, this.wordCount, this.wpm));
-    }
 }

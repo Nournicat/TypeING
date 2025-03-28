@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import ru.ssau.operatingsystem.project.typeingapp.*;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
