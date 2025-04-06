@@ -5,8 +5,10 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
+import ru.ssau.operatingsystem.project.typeingapp.controller.OneLifeTypingController;
+import ru.ssau.operatingsystem.project.typeingapp.controller.WithErasingTypingController;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.controller.TypingController;
+import ru.ssau.operatingsystem.project.typeingapp.controller.DefaultTypingController;
 
 import java.io.IOException;
 
@@ -38,7 +40,7 @@ public class Utility {
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
             Utility.changeScene(scene);
-            ((TypingController) fxmlLoader.getController()).startTyping(stringProvider);
+            ((DefaultTypingController) fxmlLoader.getController()).startTyping(stringProvider);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

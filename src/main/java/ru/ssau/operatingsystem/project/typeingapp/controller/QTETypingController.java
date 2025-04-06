@@ -46,7 +46,7 @@ public class QTETypingController implements Initializable, Controllers{
         backgroundTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             long elapsed = calculator.getTimeline().getElapsedSeconds();
             if (elapsed % intervalSeconds == 0 && elapsed != 0) {
-                System.out.println("Какое-то событие каждый 5 секунд");
+                System.out.println("Какое-то событие каждые 5 секунд");
             }
         }));
         backgroundTimeline.setCycleCount(Timeline.INDEFINITE);
