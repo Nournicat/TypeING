@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
@@ -17,11 +19,13 @@ public abstract class AbstractTypingController implements Initializable, Control
     protected TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
     protected TypingTextProvider provider;
 
+    protected boolean typingStarted = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
         getBackstage().sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                calculator.getTimeline().startTimer(getTimerLabel());
+//                calculator.getTimeline().startTimer(getTimerLabel());
                 getBackstage().requestFocus();
             }
         });
@@ -34,11 +38,26 @@ public abstract class AbstractTypingController implements Initializable, Control
         getOverlayText().setText(text);
 
         Scene scene = Utility.getPrimaryStage().getScene();
-        scene.setOnKeyTyped(this::handleKeyPressed);
+
+        scene.setOnKeyPressed(event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ENTER){
+                typingStarted = true;
+                getPreparingPanel().setVisible(false);
+                calculator.getTimeline().startTimer(getTimerLabel());
+                scene.setOnKeyTyped(this::handleKeyPressed);
+                getBackstage().requestFocus();
+            }
+        });
+
         getBackstage().requestFocus();
+//        calculator.getTimeline().startTimer(getTimerLabel());
+//        scene.setOnKeyTyped(this::handleKeyPressed);
+//        getBackstage().requestFocus();
     }
 
     protected void handleKeyPressed(KeyEvent event) {
+        if (!typingStarted) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
 
@@ -62,6 +81,8 @@ public abstract class AbstractTypingController implements Initializable, Control
     }
 
     protected void restartScene(){
+        typingStarted = false;
+        getPreparingPanel().setVisible(true);
         getResultPanel().setVisible(false);
         getEnteredText().setText("");
 
@@ -73,7 +94,8 @@ public abstract class AbstractTypingController implements Initializable, Control
     protected void restartTyping(){
         restartScene();
         getOverlayText().setText(provider.generate());
-        calculator.getTimeline().startTimer(getTimerLabel());
+        startTyping(provider);
+//        calculator.getTimeline().startTimer(getTimerLabel());
     }
 
     @FXML
@@ -87,4 +109,5 @@ public abstract class AbstractTypingController implements Initializable, Control
     protected abstract Label getEnteredText();
     protected abstract Label getOverlayText();
     protected abstract VBox getResultPanel();
+    protected abstract AnchorPane getPreparingPanel();
 }
