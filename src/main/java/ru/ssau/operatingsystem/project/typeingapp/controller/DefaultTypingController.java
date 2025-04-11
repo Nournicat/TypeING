@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
@@ -31,6 +32,9 @@ public class DefaultTypingController extends AbstractTypingController {
 
     @FXML
     private VBox resultPanel;
+
+    @FXML
+    private AnchorPane preparingPanel;
 
     @Override
     protected VBox getBackstage() {
@@ -60,5 +64,10 @@ public class DefaultTypingController extends AbstractTypingController {
     @Override
     protected VBox getResultPanel() {
         return resultPanel;
+    }
+
+    @Override
+    protected AnchorPane getPreparingPanel(){
+        return preparingPanel;
     }
 }
