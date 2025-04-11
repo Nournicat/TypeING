@@ -10,6 +10,7 @@ import ru.ssau.operatingsystem.project.typeingapp.*;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Mode;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
@@ -130,5 +131,25 @@ public class ModesMenuController implements Initializable {
 
     RandomStringTextProvider wordsGenerator(int count, String[] words){
         return new RandomStringTextProvider(count, words);
+    }
+
+    @FXML
+    void mousePressChangeDefaultMode(MouseEvent event) {
+        Utility.setCurrentMode(Mode.DEFAULT);
+    }
+
+    @FXML
+    void mousePressChangeEraseMode(MouseEvent event) {
+        Utility.setCurrentMode(Mode.WITH_ERASING);
+    }
+
+    @FXML
+    void mousePressChangeOneHPMode(MouseEvent event) {
+        Utility.setCurrentMode(Mode.ONE_LIFE);
+    }
+
+    @FXML
+    void mousePressChangeQTEMode(MouseEvent event) {
+        Utility.setCurrentMode(Mode.QTE);
     }
 }

@@ -4,6 +4,5 @@ public enum Mode {
     DEFAULT,
     ONE_LIFE,
     QTE,
-    SPLASH,
     WITH_ERASING
 }

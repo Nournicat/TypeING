@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollBar?>
@@ -73,6 +74,30 @@
                               <Font name="Bebas Neue Regular" size="20.0" />
                            </font></Label>
                      </children></HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="133.0" layoutY="-1.0" prefHeight="65.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onMousePressed="#mousePressChangeDefaultMode" text="Def">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMousePressed="#mousePressChangeOneHPMode" text="1HP">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMousePressed="#mousePressChangeEraseMode" text="ERASE">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onMousePressed="#mousePressChangeQTEMode" text="QTE">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
