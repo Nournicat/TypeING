@@ -8,7 +8,6 @@ public class TypingStatisticsCalculator {
     private boolean started;
 
     private TypingStats currStatistic = new TypingStats(0, 0, 0);
-
     private Timer timeline = new Timer();
 
     public TypingStatisticsCalculator(){
@@ -39,7 +38,7 @@ public class TypingStatisticsCalculator {
         infoLabel.setText(String.format("Символов: %d, Слов: %d, Скорость: %.1f слов/мин",
                                         currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getWpm()));
     }
-
+    
     public Timer getTimeline(){
         return timeline;
     }

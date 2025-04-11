@@ -14,6 +14,10 @@ import java.io.IOException;
 
 public class Utility {
     private static Stage primaryStage;
+    private static Mode currentMode = Mode.DEFAULT;
+
+    public static Mode getCurrentMode(){return currentMode;}
+    public static void setCurrentMode(Mode newMode){currentMode = newMode;}
 
     private Utility() {
     }
