@@ -17,24 +17,24 @@ import java.util.ResourceBundle;
 public class DefaultTypingController extends AbstractTypingController {
 
     @FXML
-    private VBox backstage;
+    public VBox backstage;
     @FXML
-    private Label infoLabel;
+    public Label infoLabel;
 
     @FXML
-    private Label timerLabel;
+    public Label timerLabel;
 
     @FXML
-    private Label enteredText;
+    public Label enteredText;
 
     @FXML
-    private Label overlayText;
+    public Label overlayText;
 
     @FXML
-    private VBox resultPanel;
+    public VBox resultPanel;
 
     @FXML
-    private AnchorPane preparingPanel;
+    public AnchorPane preparingPanel;
 
     @Override
     protected VBox getBackstage() {

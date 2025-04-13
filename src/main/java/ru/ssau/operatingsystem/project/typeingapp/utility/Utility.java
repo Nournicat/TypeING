@@ -6,10 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
-import ru.ssau.operatingsystem.project.typeingapp.controller.OneLifeTypingController;
-import ru.ssau.operatingsystem.project.typeingapp.controller.WithErasingTypingController;
+import ru.ssau.operatingsystem.project.typeingapp.controller.*;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.controller.DefaultTypingController;
 
 import java.io.IOException;
 
@@ -43,14 +41,18 @@ public class Utility {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3.fxml"));
 
-            fxmlLoader.setController(new OneLifeTypingController());
             Parent root = fxmlLoader.load();
-            DefaultTypingController controller = fxmlLoader.getController();
+            switch(currentMode){
+                case DEFAULT -> {}
+                case QTE -> fxmlLoader.setController(new QTETypingController(fxmlLoader.getController()));
+                case ONE_LIFE -> fxmlLoader.setController(new OneLifeTypingController(fxmlLoader.getController()));
+                case WITH_ERASING -> fxmlLoader.setController(new WithErasingTypingController(fxmlLoader.getController()));
+            }
 
             Scene scene = new Scene(root, 600, 400);
 
             Utility.changeScene(scene);
-            ((OneLifeTypingController) fxmlLoader.getController()).startTyping(stringProvider);
+            ((Controllers) fxmlLoader.getController()).startTyping(stringProvider);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

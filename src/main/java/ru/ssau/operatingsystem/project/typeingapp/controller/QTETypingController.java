@@ -15,6 +15,14 @@ import java.util.ResourceBundle;
 
 public class QTETypingController implements Initializable, Controllers{
 
+    public QTETypingController(DefaultTypingController controller) {
+        this.backstage = controller.backstage;
+        this.infoLabel = controller.infoLabel;
+        this.timerLabel = controller.timerLabel;
+        this.resultPanel = controller.resultPanel;
+        this.calculator = controller.calculator;
+    }
+
     @FXML
     private VBox backstage;
     @FXML
