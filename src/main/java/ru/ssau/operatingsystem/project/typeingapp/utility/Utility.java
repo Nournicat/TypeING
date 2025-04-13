@@ -2,6 +2,7 @@ package ru.ssau.operatingsystem.project.typeingapp.utility;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
@@ -41,10 +42,16 @@ public class Utility {
     public static void startTyping(TypingTextProvider stringProvider) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+            fxmlLoader.setController(new OneLifeTypingController());
+            Parent root = fxmlLoader.load();
+            DefaultTypingController controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root, 600, 400);
 
             Utility.changeScene(scene);
-            ((DefaultTypingController) fxmlLoader.getController()).startTyping(stringProvider);
+            ((OneLifeTypingController) fxmlLoader.getController()).startTyping(stringProvider);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

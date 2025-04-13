@@ -7,7 +7,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Properties;
 
 public class MainApp extends Application {
     private static Stage primaryStage;
@@ -32,6 +37,7 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
+
         launch();
     }
 
