@@ -20,7 +20,7 @@ public abstract class AbstractTypingController implements Initializable, Control
     protected TypingTextProvider provider;
 
     protected boolean typingStarted = false;
-    protected boolean typingInitialized = false;
+    protected boolean typingInitialized = false; // флаг для сигнализации того, что инициализация ввода уже прошла(или не прошла)
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -83,7 +83,7 @@ public abstract class AbstractTypingController implements Initializable, Control
 
     protected void restartScene(){
         typingStarted = false;
-        typingInitialized = false;
+        typingInitialized = false; // Сброс, чтобы снова можно было начать ввод
         getPreparingPanel().setVisible(true);
         getResultPanel().setVisible(false);
         getEnteredText().setText("");

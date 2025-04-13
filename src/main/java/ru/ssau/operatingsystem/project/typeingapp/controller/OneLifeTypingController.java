@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 public class OneLifeTypingController extends AbstractTypingController{
 
     private boolean flagMistake = false;
-    private boolean firstClick = true;
+    private boolean firstClick = true; // чтобы игнорировать первый ввод Enter, а последующие учитывать как обычные символы
 
     @FXML
     private VBox backstage;
