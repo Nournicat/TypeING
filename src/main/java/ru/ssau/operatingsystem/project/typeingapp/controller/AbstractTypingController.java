@@ -20,6 +20,7 @@ public abstract class AbstractTypingController implements Initializable, Control
     protected TypingTextProvider provider;
 
     protected boolean typingStarted = false;
+    protected boolean typingInitialized = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -41,15 +42,15 @@ public abstract class AbstractTypingController implements Initializable, Control
 
         scene.setOnKeyPressed(event -> {
             System.out.println(event.getCode());
-            if (event.getCode() == KeyCode.ENTER){
+            if ((event.getCode() == KeyCode.ENTER) && (!typingInitialized)){
                 typingStarted = true;
+                typingInitialized = true;
                 getPreparingPanel().setVisible(false);
                 calculator.getTimeline().startTimer(getTimerLabel());
                 scene.setOnKeyTyped(this::handleKeyPressed);
                 getBackstage().requestFocus();
             }
         });
-
         getBackstage().requestFocus();
 //        calculator.getTimeline().startTimer(getTimerLabel());
 //        scene.setOnKeyTyped(this::handleKeyPressed);
@@ -82,6 +83,7 @@ public abstract class AbstractTypingController implements Initializable, Control
 
     protected void restartScene(){
         typingStarted = false;
+        typingInitialized = false;
         getPreparingPanel().setVisible(true);
         getResultPanel().setVisible(false);
         getEnteredText().setText("");

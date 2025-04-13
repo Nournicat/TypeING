@@ -30,6 +30,7 @@ public class WithErasingTypingController extends AbstractTypingController{
 
     @Override
     protected void handleKeyPressed(KeyEvent event) {
+        if (!typingStarted) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
 

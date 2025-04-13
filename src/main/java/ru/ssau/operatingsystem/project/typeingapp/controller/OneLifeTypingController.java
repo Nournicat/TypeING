@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 public class OneLifeTypingController extends AbstractTypingController{
 
     private boolean flagMistake = false;
+    private boolean firstClick = true;
 
     @FXML
     private VBox backstage;
@@ -32,6 +33,12 @@ public class OneLifeTypingController extends AbstractTypingController{
 
     @Override
     protected void handleKeyPressed(KeyEvent event) {
+        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter())) && firstClick){
+            firstClick = false;
+            return;
+        }
+
+        if (!typingStarted) return;
         if (flagMistake) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
@@ -45,6 +52,7 @@ public class OneLifeTypingController extends AbstractTypingController{
         else{
             calculator.getTimeline().stopTimer();
             getResultPanel().setVisible(true);
+            flagMistake = true;
         }
         calculator.calculateStats(getEnteredText().getText());
         calculator.updateStats(getInfoLabel());
@@ -52,13 +60,17 @@ public class OneLifeTypingController extends AbstractTypingController{
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
             getResultPanel().setVisible(true);
-            flagMistake = true;
         }
     }
 
     @Override
     protected void restartScene(){
+        typingInitialized = false;
+        typingStarted = false;
+
         flagMistake = false;
+        firstClick = true;
+        getPreparingPanel().setVisible(true);
         getResultPanel().setVisible(false);
         getEnteredText().setText("");
 
