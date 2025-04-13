@@ -15,7 +15,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DefaultTypingController extends AbstractTypingController {
-
     @FXML
     public VBox backstage;
     @FXML

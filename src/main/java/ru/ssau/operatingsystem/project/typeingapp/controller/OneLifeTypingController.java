@@ -10,16 +10,6 @@ public class OneLifeTypingController extends AbstractTypingController{
 
     private boolean flagMistake = false;
 
-    public OneLifeTypingController(DefaultTypingController controller) {
-        this.backstage = controller.backstage;
-        this.infoLabel = controller.infoLabel;
-        this.timerLabel = controller.timerLabel;
-        this.enteredText = controller.enteredText;
-        this.overlayText = controller.overlayText;
-        this.resultPanel = controller.resultPanel;
-        this.preparingPanel = controller.preparingPanel;
-    }
-
     @FXML
     private VBox backstage;
     @FXML

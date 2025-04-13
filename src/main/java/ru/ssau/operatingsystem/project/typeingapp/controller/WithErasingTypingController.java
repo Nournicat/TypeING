@@ -8,19 +8,6 @@ import javafx.fxml.FXML;
 
 public class WithErasingTypingController extends AbstractTypingController{
 
-    public WithErasingTypingController(DefaultTypingController controller) {
-        this.backstage = controller.backstage;
-        this.infoLabel = controller.infoLabel;
-        this.timerLabel = controller.timerLabel;
-        this.resultPanel = controller.resultPanel;
-        this.provider = controller.provider;
-        this.calculator = controller.calculator;
-        this.typingStarted = controller.typingStarted;
-        this.preparingPanel = controller.preparingPanel;
-        this.enteredText = controller.enteredText;
-        this.overlayText = controller.overlayText;
-    }
-
     @FXML
     private VBox backstage;
     @FXML

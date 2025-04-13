@@ -32,7 +32,7 @@ public abstract class AbstractTypingController implements Initializable, Control
     }
 
     public void startTyping(TypingTextProvider stringProvider){
-        provider = stringProvider;
+        this.provider = stringProvider;
         restartScene();
         String text = getText(stringProvider);
         getOverlayText().setText(text);

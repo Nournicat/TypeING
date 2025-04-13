@@ -39,17 +39,15 @@ public class Utility {
     }
     public static void startTyping(TypingTextProvider stringProvider) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3.fxml"));
-
-            Parent root = fxmlLoader.load();
+            FXMLLoader fxmlLoader;
             switch(currentMode){
-                case DEFAULT -> {}
-                case QTE -> fxmlLoader.setController(new QTETypingController(fxmlLoader.getController()));
-                case ONE_LIFE -> fxmlLoader.setController(new OneLifeTypingController(fxmlLoader.getController()));
-                case WITH_ERASING -> fxmlLoader.setController(new WithErasingTypingController(fxmlLoader.getController()));
+                case QTE -> fxmlLoader = new FXMLLoader(MainApp.class.getResource("3/qte.fxml"));
+                case ONE_LIFE -> fxmlLoader = new FXMLLoader(MainApp.class.getResource("3/one_life.fxml"));
+                case WITH_ERASING -> fxmlLoader = new FXMLLoader(MainApp.class.getResource("3/with_erase.fxml"));
+                default -> fxmlLoader = new FXMLLoader(MainApp.class.getResource("3/default.fxml"));
             }
 
-            Scene scene = new Scene(root, 600, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
             Utility.changeScene(scene);
             ((Controllers) fxmlLoader.getController()).startTyping(stringProvider);
