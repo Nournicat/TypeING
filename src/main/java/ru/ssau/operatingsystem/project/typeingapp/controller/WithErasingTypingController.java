@@ -16,6 +16,9 @@ public class WithErasingTypingController extends AbstractTypingController{
         this.provider = controller.provider;
         this.calculator = controller.calculator;
         this.typingStarted = controller.typingStarted;
+        this.preparingPanel = controller.preparingPanel;
+        this.enteredText = controller.enteredText;
+        this.overlayText = controller.overlayText;
     }
 
     @FXML
