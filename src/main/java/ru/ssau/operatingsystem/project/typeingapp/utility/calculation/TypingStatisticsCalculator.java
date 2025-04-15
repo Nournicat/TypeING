@@ -26,7 +26,7 @@ public class TypingStatisticsCalculator {
             wordCount = text.trim().split("[\\s.,:;!?]+").length;
         }
         long elapsedMillis = System.currentTimeMillis() - startTime;
-        double elapsedMinutes = elapsedMillis/60000.0;
+        double elapsedMinutes = timeline.getElapsedSeconds()/60.0;
         double wpm = (elapsedMinutes > 0) ? wordCount / elapsedMinutes : 0;
 
         currStatistic.setWordCount(wordCount);
