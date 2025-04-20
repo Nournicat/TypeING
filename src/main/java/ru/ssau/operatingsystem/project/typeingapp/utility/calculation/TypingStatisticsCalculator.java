@@ -7,7 +7,7 @@ public class TypingStatisticsCalculator {
     private long startTime;
     private boolean started;
 
-    private TypingStats currStatistic = new TypingStats(0, 0, 0);
+    private TypingStats currStatistic = new TypingStats(0, 0, 0, 0, 0);
     private Timer timeline = new Timer();
 
     public TypingStatisticsCalculator(){
@@ -20,26 +20,30 @@ public class TypingStatisticsCalculator {
             started = true;
         }
 
-        int characters = text.length();
+        int symbolsCount = text.length();
         int wordCount = 0;
         if (text != null && !text.trim().isEmpty()) {
             wordCount = text.trim().split("[\\s.,:;!?]+").length;
         }
-        long elapsedMillis = System.currentTimeMillis() - startTime;
+
         double elapsedMinutes = timeline.getElapsedSeconds()/60.0;
         double wpm = (elapsedMinutes > 0) ? wordCount / elapsedMinutes : 0;
+        double spm = (elapsedMinutes > 0) ? symbolsCount / elapsedMinutes : 0;
 
         currStatistic.setWordCount(wordCount);
-        currStatistic.setCharacterCount(characters);
+        currStatistic.setCharacterCount(symbolsCount);
         currStatistic.setWpm(wpm);
+        currStatistic.setSpm(spm);
     }
 
     public void updateStats(Label infoLabel){
-        infoLabel.setText(String.format("Символов: %d, Слов: %d, Скорость: %.1f слов/мин",
-                                        currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getWpm()));
+        infoLabel.setText(String.format("Символов: %d, Слов: %d, Ошибок: %d, Скорость: %.1f слов/мин",
+                                        currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getErrorCount(), currStatistic.getWpm()));
     }
     
     public Timer getTimeline(){
         return timeline;
     }
+
+    public TypingStats getCurrStats(){ return currStatistic; }
 }
