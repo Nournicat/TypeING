@@ -39,7 +39,7 @@ public class Utility {
     }
     public static void startTyping(TypingTextProvider stringProvider) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3_1.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
             Utility.changeScene(scene);
