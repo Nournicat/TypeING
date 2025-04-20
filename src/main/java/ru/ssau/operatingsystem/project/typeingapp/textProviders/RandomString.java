@@ -1,4 +1,4 @@
-package ru.ssau.operatingsystem.project.typeingapp;
+package ru.ssau.operatingsystem.project.typeingapp.textProviders;
 
 import java.security.SecureRandom;
 import java.util.Locale;

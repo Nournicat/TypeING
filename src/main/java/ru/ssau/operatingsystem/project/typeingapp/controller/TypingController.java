@@ -1,135 +1,214 @@
 package ru.ssau.operatingsystem.project.typeingapp.controller;
 
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
-import ru.ssau.operatingsystem.project.typeingapp.RandomString;
-import ru.ssau.operatingsystem.project.typeingapp.RandomTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.TypingTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStatisticsCalculator;
-import ru.ssau.operatingsystem.project.typeingapp.utility.TypingStats;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Mode;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
+import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.function.Function;
 
-public class TypingController implements Initializable {
+public class TypingController implements Initializable, Controllers{
+
+   
+    @FXML
+    public VBox backstage;
+    @FXML
+    public Label infoLabel;
 
     @FXML
-    private VBox backstage;
-    @FXML
-    private Label infoLabel;
+    public Label timerLabel;
 
     @FXML
-    private Label enteredText;
+    public Label enteredText;
 
     @FXML
-    private Label overlayText;
-
+    public Label overlayText;
 
     @FXML
-    private VBox resultPanel;
+    public VBox resultPanel;
+
+    @FXML
+    public AnchorPane preparingPanel;
+
+    private TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
     private TypingTextProvider provider;
 
+    private boolean typingStarted = false;
+    private boolean typingInitialized = false; // флаг для сигнализации того, что инициализация ввода уже прошла(или не прошла)
 
-    TypingStats statistic = new TypingStats(0, 0, 0);
-    TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
+    private boolean flagMistake = false;
+    private boolean firstClick = true; // чтобы игнорировать первый ввод Enter, а последующие учитывать как обычные символы
+
+    private void modeToHandle(Scene scene){
+        switch (Utility.getCurrentMode()){
+            case ONE_LIFE -> scene.setOnKeyTyped(this::handleKeyPressedOneLife);
+            case WITH_ERASING -> scene.setOnKeyTyped(this::handleKeyPressedWithErasing);
+            default -> scene.setOnKeyTyped(this::handleKeyPressedDefault);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        backstage.sceneProperty().addListener((_, _, newScene) -> {
+        getBackstage().sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                newScene.setOnKeyTyped(this::handleKeyPressed);
-                backstage.requestFocus();
+//                calculator.getTimeline().startTimer(getTimerLabel());
+                getBackstage().requestFocus();
             }
         });
     }
 
     public void startTyping(TypingTextProvider stringProvider){
-        provider = stringProvider;
-        System.out.println("Запущено");
+        this.provider = stringProvider;
         restartScene();
-
         String text = getText(stringProvider);
-        overlayText.setText(text);
+        getOverlayText().setText(text);
 
         Scene scene = Utility.getPrimaryStage().getScene();
-        scene.setOnKeyTyped(this::handleKeyPressed);
-        backstage.requestFocus();
+
+        scene.setOnKeyPressed(event -> {
+            System.out.println(event.getCode());
+            if ((event.getCode() == KeyCode.ENTER) && (!typingInitialized)){
+                typingStarted = true;
+                typingInitialized = true;
+                getPreparingPanel().setVisible(false);
+                calculator.getTimeline().startTimer(getTimerLabel());
+                modeToHandle(scene);
+                getBackstage().requestFocus();
+            }
+        });
+        getBackstage().requestFocus();
+//        calculator.getTimeline().startTimer(getTimerLabel());
+//        scene.setOnKeyTyped(this::handleKeyPressed);
+//        getBackstage().requestFocus();
+    }
+
+    private void handleKeyPressedDefault(KeyEvent event) {
+        if (!typingStarted) return;
+        if (getOverlayText().getText().isEmpty()) return;
+        if (event.getCharacter().isEmpty()) return;
+
+        char enteredKey = event.getCharacter().charAt(0);
+        char currentKey = getOverlayText().getText().charAt(0);
+        if (enteredKey == currentKey){
+            getEnteredText().setText(getEnteredText().getText() + enteredKey);
+            getOverlayText().setText(getOverlayText().getText().substring(1));
+        }
+        calculator.calculateStats(getEnteredText().getText());
+        calculator.updateStats(getInfoLabel());
+
+        if (getOverlayText().getText().isEmpty()){
+            calculator.getTimeline().stopTimer();
+            getResultPanel().setVisible(true);
+        }
+    }
+
+    private void handleKeyPressedWithErasing(KeyEvent event) {
+        if (!typingStarted) return;
+        if (getOverlayText().getText().isEmpty()) return;
+        if (event.getCharacter().isEmpty()) return;
+
+        char enteredKey = event.getCharacter().charAt(0);
+        char currentKey = getOverlayText().getText().charAt(0);
+        if (enteredKey == currentKey){
+            getEnteredText().setText(getEnteredText().getText() + enteredKey);
+            getOverlayText().setText(getOverlayText().getText().substring(1));
+        }
+        if ("\b".equals(event.getCharacter())){
+            if (!getEnteredText().getText().isEmpty()) {
+                char deletedChar = getEnteredText().getText().charAt(getEnteredText().getText().length() - 1);
+                getEnteredText().setText(getEnteredText().getText().substring(0, getEnteredText().getText().length() - 1));
+                getOverlayText().setText(deletedChar + getOverlayText().getText());
+            }
+        }
+        calculator.calculateStats(getEnteredText().getText());
+        calculator.updateStats(getInfoLabel());
+
+        if (getOverlayText().getText().isEmpty()){
+            calculator.getTimeline().stopTimer();
+            getResultPanel().setVisible(true);
+        }
+    }
+
+    private void handleKeyPressedOneLife(KeyEvent event) {
+        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter())) && firstClick){
+            firstClick = false;
+            return;
+        }
+
+        if (!typingStarted) return;
+        if (flagMistake) return;
+        if (getOverlayText().getText().isEmpty()) return;
+        if (event.getCharacter().isEmpty()) return;
+
+        char enteredKey = event.getCharacter().charAt(0);
+        char currentKey = getOverlayText().getText().charAt(0);
+        if (enteredKey == currentKey){
+            getEnteredText().setText(getEnteredText().getText() + enteredKey);
+            getOverlayText().setText(getOverlayText().getText().substring(1));
+        }
+        else{
+            calculator.getTimeline().stopTimer();
+            getResultPanel().setVisible(true);
+            flagMistake = true;
+        }
+        calculator.calculateStats(getEnteredText().getText());
+        calculator.updateStats(getInfoLabel());
+
+        if (getOverlayText().getText().isEmpty()){
+            calculator.getTimeline().stopTimer();
+            getResultPanel().setVisible(true);
+        }
+    }
+
+    private String getText(TypingTextProvider stringProvider){
+        return stringProvider.generate();
+    }
+
+    private void restartScene(){
+        typingStarted = false;
+        typingInitialized = false; // Сброс, чтобы снова можно было начать ввод
+
+        flagMistake = false;
+        firstClick = true;
+        getPreparingPanel().setVisible(true);
+        getResultPanel().setVisible(false);
+        getEnteredText().setText("");
+
+        getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
+        getTimerLabel().setText("0 : 00");
     }
 
     @FXML
     private void restartTyping(){
         restartScene();
-        overlayText.setText(provider.generate());
+        getOverlayText().setText(provider.generate());
+        startTyping(provider);
+//        calculator.getTimeline().startTimer(getTimerLabel());
     }
 
     @FXML
     private void exitScene(){
-        Scene scene;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
-        try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Utility.changeScene(scene);
-    }
-    private void handleKeyPressed(KeyEvent event) {
-
-        // Пример обработки нажатия клавиши
-        if (event.getCharacter().isEmpty()) return;
-
-        char enteredKey = event.getCharacter().charAt(0);
-
-        // Пока только для логгирования
-//        infoLabel.setText("Нажата клавиша: " + enteredKey);
-
-        char currentKey = overlayText.getText().charAt(0);
-        if (enteredKey == currentKey){
-            enteredText.setText(enteredText.getText() + enteredKey);
-            overlayText.setText(overlayText.getText().substring(1));
-        }
-        if ("\b".equals(event.getCharacter())){
-            if (!enteredText.getText().isEmpty()) {
-                char deletedChar = enteredText.getText().charAt(enteredText.getText().length() - 1);
-                enteredText.setText(enteredText.getText().substring(0, enteredText.getText().length() - 1));
-                overlayText.setText(deletedChar + overlayText.getText());
-            }
-        }
-        calculator.calculateStats(enteredText.getText(), statistic);
-        statistic.updateStats(infoLabel);
-
-        if (overlayText.getText().isEmpty())
-            resultPanel.setVisible(true);
+        Utility.backToMenu();
     }
 
-    private String getText(TypingTextProvider stringProvider){
-//        Random random = new Random();
-//        int lengthWord = random.nextInt(4, 6);
-//        int countWords = random.nextInt(5, 10);
-//        RandomString gen = new RandomString(lengthWord, random);
-//        RandomTextProvider randomText = new RandomTextProvider(countWords, gen);
-
-        return stringProvider.generate();
-    }
-
-    private void restartScene(){
-        resultPanel.setVisible(false);
-        enteredText.setText("");
-
-        String infoText = "Наберите текст ниже. Скорость набора появится здесь.";
-        infoLabel.setText(infoText);
-    }
-
+    private VBox getBackstage(){ return backstage; }
+    private Label getInfoLabel(){ return infoLabel; }
+    private Label getTimerLabel(){ return timerLabel; }
+    private Label getEnteredText(){ return enteredText; }
+    private Label getOverlayText(){ return overlayText; }
+    private VBox getResultPanel(){ return resultPanel; }
+    private AnchorPane getPreparingPanel(){ return preparingPanel; }
 }

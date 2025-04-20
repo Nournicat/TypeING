@@ -5,9 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Settings;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Objects;
+import java.util.Properties;
 
 public class MainApp extends Application {
     private static Stage primaryStage;
@@ -31,7 +38,8 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException {
+        Settings.loadProperties();
         launch();
     }
 

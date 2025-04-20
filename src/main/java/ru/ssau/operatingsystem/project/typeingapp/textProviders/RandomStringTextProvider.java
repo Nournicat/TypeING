@@ -1,6 +1,5 @@
-package ru.ssau.operatingsystem.project.typeingapp;
+package ru.ssau.operatingsystem.project.typeingapp.textProviders;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomStringTextProvider implements TypingTextProvider{
