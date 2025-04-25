@@ -21,7 +21,7 @@ import java.util.Stack;
 
 public class TypingController implements Initializable, Controllers{
 
-   
+
     @FXML
     public VBox backstage;
     @FXML
@@ -82,7 +82,6 @@ public class TypingController implements Initializable, Controllers{
         scene.setOnKeyPressed(event -> {
 //            System.out.println(event.getCode());
             if ((event.getCode() == KeyCode.ENTER) && (!typingInitialized)){
-                typingStarted = true;
                 typingInitialized = true;
                 getPreparingPanel().setVisible(false);
                 calculator.getTimeline().startTimer(getTimerLabel());
@@ -97,16 +96,31 @@ public class TypingController implements Initializable, Controllers{
 //        getBackstage().requestFocus();
     }
 
+    private int currIndex = 0;
+    Stack<ElementStack> stack = new Stack<>();
     private void handleKeyPressedDefault(KeyEvent event) {
-        if (!typingStarted) return;
+        if (!typingInitialized) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
+
+        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
 
         char enteredKey = event.getCharacter().charAt(0);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
             getOverlayText().setText(getOverlayText().getText().substring(1));
+            currIndex+=1;
+            System.out.println(currIndex);
+        }
+        else {
+            if (stack.isEmpty() || stack.peek().getErrorIndex()!=currIndex) {
+                stack.push(new ElementStack(currIndex, currentKey));
+                int errorCount = calculator.getCurrStats().getErrorCount();
+                calculator.getCurrStats().setErrorCount(++errorCount);
+                System.out.println(currIndex);
+            }
+
         }
         calculator.calculateStats(getEnteredText().getText());
         calculator.updateStats(getInfoLabel());
@@ -117,11 +131,8 @@ public class TypingController implements Initializable, Controllers{
         }
     }
 
-    private int currIndex = 0;
-    Stack<ElementStack> stack = new Stack<>();
     private void handleKeyPressedWithErasing(KeyEvent event) {
         if (!typingInitialized) return;
-        if (!typingStarted) return;
         if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
@@ -189,7 +200,7 @@ public class TypingController implements Initializable, Controllers{
             return;
         }
 
-        if (!typingStarted) return;
+        if (!typingInitialized) return;
         if (flagMistake) return;
         if (getOverlayText().getText().isEmpty()) return;
         if (event.getCharacter().isEmpty()) return;
@@ -231,6 +242,7 @@ public class TypingController implements Initializable, Controllers{
         getEnteredText().setText("");
 
         getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
+        stack.clear();
         calculator.getCurrStats().setErrorCount(0);
         getTimerLabel().setText("0 : 00");
     }
