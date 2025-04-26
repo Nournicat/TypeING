@@ -20,13 +20,14 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("splash.fxml"));
-        Scene splashScene = new Scene(fxmlLoader.load(), 600, 400);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
+        Scene mainMenu = new Scene(fxmlLoader.load(), 979, 634);
         stage.setTitle("TypingApp");
+        stage.setResizable(false);
         stage.getIcons().add(new Image("Keyboard.png"));
-        stage.setScene(splashScene);
+        stage.setScene(mainMenu);
 
-        splashScene.getStylesheets().add((MainApp.class.getResource("styles.css")).toExternalForm());
+        mainMenu.getStylesheets().add((MainApp.class.getResource("styles.css")).toExternalForm());
 
         stage.show();
         Utility.setPrimaryStage(stage);
