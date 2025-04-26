@@ -2,10 +2,12 @@ package ru.ssau.operatingsystem.project.typeingapp.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
@@ -39,7 +41,14 @@ public class TypingController implements Initializable, Controllers{
     public Label overlayText;
 
     @FXML
-    public VBox resultPanel;
+    public Label speedLabel;
+    @FXML
+    public Label errorCountLabel;
+    @FXML
+    public Label symbolsCountLabel;
+
+    @FXML
+    public Label enteredButton;
 
     @FXML
     public AnchorPane preparingPanel;
@@ -88,6 +97,7 @@ public class TypingController implements Initializable, Controllers{
                 calculator.getTimeline().startTimer(getTimerLabel());
                 modeToHandle(scene);
                 getBackstage().requestFocus();
+
                 event.consume();
             }
         });
@@ -103,17 +113,18 @@ public class TypingController implements Initializable, Controllers{
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
+        enteredButton.setText("" + enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
             getOverlayText().setText(getOverlayText().getText().substring(1));
         }
         calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getInfoLabel());
+        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
 
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
-            getResultPanel().setVisible(true);
+//            getResultPanel().setVisible(true);
         }
     }
 
@@ -127,6 +138,7 @@ public class TypingController implements Initializable, Controllers{
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
+        enteredButton.setText("" + enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         System.out.println("enteredKey = " + enteredKey);
         System.out.println("currentKey = " + currentKey);
@@ -175,11 +187,11 @@ public class TypingController implements Initializable, Controllers{
             }
         }
         calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getInfoLabel());
+        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());;
 
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
-            getResultPanel().setVisible(true);
+//            getResultPanel().setVisible(true);
         }
     }
 
@@ -195,6 +207,7 @@ public class TypingController implements Initializable, Controllers{
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
+        enteredButton.setText("" + enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
@@ -202,17 +215,17 @@ public class TypingController implements Initializable, Controllers{
         }
         else{
             calculator.getTimeline().stopTimer();
-            getResultPanel().setVisible(true);
+//            getResultPanel().setVisible(true);
             int errorCount = calculator.getCurrStats().getErrorCount();
             calculator.getCurrStats().setErrorCount(++errorCount);
             flagMistake = true;
         }
         calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getInfoLabel());
+        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
 
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
-            getResultPanel().setVisible(true);
+//            getResultPanel().setVisible(true);
         }
     }
 
@@ -227,10 +240,13 @@ public class TypingController implements Initializable, Controllers{
         flagMistake = false;
         firstClick = true;
         getPreparingPanel().setVisible(true);
-        getResultPanel().setVisible(false);
+//        getResultPanel().setVisible(false);
         getEnteredText().setText("");
 
-        getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
+//        getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
+        getSymbolsCountLabel().setText("Символы: 0");
+        getErrorCountLabel().setText("Ошибки: 0");
+        getSpeedLabel().setText("Скорость: 0 слов/мин");
         calculator.getCurrStats().setErrorCount(0);
         getTimerLabel().setText("0 : 00");
     }
@@ -249,11 +265,22 @@ public class TypingController implements Initializable, Controllers{
     }
 
     private VBox getBackstage(){ return backstage; }
-    private Label getInfoLabel(){ return infoLabel; }
+    private Label getSymbolsCountLabel(){ return symbolsCountLabel; }
+    private Label getErrorCountLabel(){ return errorCountLabel; }
+    private Label getSpeedLabel(){ return speedLabel; }
     private Label getTimerLabel(){ return timerLabel; }
     private Label getEnteredText(){ return enteredText; }
-    private Label getErrorText(){ return errorText; }
     private Label getOverlayText(){ return overlayText; }
-    private VBox getResultPanel(){ return resultPanel; }
     private AnchorPane getPreparingPanel(){ return preparingPanel; }
+
+
+    @FXML
+    void mouseChangeEventEnter(MouseEvent event) {
+        Utility.changeCursor(Cursor.HAND);
+    }
+
+    @FXML
+    void mouseChangeEventExit(MouseEvent event) {
+        Utility.changeCursor(Cursor.DEFAULT);
+    }
 }
