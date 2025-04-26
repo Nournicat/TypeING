@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView translateY="-3.0">
                            <image>
-                              <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ModesButton.png" />
+                              <Image url="@images/ModesButton.png" />
                            </image>
                         </ImageView>
                      </graphic></Label>
@@ -58,7 +58,7 @@
                            <graphic>
                               <ImageView>
                                  <image>
-                                    <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Default.png" />
+                                    <Image url="@images/Default.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -70,7 +70,7 @@
                            <graphic>
                               <ImageView>
                                  <image>
-                                    <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/OneLife.png" />
+                                    <Image url="@images/OneLife.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -82,7 +82,7 @@
                            <graphic>
                               <ImageView>
                                  <image>
-                                    <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/With%20Erasing.png" />
+                                    <Image url="@images/With%20Erasing.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -95,7 +95,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Settings.png" />
+                        <Image url="@images/settings.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -104,7 +104,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Profile.png" />
+                        <Image url="@images/Profile.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -122,7 +122,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -136,7 +136,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -153,14 +153,14 @@
          <graphic>
             <ImageView fitWidth="121.0">
                <image>
-                  <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/QTEButton.png" />
+                  <Image url="@images/QTEButton.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <ImageView fitHeight="373.0" fitWidth="1019.0" layoutX="-20.0" layoutY="273.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Intersect.png" />
+            <Image url="@images/Intersect.png" />
          </image>
       </ImageView>
       <Label layoutX="518.0" layoutY="249.0" text="Разное " textFill="#d2d2d2">
@@ -174,7 +174,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -188,7 +188,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -202,7 +202,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -216,7 +216,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -230,7 +230,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -244,7 +244,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -258,7 +258,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -271,7 +271,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -284,7 +284,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/ВАОЛ.png" />
+                        <Image url="@images/ВАОЛ.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -293,27 +293,27 @@
       </AnchorPane>
       <ImageView fitWidth="417.0" layoutX="17.0" layoutY="95.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Line%202.png" />
+            <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
       <ImageView fitWidth="417.0" layoutX="18.0" layoutY="284.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Line%202.png" />
+            <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
       <ImageView fitWidth="414.0" layoutX="519.0" layoutY="284.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Line%202.png" />
+            <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
       <ImageView fitWidth="121.0" layoutX="20.0" layoutY="173.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Line%202.png" />
+            <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
       <ImageView fitWidth="121.0" layoutX="21.0" layoutY="246.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Line%202.png" />
+            <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
    </children>

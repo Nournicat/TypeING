@@ -57,7 +57,7 @@
                            <graphic>
                               <ImageView>
                                  <image>
-                                    <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/Меню%20печати/Restart.png" />
+                                    <Image url="@images/Restart.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -69,7 +69,7 @@
                            <graphic>
                               <ImageView>
                                  <image>
-                                    <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/Меню%20печати/BackToMenu.png" />
+                                    <Image url="@images/BackToMenu.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -91,7 +91,7 @@
                <graphic>
                   <ImageView fitHeight="82.0" fitWidth="200.0">
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/Меню%20печати/EnterButton.png" />
+                        <Image url="@images/EnterButton.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -110,7 +110,7 @@
       </AnchorPane>
       <ImageView fitHeight="421.0" fitWidth="1018.0" layoutX="-20.0" layoutY="223.0">
          <image>
-            <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/Меню%20печати/Intersect.png" />
+            <Image url="@images/Intersect.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="765.0" layoutY="18.0" prefHeight="22.0" prefWidth="92.0" translateY="4.0">
@@ -122,7 +122,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Mistakes.png" />
+                        <Image url="@images/Mistakes.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -140,7 +140,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/SPM.png" />
+                        <Image url="@images/SPM.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -159,7 +159,7 @@
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="160.0">
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/LastPressedButton.png" />
+                        <Image url="@images/LastPressedButton.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -177,7 +177,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../../../../../../../../../Users/User/OneDrive/Изображения/menu/Symbols.png" />
+                        <Image url="@images/Symbols.png" />
                      </image>
                   </ImageView>
                </graphic>
