@@ -40,7 +40,7 @@ public class Utility {
     public static void startTyping(TypingTextProvider stringProvider) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("3_1.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 979, 634);
 
             Utility.changeScene(scene);
             ((Controllers) fxmlLoader.getController()).startTyping(stringProvider);
@@ -54,7 +54,7 @@ public class Utility {
         Scene scene;
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
         try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
+            scene = new Scene(fxmlLoader.load(), 979, 634);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
