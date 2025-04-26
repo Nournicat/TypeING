@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
@@ -24,14 +23,9 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane layoutX="24.0" layoutY="15.0">
+            <AnchorPane fx:id="changeModesButton" layoutX="24.0" layoutY="15.0" onMouseClicked="#modesChangePressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
-                  <RadioButton mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="133.0" text="Меню" />
-               </children>
-            </AnchorPane>
-            <HBox alignment="CENTER" layoutX="18.0" layoutY="18.0" onMouseClicked="#changeSceneToMenu" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="88.0" spacing="10.0">
-               <children>
-                  <Label prefHeight="35.0" prefWidth="143.0" translateY="-3.0">
+                  <Label prefHeight="35.0" prefWidth="143.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -41,61 +35,55 @@
                               <Image url="@images/ModesButton.png" />
                            </image>
                         </ImageView>
-                     </graphic></Label>
-                  <Label minHeight="17.0" minWidth="40.0" prefHeight="17.0" prefWidth="0.0" text="Режим" textFill="#d2d2d2" translateX="-115.0" translateY="-9.0" />
+                     </graphic>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="133.0" text="Меню" />
+                  <Label fx:id="modeLabel" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="8.0" minHeight="17.0" minWidth="40.0" prefHeight="18.0" prefWidth="73.0" text="Режим" textFill="#d2d2d2">
+                     <padding>
+                        <Insets right="2.0" />
+                     </padding>
+                  </Label>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </HBox>
-            <VBox layoutX="167.0" layoutY="-1.0">
+            </AnchorPane>
+            <HBox fx:id="modesMenu" alignment="CENTER" layoutX="156.0" layoutY="-1.0" prefHeight="65.0" prefWidth="256.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="256.0">
+                  <AnchorPane onMouseClicked="#mousePressChangeDefaultMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="26.0" prefWidth="167.0">
                      <children>
-                        <Button minHeight="29.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeDefaultMode" prefHeight="29.0" prefWidth="117.0" style="-fx-background-radius: 18; -fx-background-color: #2D384A;" textFill="#d2d2d2" translateX="30.0">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/Default.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button minHeight="27.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeOneHPMode" prefHeight="27.0" prefWidth="121.0" style="-fx-background-radius: 18; -fx-background-color: #2D384A;" textFill="#d2d2d2" translateX="75.0">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/Default.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button minHeight="24.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeEraseMode" prefHeight="24.0" prefWidth="100.0" style="-fx-background-radius: 18; -fx-background-color: #2D384A;" textFill="#d2d2d2" translateX="120.0">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView>
-                                 <image>
-                                    <Image url="@images/Default.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        <ImageView fitWidth="142.0" layoutX="24.0" layoutY="16.0">
+                           <image>
+                              <Image url="@images/Default.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="32.0" layoutY="21.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="Default" textFill="#d2d2d2" />
                      </children>
-                  </HBox>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#mousePressChangeOneHPMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="30.0" prefWidth="118.0">
+                     <children>
+                        <ImageView layoutX="24.0" layoutY="16.0">
+                           <image>
+                              <Image url="@images/Default.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="32.0" layoutY="21.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="OneLife" textFill="#d2d2d2" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#mousePressChangeEraseMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="63.0" prefWidth="149.0">
+                     <children>
+                        <Button minHeight="29.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeDefaultMode" prefHeight="29.0" prefWidth="117.0" style="-fx-background-radius: 18; -fx-background-color: #2D384A;" textFill="#d2d2d2" />
+                        <ImageView layoutX="24.0" layoutY="16.0">
+                           <image>
+                              <Image url="@images/Default.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="32.0" layoutY="21.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="WithErasing" textFill="#d2d2d2" />
+                     </children>
+                  </AnchorPane>
                </children>
-            </VBox>
-            <Label layoutX="380.0" layoutY="21.0" minWidth="45.0" text="One life " textFill="#d2d2d2" />
-            <Label layoutX="227.0" layoutY="21.0" minHeight="10.0" minWidth="40.0" prefHeight="17.0" prefWidth="42.0" text="Default" textFill="#d2d2d2" />
-            <Label layoutX="524.0" layoutY="21.0" text="With Erasing" textFill="#d2d2d2" />
-            <AnchorPane layoutX="754.0" layoutY="16.0">
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </HBox>
+            <AnchorPane fx:id="settingsButton" layoutX="754.0" layoutY="16.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
                   <Button layoutX="5.0" layoutY="5.0" minHeight="24.0" minWidth="87.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0">
                      <graphic>
@@ -109,7 +97,7 @@
                   <Label layoutX="33.0" layoutY="8.0" text="Настройки" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="865.0" layoutY="16.0">
+            <AnchorPane fx:id="profileButton" layoutX="865.0" layoutY="16.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
                   <Button layoutX="5.0" layoutY="3.0" minHeight="29.0" minWidth="63.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0">
                      <graphic>
@@ -130,7 +118,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="8.0" layoutY="105.0" minHeight="50.0" minWidth="100.0" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #0A1F32;">
+      <AnchorPane fx:id="russianButton" layoutX="8.0" layoutY="105.0" minHeight="50.0" minWidth="100.0" onMouseClicked="#russianButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="63.0" prefWidth="132.0" style="-fx-background-color: #0A1F32;">
          <children>
             <Label layoutX="12.0" layoutY="8.0" minHeight="50.0" minWidth="100.0" prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2">
                <graphic>
@@ -144,7 +132,7 @@
             <Label layoutX="36.0" layoutY="24.0" text="Русский язык" textFill="#d2d2d2" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="7.0" layoutY="177.0">
+      <AnchorPane fx:id="englishButton" layoutX="7.0" layoutY="177.0" onMouseClicked="#englishButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefWidth="127.0">
          <children>
             <Label layoutX="12.0" layoutY="9.0" minHeight="50.0" minWidth="100.0" prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2">
                <graphic>
@@ -163,7 +151,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="512.0" layoutY="313.0" prefHeight="231.0" prefWidth="232.0">
+      <AnchorPane fx:id="QTEbutton" layoutX="512.0" layoutY="313.0" prefHeight="186.0" prefWidth="166.0">
          <children>
             <Button layoutY="49.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeQTEMode" prefHeight="136.0" prefWidth="232.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2" translateX="-50.0" translateY="-95.0">
                <graphic>
@@ -191,91 +179,105 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="154.0" layoutY="113.0" prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+      <HBox fx:id="russianMenu" layoutX="154.0" layoutY="111.0" prefHeight="46.0" prefWidth="406.0" spacing="21.0">
          <children>
-            <Label minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="44.0" layoutY="6.0" text="ВАОЛ" textFill="#d2d2d2" />
+            <AnchorPane onMouseClicked="#mouseClickEventRussianLetters" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="70.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label layoutX="44.0" layoutY="6.0" text="ВАОЛ" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mouseClickEventRussianAlphabet" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label layoutX="37.0" layoutY="6.0" text="Алфавит" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mouseClickEventRussianWords" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label layoutX="17.0" layoutY="6.0" text="Короткие слова" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
-      <AnchorPane layoutX="296.0" layoutY="113.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;" translateX="-3.0">
+      </HBox>
+      <HBox fx:id="englishMenu" layoutX="154.0" layoutY="183.0" prefHeight="46.0" prefWidth="406.0" spacing="21.0">
          <children>
-            <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="37.0" layoutY="6.0" text="Алфавит" textFill="#d2d2d2" />
+            <AnchorPane onMouseClicked="#mouseClickEventEnglishLetters" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="70.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="6.0" prefHeight="18.0" prefWidth="32.0" text="DFJK" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mouseClickEventEnglishAlphabet" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label layoutX="37.0" layoutY="6.0" text="Alphabet" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mouseClickEventEnglishWords" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/ВАОЛ.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label alignment="CENTER" layoutX="17.0" layoutY="6.0" prefHeight="18.0" prefWidth="87.0" text="Short Words" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
-      <AnchorPane layoutX="437.0" layoutY="113.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
-         <children>
-            <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="17.0" layoutY="6.0" text="Короткие слова" textFill="#d2d2d2" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="153.0" layoutY="185.0" minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
-         <children>
-            <Label prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="47.0" layoutY="6.0" text="DFJK" textFill="#d2d2d2" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="296.0" layoutY="185.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;" translateX="-3.0">
-         <children>
-            <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="38.0" layoutY="6.0" text="Alphabet" textFill="#d2d2d2" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="437.0" layoutY="185.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
-         <children>
-            <Label prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #0A1F32;" textFill="#d2d2d2">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
-            <Label layoutX="28.0" layoutY="6.0" text="Short words" textFill="#d2d2d2" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="23.0" layoutY="309.0" minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="113.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+      </HBox>
+      <AnchorPane fx:id="CPPbutton" layoutX="23.0" layoutY="309.0" minHeight="50.0" minWidth="100.0" onMouseClicked="#mouseClickEventProgrammingCplus" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="113.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
          <children>
             <Label layoutX="-2.0" layoutY="-4.0" minHeight="50.0" minWidth="100.0" prefHeight="65.0" prefWidth="121.0" textFill="#d2d2d2">
                <graphic>
@@ -288,7 +290,7 @@
             <Label layoutX="45.0" layoutY="17.0" text="C++" textFill="#d2d2d2" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="20.0" layoutY="386.0" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;" translateY="2.0">
+      <AnchorPane fx:id="javaButton" layoutX="20.0" layoutY="386.0" onMouseClicked="#mouseClickEventProgrammingJava" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="57.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;" translateY="2.0">
          <children>
             <Label minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" textFill="#d2d2d2">
                <graphic>
@@ -301,7 +303,7 @@
             <Label layoutX="48.0" layoutY="17.0" text="Java" textFill="#d2d2d2" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="27.0" layoutY="472.0" minHeight="45.0" minWidth="100.0" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
+      <AnchorPane fx:id="pythonButton" layoutX="27.0" layoutY="472.0" minHeight="45.0" minWidth="100.0" onMouseClicked="#mouseClickEventProgrammingPython" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
          <children>
             <Label layoutX="-9.0" layoutY="-6.0" minHeight="50.0" minWidth="100.0" prefHeight="57.0" prefWidth="120.0" textFill="#d2d2d2">
                <graphic>
