@@ -253,6 +253,9 @@ public class TypingController implements Initializable, Controllers{
 
     @FXML
     private void restartTyping(){
+        if (calculator.getTimeline().getTimerStarted()){
+            calculator.getTimeline().stopTimer();
+        }
         restartScene();
         getOverlayText().setText(provider.generate());
         startTyping(provider);
