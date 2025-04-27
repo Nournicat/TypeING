@@ -2,10 +2,12 @@ package ru.ssau.operatingsystem.project.typeingapp.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
@@ -139,8 +141,6 @@ public class TypingController implements Initializable, Controllers{
         }
     }
 
-    private int currIndex = 0;
-    Stack<ElementStack> stack = new Stack<>();
     private void handleKeyPressedWithErasing(KeyEvent event) {
         if (!typingInitialized) return;
         if (!typingStarted) return;
@@ -258,7 +258,6 @@ public class TypingController implements Initializable, Controllers{
         getSymbolsCountLabel().setText("Символы: 0");
         getErrorCountLabel().setText("Ошибки: 0");
         getSpeedLabel().setText("Скорость: 0 слов/мин");
-        getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
         stack.clear();
         calculator.getCurrStats().setErrorCount(0);
         getTimerLabel().setText("0 : 00");
@@ -288,7 +287,6 @@ public class TypingController implements Initializable, Controllers{
     private Label getEnteredText(){ return enteredText; }
     private Label getErrorText(){ return errorText; }
     private Label getOverlayText(){ return overlayText; }
-    private VBox getResultPanel(){ return resultPanel; }
     private AnchorPane getPreparingPanel(){ return preparingPanel; }
 
 
