@@ -36,9 +36,12 @@ public class TypingStatisticsCalculator {
         currStatistic.setSpm(spm);
     }
 
-    public void updateStats(Label infoLabel){
-        infoLabel.setText(String.format("Символов: %d, Слов: %d, Ошибок: %d, Скорость: %.1f слов/мин",
-                                        currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getErrorCount(), currStatistic.getWpm()));
+    public void updateStats(Label symbolsCountLabel, Label errorCountLabel, Label speedLabel){
+//        infoLabel.setText(String.format("Символов: %d, Слов: %d, Ошибок: %d, Скорость: %.1f слов/мин",
+//                                        currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getErrorCount(), currStatistic.getWpm()));
+        symbolsCountLabel.setText(String.format("Символы: %d", currStatistic.getCharacterCount()));
+        errorCountLabel.setText(String.format("Ошибки: %d", currStatistic.getErrorCount()));
+        speedLabel.setText(String.format("Скорость: %.1f слов/мин" , currStatistic.getWpm()));
     }
     
     public Timer getTimeline(){
