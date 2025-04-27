@@ -116,6 +116,7 @@ public class TypingController implements Initializable, Controllers{
         if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
 
         char enteredKey = event.getCharacter().charAt(0);
+        enteredButton.setText("" + enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
