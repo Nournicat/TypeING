@@ -11,11 +11,12 @@ public class Timer {
     private long startTime;
     private Timeline timeline;
     private long elapsedMillis;
+    private boolean timerStarted = false;
 
 
     public void startTimer(Label timerLabel){
         startTime = System.currentTimeMillis();
-
+        timerStarted = true;
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer(timerLabel)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -41,5 +42,8 @@ public class Timer {
         if (timeline != null){
             timeline.stop();
         }
+        timerStarted = false;
     }
+
+    public boolean getTimerStarted(){ return timerStarted; }
 }

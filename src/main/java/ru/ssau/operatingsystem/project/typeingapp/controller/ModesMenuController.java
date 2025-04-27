@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import ru.ssau.operatingsystem.project.typeingapp.*;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
@@ -21,7 +23,7 @@ import java.util.ResourceBundle;
 public class ModesMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        restartScene();
     }
 
     @FXML
@@ -55,6 +57,39 @@ public class ModesMenuController implements Initializable {
     @FXML
     void changeSceneToSettings(MouseEvent event) {
 
+    }
+
+    @FXML
+    private Label modeLabel;
+    @FXML
+    private HBox modesMenu;
+    @FXML
+    private boolean visibleModesMenu = false;
+    @FXML
+    void modesChangePressed(MouseEvent event){
+        if (!visibleModesMenu) {
+            modesMenu.setVisible(true);
+            visibleModesMenu = true;
+        }
+        else{
+            modesMenu.setVisible(false);
+            visibleModesMenu = false;
+        }
+    }
+
+    @FXML
+    private HBox englishMenu;
+    private boolean visibleEnglishMenu = false;
+    @FXML
+    void englishButtonPressed(MouseEvent event){
+        if (!visibleEnglishMenu) {
+            englishMenu.setVisible(true);
+            visibleEnglishMenu = true;
+        }
+        else{
+            englishMenu.setVisible(false);
+            visibleEnglishMenu = false;
+        }
     }
 
     @FXML
@@ -102,6 +137,20 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
+    private HBox russianMenu;
+    private boolean visibleRussianMenu = false;
+    @FXML
+    void russianButtonPressed(MouseEvent event){
+        if (!visibleRussianMenu) {
+            russianMenu.setVisible(true);
+            visibleRussianMenu = true;
+        }
+        else{
+            russianMenu.setVisible(false);
+            visibleRussianMenu = false;
+        }
+    }
+    @FXML
     void mouseClickEventRussianAlphabet(MouseEvent event) {
         RandomStringTextProvider textProvider = wordsGenerator(1, new String[]{
                 "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
@@ -136,20 +185,37 @@ public class ModesMenuController implements Initializable {
     @FXML
     void mousePressChangeDefaultMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.DEFAULT);
+        modeLabel.setText("Default");
     }
 
     @FXML
     void mousePressChangeEraseMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.WITH_ERASING);
+        modeLabel.setText("WithErasing");
     }
 
     @FXML
     void mousePressChangeOneHPMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.ONE_LIFE);
+        modeLabel.setText("OneLife");
     }
 
     @FXML
     void mousePressChangeQTEMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.QTE);
     }
+
+    private void restartScene(){
+        visibleRussianMenu = false;
+        russianMenu.setVisible(false);
+
+        visibleEnglishMenu = false;
+        englishMenu.setVisible(false);
+
+
+        visibleModesMenu = false;
+        modesMenu.setVisible(false);
+        modeLabel.setText("Режим");
+    }
+
 }
