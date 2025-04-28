@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserTimeDAO {
     private static UserTimeDAO instance;
-    private UserTimeRepository repository = new UserTimeJSONRepositoryImpl();
+    private final UserTimeRepository repository = new UserTimeJSONRepositoryImpl();
 
     private UserTimeDAO() {
     }

@@ -10,9 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import jdk.jshell.execution.Util;
-import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
-import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.ElementStack;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
@@ -20,8 +17,6 @@ import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStat
 
 import java.net.URL;
 import java.time.LocalTime;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
@@ -57,7 +52,7 @@ public class TypingController implements Initializable, Controllers{
     @FXML
     public AnchorPane preparingPanel;
 
-    private TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
+    private final TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
     private TypingTextProvider provider;
 
     private boolean typingStarted = false;
@@ -76,7 +71,7 @@ public class TypingController implements Initializable, Controllers{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        getBackstage().sceneProperty().addListener((obs, oldScene, newScene) -> {
+        getBackstage().sceneProperty().addListener((_, _, newScene) -> {
             if (newScene != null) {
 //                calculator.getTimeline().startTimer(getTimerLabel());
                 getBackstage().requestFocus();
@@ -209,11 +204,18 @@ public class TypingController implements Initializable, Controllers{
             }
         }
         calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());;
+        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
 
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
 //            getResultPanel().setVisible(true);
+
+            Utility.getUserTimeService().updateBestTime(
+                    Utility.getCurrentMode(),
+                    Utility.getCurrentLanguage(),
+                    Utility.getCurrentLanguageType(),
+                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
+            );
         }
     }
 
@@ -248,6 +250,13 @@ public class TypingController implements Initializable, Controllers{
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
 //            getResultPanel().setVisible(true);
+
+            Utility.getUserTimeService().updateBestTime(
+                    Utility.getCurrentMode(),
+                    Utility.getCurrentLanguage(),
+                    Utility.getCurrentLanguageType(),
+                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
+            );
         }
     }
 

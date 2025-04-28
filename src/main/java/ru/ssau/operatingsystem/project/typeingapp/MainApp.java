@@ -5,18 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Getter;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Objects;
-import java.util.Properties;
 
 public class MainApp extends Application {
+    @Getter
     private static Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,10 +28,6 @@ public class MainApp extends Application {
 
         stage.show();
         Utility.setPrimaryStage(stage);
-    }
-
-    public static Stage getPrimaryStage() {
-        return primaryStage;
     }
 
     public static void main(String[] args) {

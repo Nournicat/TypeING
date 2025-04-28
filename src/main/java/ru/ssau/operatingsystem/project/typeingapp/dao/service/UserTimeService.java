@@ -42,7 +42,7 @@ public class UserTimeService {
 
     public void updateBestTime(Mode mode, Language language, LanguageType type, LocalTime newTime){
         UserModeTime user = userDAO.getUserByMode(mode);
-        LocalTime oldTime = LocalTime.of(0,0,0);
+        LocalTime oldTime;
 
         switch (language){
             case RUSSIAN:

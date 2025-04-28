@@ -211,18 +211,21 @@ public class ModesMenuController implements Initializable {
     @FXML
     void mousePressChangeDefaultMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.DEFAULT);
+        updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("Default");
     }
 
     @FXML
     void mousePressChangeEraseMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.WITH_ERASING);
+        updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("WithErasing");
     }
 
     @FXML
     void mousePressChangeOneHPMode(MouseEvent event) {
         Utility.setCurrentMode(Mode.ONE_LIFE);
+        updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("OneLife");
     }
 

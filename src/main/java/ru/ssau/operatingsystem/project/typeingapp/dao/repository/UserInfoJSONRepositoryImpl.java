@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.dao.model.UserInfo;
-import ru.ssau.operatingsystem.project.typeingapp.dao.model.UserModeTime;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 
 import java.io.File;
