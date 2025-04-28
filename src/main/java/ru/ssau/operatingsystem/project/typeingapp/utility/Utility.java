@@ -2,21 +2,52 @@ package ru.ssau.operatingsystem.project.typeingapp.utility;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.controller.*;
+import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserInfoService;
+import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserTimeService;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
+import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
+import ru.ssau.operatingsystem.project.typeingapp.dao.UserInfoDAO;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 public class Utility {
     private static Stage primaryStage;
     private static Mode currentMode = Mode.DEFAULT;
+    private static Language currentLanguage = Language.RUSSIAN;
+    private static LanguageType currentLanguageType = LanguageType.LETTERS;
 
     public static Mode getCurrentMode(){return currentMode;}
     public static void setCurrentMode(Mode newMode){currentMode = newMode;}
+
+    public static Language getCurrentLanguage() {
+        return currentLanguage;
+    }
+
+    public static void changeLanguage(Language language, LanguageType type){
+        currentLanguage = language;
+        currentLanguageType = type;
+    }
+
+    public static void setCurrentLanguage(Language currentLanguage) {
+        Utility.currentLanguage = currentLanguage;
+    }
+
+    public static LanguageType getCurrentLanguageType() {
+        return currentLanguageType;
+    }
+
+    public static void setCurrentLanguageType(LanguageType currentLanguageType) {
+        Utility.currentLanguageType = currentLanguageType;
+    }
 
     private Utility() {
     }
@@ -33,6 +64,9 @@ public class Utility {
 
         primaryStage.setScene(scene);
     }
+
+    public static UserInfoService getUserInfoService(){return UserInfoService.getInstance();}
+    public static UserTimeService getUserTimeService(){return UserTimeService.getInstance();}
 
     public static void changeCursor(Cursor cursor){
         primaryStage.getScene().setCursor(cursor);
@@ -60,5 +94,9 @@ public class Utility {
         }
 
         Utility.changeScene(scene);
+    }
+
+    public static String timeToString(LocalTime time){
+        return time.format(DateTimeFormatter.ofPattern("mm:ss"));
     }
 }

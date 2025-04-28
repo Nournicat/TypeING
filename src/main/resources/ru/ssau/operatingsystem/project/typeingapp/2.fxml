@@ -201,7 +201,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="russianLetterTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label layoutX="44.0" layoutY="6.0" text="ВАОЛ" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
@@ -216,7 +216,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="russianAlphabetTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label layoutX="37.0" layoutY="6.0" text="Алфавит" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
@@ -231,7 +231,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="russianWordsTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label layoutX="17.0" layoutY="6.0" text="Короткие слова" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
@@ -250,7 +250,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="englishLetterTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label alignment="CENTER" layoutX="44.0" layoutY="6.0" prefHeight="18.0" prefWidth="32.0" text="DFJK" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
@@ -265,7 +265,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="englishAlphabetTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label layoutX="37.0" layoutY="6.0" text="Alphabet" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
@@ -280,7 +280,7 @@
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
+                  <Label fx:id="englishWordsTime" layoutX="49.0" layoutY="28.0" text="0:00" textFill="#d2d2d2" />
                   <Label alignment="CENTER" layoutX="17.0" layoutY="6.0" prefHeight="18.0" prefWidth="87.0" text="Short Words" textFill="#d2d2d2" />
                </children>
             </AnchorPane>

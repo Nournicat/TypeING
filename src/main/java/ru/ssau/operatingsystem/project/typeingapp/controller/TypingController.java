@@ -10,12 +10,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import jdk.jshell.execution.Util;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
+import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.ElementStack;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.ResourceBundle;
@@ -138,11 +142,16 @@ public class TypingController implements Initializable, Controllers{
         if (getOverlayText().getText().isEmpty()){
             calculator.getTimeline().stopTimer();
 //            getResultPanel().setVisible(true);
+
+            Utility.getUserTimeService().updateBestTime(
+                    Utility.getCurrentMode(),
+                    Utility.getCurrentLanguage(),
+                    Utility.getCurrentLanguageType(),
+                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
+            );
         }
     }
 
-    private int currIndex = 0;
-    Stack<ElementStack> stack = new Stack<>();
     private void handleKeyPressedWithErasing(KeyEvent event) {
         if (!typingInitialized) return;
         if (!typingStarted) return;

@@ -9,10 +9,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import ru.ssau.operatingsystem.project.typeingapp.*;
+import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserTimeService;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
+import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
-import ru.ssau.operatingsystem.project.typeingapp.utility.Mode;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
@@ -21,9 +24,26 @@ import java.security.SecureRandom;
 import java.util.ResourceBundle;
 
 public class ModesMenuController implements Initializable {
+    @FXML private Label englishWordsTime;
+    @FXML private Label englishLetterTime;
+    @FXML private Label englishAlphabetTime;
+    @FXML private Label russianAlphabetTime;
+    @FXML private Label russianLetterTime;
+    @FXML private Label russianWordsTime;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateLabelTime(Utility.getCurrentMode());
         restartScene();
+    }
+    private void updateLabelTime(Mode mode){
+        UserTimeService service = Utility.getUserTimeService();
+        englishLetterTime.setText(Utility.timeToString(service.getTime(mode, Language.ENGLISH, LanguageType.LETTERS)));
+        englishWordsTime.setText(Utility.timeToString(service.getTime(mode, Language.ENGLISH, LanguageType.SHORT_WORDS)));
+        englishAlphabetTime.setText(Utility.timeToString(service.getTime(mode, Language.ENGLISH, LanguageType.ALPHABET)));
+
+        russianLetterTime.setText(Utility.timeToString(service.getTime(mode, Language.RUSSIAN, LanguageType.LETTERS)));
+        russianWordsTime.setText(Utility.timeToString(service.getTime(mode, Language.RUSSIAN, LanguageType.SHORT_WORDS)));
+        russianAlphabetTime.setText(Utility.timeToString(service.getTime(mode, Language.RUSSIAN, LanguageType.ALPHABET)));
     }
 
     @FXML
@@ -98,6 +118,7 @@ public class ModesMenuController implements Initializable {
                         "abcdefghijklmnopqrstuvwxyz"
                 }
         );
+        Utility.changeLanguage(Language.ENGLISH, LanguageType.ALPHABET);
 
         Utility.startTyping(textProvider);
     }
@@ -105,6 +126,7 @@ public class ModesMenuController implements Initializable {
     @FXML
     void mouseClickEventEnglishLetters(MouseEvent event) {
         RandomTextProvider textProvider = letterGenerator("dfjk");
+        Utility.changeLanguage(Language.ENGLISH, LanguageType.LETTERS);
 
         Utility.startTyping(textProvider);
     }
@@ -127,6 +149,7 @@ public class ModesMenuController implements Initializable {
                     "System.out.println(\"Hello World\");", "Random random = new Random();"
         };
         RandomStringTextProvider textProvider = wordsGenerator(words.length, words);
+        Utility.changeLanguage(Language.JAVA, LanguageType.NO_TYPE);
 
         Utility.startTyping(textProvider);
     }
@@ -156,6 +179,7 @@ public class ModesMenuController implements Initializable {
                 "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
         }
         );
+        Utility.changeLanguage(Language.RUSSIAN, LanguageType.ALPHABET);
 
         Utility.startTyping(textProvider);
     }
@@ -163,12 +187,14 @@ public class ModesMenuController implements Initializable {
     @FXML
     void mouseClickEventRussianLetters(MouseEvent event) {
         RandomTextProvider textProvider = letterGenerator("ваол");
+        Utility.changeLanguage(Language.RUSSIAN, LanguageType.LETTERS);
 
         Utility.startTyping(textProvider);
     }
 
     @FXML
     void mouseClickEventRussianWords(MouseEvent event) {
+        Utility.changeLanguage(Language.RUSSIAN, LanguageType.SHORT_WORDS);
 
     }
 
