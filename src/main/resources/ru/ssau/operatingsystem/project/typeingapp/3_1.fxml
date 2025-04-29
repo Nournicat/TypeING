@@ -44,10 +44,13 @@
                   <Image url="@images/LastPressedButton.png" />
                </image>
             </ImageView>
-            <Label fx:id="enteredButton" alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="36.0" prefWidth="132.0" text="f" textFill="#d9d9d9">
+            <Label fx:id="enteredButton" alignment="CENTER" layoutX="7.0" layoutY="8.0" prefHeight="36.0" prefWidth="145.0" text="BACKSPACE" textFill="#d9d9d9">
                <font>
-                  <Font size="27.0" />
+                  <Font size="20.0" />
                </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </Label>
          </children>
       </AnchorPane>
