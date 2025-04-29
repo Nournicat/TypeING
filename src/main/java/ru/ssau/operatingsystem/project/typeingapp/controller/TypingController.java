@@ -115,6 +115,7 @@ public class TypingController implements Initializable, Controllers{
         if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
 
         char enteredKey = event.getCharacter().charAt(0);
+        setTextEnteredButton(event, enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
@@ -155,32 +156,32 @@ public class TypingController implements Initializable, Controllers{
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
-        enteredButton.setText("" + enteredKey);
+        setTextEnteredButton(event, enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
-        System.out.println("enteredKey = " + enteredKey);
-        System.out.println("currentKey = " + currentKey);
+//        System.out.println("enteredKey = " + enteredKey);
+//        System.out.println("currentKey = " + currentKey);
         if (enteredKey == currentKey){
-            System.out.println("Правильный символ");
+//            System.out.println("Правильный символ");
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
             getOverlayText().setText(getOverlayText().getText().substring(1));
             currIndex+=1;
-            System.out.println(currIndex);
+//            System.out.println(currIndex);
         }
         else {
             if ("\b".equals(event.getCharacter())) {
                 if (!getEnteredText().getText().isEmpty()) {
                     currIndex -= 1;
-                    System.out.println(stack.isEmpty());
+//                    System.out.println(stack.isEmpty());
                     if (!stack.isEmpty()) System.out.println(stack.peek().getErrorIndex() + " " + stack.peek().getCorrectSymbol());
 
                     if (stack.isEmpty() || stack.peek().getErrorIndex() != currIndex) {
-                        System.out.println("Стирание без стека");
+//                        System.out.println("Стирание без стека");
                         char deletedChar = getEnteredText().getText().charAt(getEnteredText().getText().length() - 1);
                         getEnteredText().setText(getEnteredText().getText().substring(0, getEnteredText().getText().length() - 1));
                         getOverlayText().setText(deletedChar + getOverlayText().getText());
                     }
                     else {
-                        System.out.println("Стирание со стеком");
+//                        System.out.println("Стирание со стеком");
                         char correctSymbol = stack.pop().getCorrectSymbol();
                         getEnteredText().setText(getEnteredText().getText().substring(0, getEnteredText().getText().length() - 1));
                         getOverlayText().setText(correctSymbol + getOverlayText().getText());
@@ -188,16 +189,16 @@ public class TypingController implements Initializable, Controllers{
                         int errorCount = calculator.getCurrStats().getErrorCount();
                         calculator.getCurrStats().setErrorCount(--errorCount);
                     }
-                    System.out.println(currIndex);
+//                    System.out.println(currIndex);
                 }
             }
             else {
-                System.out.println("Неправильный символ");
+//                System.out.println("Неправильный символ");
                 getEnteredText().setText(getEnteredText().getText() + enteredKey);
                 getOverlayText().setText(getOverlayText().getText().substring(1));
                 stack.push(new ElementStack(currIndex, currentKey));
                 currIndex+=1;
-                System.out.println(currIndex);
+//                System.out.println(currIndex);
 
                 int errorCount = calculator.getCurrStats().getErrorCount();
                 calculator.getCurrStats().setErrorCount(++errorCount);
@@ -231,7 +232,7 @@ public class TypingController implements Initializable, Controllers{
         if (event.getCharacter().isEmpty()) return;
 
         char enteredKey = event.getCharacter().charAt(0);
-        enteredButton.setText("" + enteredKey);
+        setTextEnteredButton(event, enteredKey);
         char currentKey = getOverlayText().getText().charAt(0);
         if (enteredKey == currentKey){
             getEnteredText().setText(getEnteredText().getText() + enteredKey);
@@ -318,5 +319,13 @@ public class TypingController implements Initializable, Controllers{
     @FXML
     void mouseChangeEventExit(MouseEvent event) {
         Utility.changeCursor(Cursor.DEFAULT);
+    }
+
+    private void setTextEnteredButton(KeyEvent event, char enteredKey){
+        if (!" ".equals(event.getCharacter()) && !"\b".equals(event.getCharacter())) enteredButton.setText("" + enteredKey);
+        else{
+            if (" ".equals(event.getCharacter())) enteredButton.setText("SPACE");
+            else enteredButton.setText("BACKSPACE");
+        }
     }
 }
