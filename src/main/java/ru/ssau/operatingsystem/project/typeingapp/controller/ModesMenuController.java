@@ -34,6 +34,9 @@ public class ModesMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateLabelTime(Utility.getCurrentMode());
+        if (!"Режим".equals(Utility.getCurrentStringMode())){
+            modeLabel.setText(Utility.getCurrentStringMode());
+        }
         restartScene();
     }
     private void updateLabelTime(Mode mode){
@@ -84,7 +87,6 @@ public class ModesMenuController implements Initializable {
     private Label modeLabel;
     @FXML
     private VBox modesMenu;
-    @FXML
     private boolean visibleModesMenu = false;
     @FXML
     void modesChangePressed(MouseEvent event){
@@ -214,6 +216,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.DEFAULT);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("Default");
+        Utility.setCurrentStringMode("Default");
     }
 
     @FXML
@@ -221,6 +224,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.WITH_ERASING);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("WithErasing");
+        Utility.setCurrentStringMode("WithErasing");
     }
 
     @FXML
@@ -228,6 +232,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.ONE_LIFE);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("OneLife");
+        Utility.setCurrentStringMode("OneLife");
     }
 
     @FXML
@@ -245,7 +250,7 @@ public class ModesMenuController implements Initializable {
 
         visibleModesMenu = false;
         modesMenu.setVisible(false);
-        modeLabel.setText("Режим");
+//        modeLabel.setText("Режим");
     }
 
 }
