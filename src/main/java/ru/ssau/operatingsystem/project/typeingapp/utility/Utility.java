@@ -22,6 +22,7 @@ import java.time.format.DateTimeFormatter;
 public class Utility {
     @Setter @Getter private static Stage primaryStage;
     @Setter @Getter private static Mode currentMode = Mode.DEFAULT;
+    @Getter @Setter private static String currentStringMode = "Режим";
     @Getter private static Language currentLanguage = Language.RUSSIAN;
     @Getter private static LanguageType currentLanguageType = LanguageType.LETTERS;
 
