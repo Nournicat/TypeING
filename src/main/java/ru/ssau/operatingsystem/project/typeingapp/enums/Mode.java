@@ -1,8 +1,18 @@
 package ru.ssau.operatingsystem.project.typeingapp.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Mode {
-    DEFAULT,
-    ONE_LIFE,
-    WITH_ERASING,
-    QTE
+    DEFAULT("Default"),
+    ONE_LIFE("OneLife"),
+    WITH_ERASING("WithErasing"),
+    QTE("QTE");
+
+    private final String name;
+
+    Mode(String name) {
+        this.name = name;
+    }
+
 }

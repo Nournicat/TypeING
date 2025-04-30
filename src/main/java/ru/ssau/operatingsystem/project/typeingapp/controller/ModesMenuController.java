@@ -34,8 +34,8 @@ public class ModesMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateLabelTime(Utility.getCurrentMode());
-        if (!"Режим".equals(Utility.getCurrentStringMode())){
-            modeLabel.setText(Utility.getCurrentStringMode());
+        if (Utility.getCurrentMode() != Mode.DEFAULT){
+            modeLabel.setText(Utility.getCurrentMode().getName());
         }
         restartScene();
     }
@@ -216,7 +216,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.DEFAULT);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("Default");
-        Utility.setCurrentStringMode("Default");
+        Utility.setCurrentMode(Mode.DEFAULT);
     }
 
     @FXML
@@ -224,7 +224,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.WITH_ERASING);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("WithErasing");
-        Utility.setCurrentStringMode("WithErasing");
+        Utility.setCurrentMode(Mode.WITH_ERASING);
     }
 
     @FXML
@@ -232,7 +232,7 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.ONE_LIFE);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("OneLife");
-        Utility.setCurrentStringMode("OneLife");
+        Utility.setCurrentMode(Mode.WITH_ERASING);
     }
 
     @FXML
