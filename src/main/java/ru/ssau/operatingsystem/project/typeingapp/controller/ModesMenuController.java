@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.*;
 import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserTimeService;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
@@ -82,7 +83,7 @@ public class ModesMenuController implements Initializable {
     @FXML
     private Label modeLabel;
     @FXML
-    private HBox modesMenu;
+    private VBox modesMenu;
     @FXML
     private boolean visibleModesMenu = false;
     @FXML
