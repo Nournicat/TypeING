@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
@@ -22,7 +23,7 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane fx:id="changeModesButton" layoutX="24.0" layoutY="15.0" onMouseClicked="#modesChangePressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="33.0" prefWidth="141.0">
+            <AnchorPane fx:id="changeModesButton" layoutX="24.0" layoutY="10.0" onMouseClicked="#modesChangePressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="33.0" prefWidth="141.0">
                <children>
                   <Label prefHeight="35.0" prefWidth="143.0">
                      <font>
@@ -46,53 +47,7 @@
                   <Insets top="-34.0" />
                </padding>
             </AnchorPane>
-            <HBox fx:id="modesMenu" alignment="CENTER" layoutX="187.0" layoutY="9.0" prefHeight="52.0" prefWidth="330.0" spacing="12.0">
-               <children>
-                  <AnchorPane onMouseClicked="#mousePressChangeDefaultMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="142.0">
-                           <image>
-                              <Image url="@images/Default.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="Default" textFill="#d2d2d2" />
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="12.0" top="6.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <AnchorPane onMouseClicked="#mousePressChangeOneHPMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="142.0">
-                           <image>
-                              <Image url="@images/Default.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="One Life" textFill="#d2d2d2" />
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="12.0" top="6.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <AnchorPane onMouseClicked="#mousePressChangeEraseMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="142.0">
-                           <image>
-                              <Image url="@images/Default.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="With Erasing" textFill="#d2d2d2" />
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="12.0" top="6.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-               </children>
-               <padding>
-                  <Insets top="2.0" />
-               </padding>
-            </HBox>
-            <AnchorPane fx:id="settingsButton" layoutX="754.0" layoutY="16.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
+            <AnchorPane fx:id="settingsButton" layoutX="752.0" layoutY="12.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
                   <Button layoutX="5.0" layoutY="5.0" minHeight="24.0" minWidth="87.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0">
                      <graphic>
@@ -106,11 +61,11 @@
                   <Label layoutX="33.0" layoutY="8.0" text="Настройки" textFill="#d2d2d2" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="profileButton" layoutX="865.0" layoutY="16.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
+            <AnchorPane fx:id="profileButton" layoutX="866.0" layoutY="10.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
                   <Button layoutX="5.0" layoutY="3.0" minHeight="29.0" minWidth="63.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0">
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="35.0" fitWidth="88.0">
                            <image>
                               <Image url="@images/Profile.png" />
                            </image>
@@ -122,11 +77,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Label layoutX="19.0" layoutY="60.0" text="Естественные языки" textFill="#d2d2d2">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <AnchorPane fx:id="russianButton" layoutX="8.0" layoutY="105.0" minHeight="50.0" minWidth="100.0" onMouseClicked="#russianButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="63.0" prefWidth="132.0" style="-fx-background-color: #0A1F32;">
          <children>
             <Label layoutX="12.0" layoutY="8.0" minHeight="50.0" minWidth="100.0" prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2">
@@ -155,11 +105,6 @@
             <Label layoutX="53.0" layoutY="27.0" text="English" textFill="#d2d2d2" />
          </children>
       </AnchorPane>
-      <Label layoutX="19.0" layoutY="249.0" text="Языки программирования" textFill="#d2d2d2">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <AnchorPane fx:id="QTEbutton" layoutX="512.0" layoutY="313.0" prefHeight="186.0" prefWidth="166.0">
          <children>
             <Button layoutY="49.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeQTEMode" prefHeight="136.0" prefWidth="232.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2" translateX="-50.0" translateY="-95.0">
@@ -183,11 +128,6 @@
             <Image url="@images/Intersect.png" />
          </image>
       </ImageView>
-      <Label layoutX="518.0" layoutY="249.0" text="Разное " textFill="#d2d2d2">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <HBox fx:id="russianMenu" layoutX="154.0" layoutY="111.0" prefHeight="46.0" prefWidth="406.0" spacing="21.0">
          <children>
             <AnchorPane onMouseClicked="#mouseClickEventRussianLetters" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="70.0" prefWidth="120.0" style="-fx-background-color: #2D384A; -fx-background-radius: 10;">
@@ -350,5 +290,54 @@
             <Image url="@images/Line%202.png" />
          </image>
       </ImageView>
+      <Label layoutX="19.0" layoutY="60.0" text="Естественные языки" textFill="#d2d2d2">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="249.0" text="Языки программирования" textFill="#d2d2d2">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="518.0" layoutY="249.0" text="Разное " textFill="#d2d2d2">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <VBox fx:id="modesMenu" focusTraversable="true" layoutX="27.0" layoutY="62.0" prefHeight="136.0" prefWidth="142.0">
+         <children>
+            <AnchorPane onMouseClicked="#mousePressChangeDefaultMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="142.0">
+                     <image>
+                        <Image url="@images/Default.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="Default" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mousePressChangeOneHPMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="142.0">
+                     <image>
+                        <Image url="@images/Default.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="One Life" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#mousePressChangeEraseMode" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="51.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="142.0">
+                     <image>
+                        <Image url="@images/Default.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="7.0" layoutY="6.0" minHeight="10.0" minWidth="38.0" prefHeight="18.0" prefWidth="127.0" text="With Erasing" textFill="#d2d2d2" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
