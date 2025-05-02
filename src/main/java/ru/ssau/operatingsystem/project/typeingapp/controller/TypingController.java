@@ -10,63 +10,111 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import lombok.Getter;
+import lombok.Setter;
+import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleDefaultStrategy;
+import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleOneLifeStrategy;
+import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleStrategy;
+import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleWithErasingStrategy;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.ElementStack;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
 
 import java.net.URL;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
 public class TypingController implements Initializable, Controllers{
 
-   
     @FXML
-    public VBox backstage;
-    @FXML
-    public Label infoLabel;
+    @Getter
+    @Setter
+    private VBox backstage;
 
     @FXML
-    public Label timerLabel;
+    @Getter
+    @Setter
+    private Label infoLabel;
 
     @FXML
-    public Label enteredText;
-    @FXML
-    public Label errorText;
+    @Getter
+    @Setter
+    private Label timerLabel;
 
     @FXML
-    public Label overlayText;
+    @Getter
+    @Setter
+    private Label enteredText;
 
     @FXML
-    public Label speedLabel;
-    @FXML
-    public Label errorCountLabel;
-    @FXML
-    public Label symbolsCountLabel;
+    @Getter
+    @Setter
+    private Label errorText;
 
     @FXML
-    public Label enteredButton;
+    @Getter
+    @Setter
+    private Label overlayText;
 
     @FXML
-    public AnchorPane preparingPanel;
+    @Getter
+    @Setter
+    private Label speedLabel;
 
+    @FXML
+    @Getter
+    @Setter
+    private Label errorCountLabel;
+    @FXML
+    @Getter
+    @Setter
+    private Label symbolsCountLabel;
+
+    @FXML
+    @Getter
+    @Setter
+    private Label enteredButton;
+
+    @FXML
+    @Getter
+    @Setter
+    private AnchorPane preparingPanel;
+
+    @Getter
+    @Setter
     private final TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
+
+    @Getter
+    @Setter
     private TypingTextProvider provider;
 
+    @Getter
+    @Setter
     private boolean typingStarted = false;
+
+    @Getter
+    @Setter
     private boolean typingInitialized = false; // флаг для сигнализации того, что инициализация ввода уже прошла(или не прошла)
 
+    @Getter
+    @Setter
     private boolean flagMistake = false;
+
+    @Getter
+    @Setter
     private boolean firstClick = true; // чтобы игнорировать первый ввод Enter, а последующие учитывать как обычные символы
+
+
+    private HandleStrategy strategy;
 
     private void modeToHandle(Scene scene){
         switch (Utility.getCurrentMode()){
-            case ONE_LIFE -> scene.setOnKeyTyped(this::handleKeyPressedOneLife);
-            case WITH_ERASING -> scene.setOnKeyTyped(this::handleKeyPressedWithErasing);
-            default -> scene.setOnKeyTyped(this::handleKeyPressedDefault);
+            case ONE_LIFE -> strategy = new HandleOneLifeStrategy();
+            case WITH_ERASING -> strategy = new HandleWithErasingStrategy();
+            default -> strategy = new HandleDefaultStrategy();
         }
+        scene.setOnKeyTyped(event -> strategy.handleKeyPressed(event, this));
     }
 
     @Override
@@ -105,161 +153,13 @@ public class TypingController implements Initializable, Controllers{
 //        getBackstage().requestFocus();
     }
 
+    @Getter
+    @Setter
     private int currIndex = 0;
-    Stack<ElementStack> stack = new Stack<>();
-    private void handleKeyPressedDefault(KeyEvent event) {
-        if (!typingInitialized) return;
-        if (getOverlayText().getText().isEmpty()) return;
-        if (event.getCharacter().isEmpty()) return;
 
-        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
-
-        char enteredKey = event.getCharacter().charAt(0);
-        setTextEnteredButton(event, enteredKey);
-        char currentKey = getOverlayText().getText().charAt(0);
-        if (enteredKey == currentKey){
-            getEnteredText().setText(getEnteredText().getText() + enteredKey);
-            getOverlayText().setText(getOverlayText().getText().substring(1));
-            currIndex+=1;
-            System.out.println(currIndex);
-        }
-        else {
-            if (stack.isEmpty() || stack.peek().getErrorIndex()!=currIndex) {
-                stack.push(new ElementStack(currIndex, currentKey));
-                int errorCount = calculator.getCurrStats().getErrorCount();
-                calculator.getCurrStats().setErrorCount(++errorCount);
-                System.out.println(currIndex);
-            }
-
-        }
-        calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
-
-        if (getOverlayText().getText().isEmpty()){
-            calculator.getTimeline().stopTimer();
-//            getResultPanel().setVisible(true);
-
-            Utility.getUserTimeService().updateBestTime(
-                    Utility.getCurrentMode(),
-                    Utility.getCurrentLanguage(),
-                    Utility.getCurrentLanguageType(),
-                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
-            );
-        }
-    }
-
-    private void handleKeyPressedWithErasing(KeyEvent event) {
-        if (!typingInitialized) return;
-        if (!typingStarted) return;
-        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter()))) return;
-        if (getOverlayText().getText().isEmpty()) return;
-        if (event.getCharacter().isEmpty()) return;
-
-        char enteredKey = event.getCharacter().charAt(0);
-        setTextEnteredButton(event, enteredKey);
-        char currentKey = getOverlayText().getText().charAt(0);
-//        System.out.println("enteredKey = " + enteredKey);
-//        System.out.println("currentKey = " + currentKey);
-        if (enteredKey == currentKey){
-//            System.out.println("Правильный символ");
-            getEnteredText().setText(getEnteredText().getText() + enteredKey);
-            getOverlayText().setText(getOverlayText().getText().substring(1));
-            currIndex+=1;
-//            System.out.println(currIndex);
-        }
-        else {
-            if ("\b".equals(event.getCharacter())) {
-                if (!getEnteredText().getText().isEmpty()) {
-                    currIndex -= 1;
-//                    System.out.println(stack.isEmpty());
-                    if (!stack.isEmpty()) System.out.println(stack.peek().getErrorIndex() + " " + stack.peek().getCorrectSymbol());
-
-                    if (stack.isEmpty() || stack.peek().getErrorIndex() != currIndex) {
-//                        System.out.println("Стирание без стека");
-                        char deletedChar = getEnteredText().getText().charAt(getEnteredText().getText().length() - 1);
-                        getEnteredText().setText(getEnteredText().getText().substring(0, getEnteredText().getText().length() - 1));
-                        getOverlayText().setText(deletedChar + getOverlayText().getText());
-                    }
-                    else {
-//                        System.out.println("Стирание со стеком");
-                        char correctSymbol = stack.pop().getCorrectSymbol();
-                        getEnteredText().setText(getEnteredText().getText().substring(0, getEnteredText().getText().length() - 1));
-                        getOverlayText().setText(correctSymbol + getOverlayText().getText());
-
-                        int errorCount = calculator.getCurrStats().getErrorCount();
-                        calculator.getCurrStats().setErrorCount(--errorCount);
-                    }
-//                    System.out.println(currIndex);
-                }
-            }
-            else {
-//                System.out.println("Неправильный символ");
-                getEnteredText().setText(getEnteredText().getText() + enteredKey);
-                getOverlayText().setText(getOverlayText().getText().substring(1));
-                stack.push(new ElementStack(currIndex, currentKey));
-                currIndex+=1;
-//                System.out.println(currIndex);
-
-                int errorCount = calculator.getCurrStats().getErrorCount();
-                calculator.getCurrStats().setErrorCount(++errorCount);
-            }
-        }
-        calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
-
-        if (getOverlayText().getText().isEmpty()){
-            calculator.getTimeline().stopTimer();
-//            getResultPanel().setVisible(true);
-
-            Utility.getUserTimeService().updateBestTime(
-                    Utility.getCurrentMode(),
-                    Utility.getCurrentLanguage(),
-                    Utility.getCurrentLanguageType(),
-                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
-            );
-        }
-    }
-
-    private void handleKeyPressedOneLife(KeyEvent event) {
-        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter())) && firstClick){
-            firstClick = false;
-            return;
-        }
-
-        if (!typingInitialized) return;
-        if (flagMistake) return;
-        if (getOverlayText().getText().isEmpty()) return;
-        if (event.getCharacter().isEmpty()) return;
-
-        char enteredKey = event.getCharacter().charAt(0);
-        setTextEnteredButton(event, enteredKey);
-        char currentKey = getOverlayText().getText().charAt(0);
-        if (enteredKey == currentKey){
-            getEnteredText().setText(getEnteredText().getText() + enteredKey);
-            getOverlayText().setText(getOverlayText().getText().substring(1));
-        }
-        else{
-            calculator.getTimeline().stopTimer();
-//            getResultPanel().setVisible(true);
-            int errorCount = calculator.getCurrStats().getErrorCount();
-            calculator.getCurrStats().setErrorCount(++errorCount);
-            flagMistake = true;
-        }
-        calculator.calculateStats(getEnteredText().getText());
-        calculator.updateStats(getSymbolsCountLabel(), getErrorCountLabel(), getSpeedLabel());
-
-        if (getOverlayText().getText().isEmpty()){
-            calculator.getTimeline().stopTimer();
-//            getResultPanel().setVisible(true);
-
-            Utility.getUserTimeService().updateBestTime(
-                    Utility.getCurrentMode(),
-                    Utility.getCurrentLanguage(),
-                    Utility.getCurrentLanguageType(),
-                    LocalTime.ofSecondOfDay(calculator.getTimeline().getElapsedSeconds())
-            );
-        }
-    }
+    @Getter
+    @Setter
+    private Stack<ElementStack> stack = new Stack<>();
 
     private String getText(TypingTextProvider stringProvider){
         return stringProvider.generate();
@@ -300,15 +200,15 @@ public class TypingController implements Initializable, Controllers{
         Utility.backToMenu();
     }
 
-    private VBox getBackstage(){ return backstage; }
-    private Label getSymbolsCountLabel(){ return symbolsCountLabel; }
-    private Label getErrorCountLabel(){ return errorCountLabel; }
-    private Label getSpeedLabel(){ return speedLabel; }
-    private Label getTimerLabel(){ return timerLabel; }
-    private Label getEnteredText(){ return enteredText; }
-    private Label getErrorText(){ return errorText; }
-    private Label getOverlayText(){ return overlayText; }
-    private AnchorPane getPreparingPanel(){ return preparingPanel; }
+    public VBox getBackstage(){ return backstage; }
+    public Label getSymbolsCountLabel(){ return symbolsCountLabel; }
+    public Label getErrorCountLabel(){ return errorCountLabel; }
+    public Label getSpeedLabel(){ return speedLabel; }
+    public Label getTimerLabel(){ return timerLabel; }
+    public Label getEnteredText(){ return enteredText; }
+    public Label getErrorText(){ return errorText; }
+    public Label getOverlayText(){ return overlayText; }
+    public AnchorPane getPreparingPanel(){ return preparingPanel; }
 
 
     @FXML
@@ -321,7 +221,7 @@ public class TypingController implements Initializable, Controllers{
         Utility.changeCursor(Cursor.DEFAULT);
     }
 
-    private void setTextEnteredButton(KeyEvent event, char enteredKey){
+    public void setTextEnteredButton(KeyEvent event, char enteredKey){
         if (!" ".equals(event.getCharacter()) && !"\b".equals(event.getCharacter())) enteredButton.setText("" + enteredKey);
         else{
             if (" ".equals(event.getCharacter())) enteredButton.setText("SPACE");
