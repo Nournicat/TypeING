@@ -40,36 +40,44 @@ public class UserTimeService {
         return null;
     }
 
-    public void updateBestTime(Mode mode, Language language, LanguageType type, LocalTime newTime){
+    public boolean updateBestTime(Mode mode, Language language, LanguageType type, LocalTime newTime){
         UserModeTime user = userDAO.getUserByMode(mode);
         LocalTime oldTime;
 
         switch (language){
             case RUSSIAN:
                 oldTime = user.getRussianTime().get(type);
-                if(timeIsBest(newTime, oldTime))
+                if(timeIsBest(newTime, oldTime)){
                     user.getRussianTime().replace(type, newTime);
+                    return true;
+                }
                 break;
             case ENGLISH:
                 oldTime = user.getEnglishTime().get(type);
-                if(timeIsBest(newTime, oldTime))
+                if(timeIsBest(newTime, oldTime)){
                     user.getEnglishTime().replace(type, newTime);
+                    return true;
+                }
                 break;
             case QTE:
                 oldTime = user.getQTETime();
-                if(timeIsBest(newTime, oldTime))
+                if(timeIsBest(newTime, oldTime)){
                     user.setQTETime(newTime);
+                    return true;
+                }
                 break;
             case CPP:
             case PYTHON:
             case JAVA:
                 oldTime = user.getProgrammingTime().get(language);
-                if(timeIsBest(newTime, oldTime))
+                if(timeIsBest(newTime, oldTime)) {
                     user.getProgrammingTime().replace(language, newTime);
+                    return true;
+                }
                 break;
         }
-
         userDAO.saveUserTime(user);
+        return false;
     }
 
     private boolean timeIsBest(LocalTime t1, LocalTime t2){
