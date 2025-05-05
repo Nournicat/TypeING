@@ -18,10 +18,6 @@ public class TypingStatisticsCalculator {
 
     @Getter
     @Setter
-    private double accuracy;
-
-    @Getter
-    @Setter
     private String finalTime;
 
     public TypingStatisticsCalculator(){
@@ -67,13 +63,14 @@ public class TypingStatisticsCalculator {
         System.out.println(textLength);
         System.out.println((double) currStatistic.getErrorCount()/textLength);
 
-        accuracy = (1 - ((double) currStatistic.getErrorCount()/textLength))*100;
+        double accuracy = (1 - ((double) currStatistic.getErrorCount()/textLength))*100;
+        currStatistic.setAccuracy(accuracy);
     }
 
     public void setDataResultPanel(int textLength, Label resultAccuracy, Label resultTime, Label resultSpeed){
         calculateAccuracy(textLength);
-        System.out.println(accuracy);
-        resultAccuracy.setText(String.format("%.2f%%", accuracy));
+        System.out.println(currStatistic.getAccuracy());
+        resultAccuracy.setText(String.format("%.2f%%", currStatistic.getAccuracy()));
         resultTime.setText(finalTime);
         resultSpeed.setText(String.format("%.1f слов/мин", currStatistic.getWpm()));
     }
