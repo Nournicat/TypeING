@@ -16,6 +16,8 @@ import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleDefa
 import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleOneLifeStrategy;
 import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleStrategy;
 import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleWithErasingStrategy;
+import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
+import ru.ssau.operatingsystem.project.typeingapp.enums.TimeSetting;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.ElementStack;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
@@ -81,9 +83,38 @@ public class TypingController implements Initializable, Controllers{
     @Setter
     private AnchorPane preparingPanel;
 
+
+    @FXML
+    @Getter
+    @Setter
+    private AnchorPane resultPanel;
+
+    @FXML
+    @Getter
+    @Setter
+    private AnchorPane newRecordPanel;
+
+    @FXML
+    @Getter
+    @Setter
+    private Label resultAccuracyLabel;
+
+    @FXML
+    @Getter
+    @Setter
+    private Label resultTimeLabel;
+
+    @FXML
+    @Getter
+    @Setter
+    private Label resultSpeedLabel;
+
     @Getter
     @Setter
     private final TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
+    @Getter
+    @Setter
+    private int textLength;
 
     @Getter
     @Setter
@@ -131,6 +162,7 @@ public class TypingController implements Initializable, Controllers{
         this.provider = stringProvider;
         restartScene();
         String text = getText(stringProvider);
+        textLength = text.length();
         getOverlayText().setText(text);
 
         Scene scene = Utility.getPrimaryStage().getScene();
@@ -141,7 +173,7 @@ public class TypingController implements Initializable, Controllers{
                 typingStarted = true;
                 typingInitialized = true;
                 getPreparingPanel().setVisible(false);
-                calculator.getTimeline().startTimer(getTimerLabel());
+                calculator.getTimeline().startTimer(getTimerLabel(), Utility.getCurrentTimeSetting());
                 modeToHandle(scene);
                 getBackstage().requestFocus();
                 event.consume();
@@ -172,16 +204,21 @@ public class TypingController implements Initializable, Controllers{
         flagMistake = false;
         firstClick = true;
         getPreparingPanel().setVisible(true);
-//        getResultPanel().setVisible(false);
+        getResultPanel().setVisible(false);
         getEnteredText().setText("");
 
 //        getInfoLabel().setText("Наберите текст ниже. Скорость набора появится здесь.");
         getSymbolsCountLabel().setText("Символы: 0");
         getErrorCountLabel().setText("Ошибки: 0");
-        getSpeedLabel().setText("Скорость: 0 слов/мин");
+
+        if (Utility.getCurrentSpeedSetting() == SpeedSetting.WPM) getSpeedLabel().setText("Скорость: 0 слов/мин");
+        else getSpeedLabel().setText("Скорость: 0 символов/мин");
+
         stack.clear();
         calculator.getCurrStats().setErrorCount(0);
-        getTimerLabel().setText("0 : 00");
+
+        if (Utility.getCurrentTimeSetting() == TimeSetting.MINSEC) getTimerLabel().setText("0 : 00");
+        else getTimerLabel().setText("0");
     }
 
     @FXML
@@ -206,9 +243,11 @@ public class TypingController implements Initializable, Controllers{
     public Label getSpeedLabel(){ return speedLabel; }
     public Label getTimerLabel(){ return timerLabel; }
     public Label getEnteredText(){ return enteredText; }
-    public Label getErrorText(){ return errorText; }
     public Label getOverlayText(){ return overlayText; }
     public AnchorPane getPreparingPanel(){ return preparingPanel; }
+    public AnchorPane getResultPanel() { return resultPanel; }
+    public AnchorPane getNewRecordPanel() { return newRecordPanel; }
+
 
 
     @FXML
