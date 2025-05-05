@@ -1,6 +1,10 @@
 package ru.ssau.operatingsystem.project.typeingapp.utility.calculation;
 
 import javafx.scene.control.Label;
+import lombok.Getter;
+import lombok.Setter;
+import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 import ru.ssau.operatingsystem.project.typeingapp.utility.stats.TypingStats;
 
 public class TypingStatisticsCalculator {
@@ -8,7 +12,17 @@ public class TypingStatisticsCalculator {
     private boolean started;
 
     private TypingStats currStatistic = new TypingStats(0, 0, 0, 0, 0);
+    @Getter
+    @Setter
     private Timer timeline = new Timer();
+
+    @Getter
+    @Setter
+    private double accuracy;
+
+    @Getter
+    @Setter
+    private String finalTime;
 
     public TypingStatisticsCalculator(){
         this.started = false;
@@ -41,12 +55,26 @@ public class TypingStatisticsCalculator {
 //                                        currStatistic.getCharacterCount(), currStatistic.getWordCount(), currStatistic.getErrorCount(), currStatistic.getWpm()));
         symbolsCountLabel.setText(String.format("Символы: %d", currStatistic.getCharacterCount()));
         errorCountLabel.setText(String.format("Ошибки: %d", currStatistic.getErrorCount()));
-        speedLabel.setText(String.format("Скорость: %.1f слов/мин" , currStatistic.getWpm()));
-    }
-    
-    public Timer getTimeline(){
-        return timeline;
+
+        if (Utility.getCurrentSpeedSetting() == SpeedSetting.WPM) speedLabel.setText(String.format("Скорость: %.1f слов/мин" , currStatistic.getWpm()));
+        else speedLabel.setText(String.format("Скорость: %.1f символов/мин" , currStatistic.getSpm()));
     }
 
     public TypingStats getCurrStats(){ return currStatistic; }
+
+    private void calculateAccuracy(int textLength){
+        System.out.println(currStatistic.getErrorCount());
+        System.out.println(textLength);
+        System.out.println((double) currStatistic.getErrorCount()/textLength);
+
+        accuracy = (1 - ((double) currStatistic.getErrorCount()/textLength))*100;
+    }
+
+    public void setDataResultPanel(int textLength, Label resultAccuracy, Label resultTime, Label resultSpeed){
+        calculateAccuracy(textLength);
+        System.out.println(accuracy);
+        resultAccuracy.setText(String.format("%.2f%%", accuracy));
+        resultTime.setText(finalTime);
+        resultSpeed.setText(String.format("%.1f слов/мин", currStatistic.getWpm()));
+    }
 }
