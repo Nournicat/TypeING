@@ -37,23 +37,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="409.0" layoutY="515.0" prefHeight="68.0" prefWidth="132.0">
-         <children>
-            <ImageView fitHeight="68.0" fitWidth="160.0">
-               <image>
-                  <Image url="@images/LastPressedButton.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="enteredButton" alignment="CENTER" layoutX="7.0" layoutY="8.0" prefHeight="36.0" prefWidth="145.0" text="BACKSPACE" textFill="#d9d9d9">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </Label>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="preparingPanel" layoutX="-6.0" prefHeight="634.0" prefWidth="985.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a1f32" height="634.0" layoutX="-3.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="985.0" />
@@ -98,13 +81,13 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="symbolsCountLabel" alignment="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Символы: 0" textFill="#d9d9d9">
+            <Label fx:id="symbolsCountLabel" alignment="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Верно: 0" textFill="#d9d9d9">
                <font>
                   <Font name="Inter Regular" size="12.0" />
                </font></Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mistakesCount" layoutX="765.0" layoutY="18.0" prefHeight="22.0" prefWidth="92.0" translateY="4.0">
+      <AnchorPane fx:id="mistakesCount" layoutX="765.0" layoutY="18.0" prefHeight="22.0" prefWidth="92.0" translateX="50.0" translateY="4.0">
          <children>
             <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
                <font>
@@ -121,26 +104,6 @@
             <Label fx:id="errorCountLabel" alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Ошибки: 0" textFill="#d9d9d9">
                <font>
                   <Font name="Inter Regular" size="12.0" />
-               </font></Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="speedPanel" layoutX="861.0" layoutY="18.0" prefHeight="30.0" prefWidth="43.0">
-         <children>
-            <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/SPM.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Label fx:id="speedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="-1.0" prefHeight="30.0" prefWidth="69.0" text="Скорость: 0 слов/мин" textAlignment="CENTER" textFill="#d9d9d9" wrapText="true">
-               <font>
-                  <Font name="Inter Regular" size="10.0" />
                </font></Label>
          </children>
       </AnchorPane>
@@ -239,6 +202,92 @@
                   <Font name="Inter Regular" size="20.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="391.0" layoutY="189.0" prefHeight="287.0" prefWidth="459.0" translateX="-120.0">
+         <children>
+            <ImageView fitHeight="287.0" fitWidth="459.0">
+               <image>
+                  <Image url="@images/Choose%20level%20difficult.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="30.0" layoutY="14.0" text="Выберите уровень сложности" textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="55.0" text="(от этого зависит, сколько времени  " textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="97.0" layoutY="72.0" text="будет выделяться на нажатие одной" textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="203.0" layoutY="89.0" text="кнопки)" textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="15.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="138.0" layoutY="126.0" prefHeight="40.0" prefWidth="186.0">
+               <children>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/Hard.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="80.0" layoutY="3.0" text="Easy" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="65.0" layoutY="16.0" text="(4 second)" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="138.0" layoutY="180.0" prefHeight="40.0" prefWidth="186.0">
+               <children>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/Hard.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="73.0" layoutY="4.0" text="Medium" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="66.0" layoutY="19.0" text="(2 second)" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="138.0" layoutY="235.0" prefHeight="40.0" prefWidth="186.0">
+               <children>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/Hard.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="79.0" layoutY="4.0" text="Hard" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="66.0" layoutY="17.0" text="(1 second)" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
