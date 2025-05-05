@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import lombok.Getter;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
@@ -16,6 +17,15 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
+        Font.loadFont(
+                getClass().getResourceAsStream("font/Literata-Regular.ttf"),
+                1
+        );
+        Font.loadFont(
+                getClass().getResourceAsStream("font/Inter-Regular.ttf.ttf"),
+                1
+        );
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
         Scene mainMenu = new Scene(fxmlLoader.load(), 979, 634);
