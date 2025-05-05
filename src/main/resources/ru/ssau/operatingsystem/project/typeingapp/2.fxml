@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -50,7 +51,7 @@
                   <Insets top="-34.0" />
                </padding>
             </AnchorPane>
-            <AnchorPane fx:id="settingsButton" layoutX="752.0" layoutY="12.0" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
+            <AnchorPane fx:id="settingsButton" layoutX="752.0" layoutY="12.0" onMouseClicked="#settingsButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
                <children>
                   <Button layoutX="5.0" layoutY="5.0" minHeight="24.0" minWidth="87.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0">
                      <graphic>
@@ -160,7 +161,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label layoutX="44.0" layoutY="6.0" text="ВАОЛ" textFill="#d2d2d2">
+                  <Label layoutX="44.0" layoutY="8.0" text="ВАОЛ" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -181,7 +182,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label layoutX="37.0" layoutY="6.0" text="Алфавит" textFill="#d2d2d2">
+                  <Label layoutX="37.0" layoutY="8.0" text="Алфавит" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -202,7 +203,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label layoutX="17.0" layoutY="6.0" text="Короткие слова" textFill="#d2d2d2">
+                  <Label layoutX="17.0" layoutY="8.0" text="Короткие слова" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -227,7 +228,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label alignment="CENTER" layoutX="44.0" layoutY="6.0" prefHeight="18.0" prefWidth="32.0" text="DFJK" textFill="#d2d2d2">
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="8.0" prefHeight="18.0" prefWidth="32.0" text="DFJK" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -248,7 +249,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label layoutX="37.0" layoutY="6.0" text="Alphabet" textFill="#d2d2d2">
+                  <Label layoutX="37.0" layoutY="8.0" text="Alphabet" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -269,7 +270,7 @@
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
-                  <Label alignment="CENTER" layoutX="17.0" layoutY="6.0" prefHeight="18.0" prefWidth="87.0" text="Short Words" textFill="#d2d2d2">
+                  <Label alignment="CENTER" layoutX="17.0" layoutY="8.0" prefHeight="18.0" prefWidth="87.0" text="Short Words" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="12.0" />
                      </font></Label>
@@ -287,7 +288,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Label layoutX="45.0" layoutY="17.0" text="C++" textFill="#d2d2d2">
+            <Label layoutX="47.0" layoutY="18.0" text="C++" textFill="#d2d2d2">
                <font>
                   <Font name="Inter Regular" size="12.0" />
                </font></Label>
@@ -303,7 +304,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Label layoutX="48.0" layoutY="17.0" text="Java" textFill="#d2d2d2">
+            <Label layoutX="47.0" layoutY="18.0" text="Java" textFill="#d2d2d2">
                <font>
                   <Font name="Inter Regular" size="12.0" />
                </font></Label>
@@ -319,7 +320,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Label layoutX="32.0" layoutY="11.0" text="Python" textFill="#d2d2d2">
+            <Label layoutX="32.0" layoutY="13.0" text="Python" textFill="#d2d2d2">
                <font>
                   <Font name="Inter Regular" size="12.0" />
                </font></Label>
@@ -359,6 +360,10 @@
          <font>
             <Font name="Literata Regular" size="30.0" />
          </font>
+         <stylesheets>
+            <URL value="@styles.css" />
+            <URL value="@styles_1.css" />
+         </stylesheets>
       </Label>
       <Label layoutX="518.0" layoutY="249.0" text="Разное " textFill="#d2d2d2">
          <font>
@@ -408,94 +413,90 @@
             </AnchorPane>
          </children>
       </VBox>
-      <HBox layoutX="716.0" layoutY="60.0">
+      <AnchorPane fx:id="settingsMenu" layoutX="681.0" layoutY="60.0" prefHeight="160.0" prefWidth="189.0">
          <children>
-            <AnchorPane prefHeight="160.0" prefWidth="189.0">
+            <ImageView fitHeight="202.0" fitWidth="239.0" layoutX="3.0" layoutY="4.0">
+               <image>
+                  <Image url="@images/SettingsMenu.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="22.0" prefHeight="19.0" prefWidth="197.0" text="Формат статистики" textFill="#d2d2d2">
+               <font>
+                  <Font name="Literata Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="111.0" prefHeight="19.0" prefWidth="198.0" text="Формат времени" textFill="#d2d2d2">
+               <font>
+                  <Font name="Literata Regular" size="15.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="wpmButton" layoutX="30.0" layoutY="61.0" onMouseClicked="#wpmButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="24.0" prefWidth="57.0">
                <children>
-                  <ImageView layoutX="5.0" layoutY="3.0">
+                  <ImageView fitHeight="38.0" fitWidth="87.0">
                      <image>
-                        <Image url="@images/SettingsMenu.png" />
+                        <Image url="@images/Слова%20в%20минуту.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="25.0" layoutY="14.0" text="Формат статистики" textFill="#d2d2d2">
+                  <Label alignment="CENTER" layoutX="7.0" layoutY="8.0" prefHeight="11.0" prefWidth="74.0" text="Слова в минуту" textFill="WHITE">
                      <font>
-                        <Font name="Literata Regular" size="15.0" />
+                        <Font name="Arial" size="9.0" />
                      </font>
                   </Label>
-                  <Label layoutX="39.0" layoutY="84.0" text="Формат времени" textFill="#d2d2d2">
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="18.0" prefHeight="11.0" prefWidth="80.0" text="(wpm)" textFill="WHITE">
                      <font>
-                        <Font name="Literata Regular" size="15.0" />
+                        <Font name="Arial" size="9.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="28.0" layoutY="49.0" prefHeight="24.0" prefWidth="57.0">
-                     <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@images/Слова%20в%20минуту.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="6.0" layoutY="3.0" text="Слова в минуту" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="6.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="20.0" layoutY="11.0" text="(wpm)" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="6.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="115.0" layoutY="49.0" prefHeight="24.0" prefWidth="57.0">
-                     <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@images/Слова%20в%20минуту.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="6.0" layoutY="3.0" text="Символы в минуту" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="5.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="20.0" layoutY="11.0" text="(spm)" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="6.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="28.0" layoutY="121.0" prefHeight="24.0" prefWidth="57.0">
-                     <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@images/Слова%20в%20минуту.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="7.0" layoutY="7.0" text="Минуты:секунды" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="5.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="115.0" layoutY="121.0" prefHeight="24.0" prefWidth="57.0">
-                     <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@images/Слова%20в%20минуту.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="17.0" layoutY="7.0" text="Секунды" textFill="WHITE">
-                           <font>
-                              <Font name="Literata Regular" size="5.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="spmButton" layoutX="129.0" layoutY="61.0" onMouseClicked="#spmButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="24.0" prefWidth="57.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="87.0">
+                     <image>
+                        <Image url="@images/Слова%20в%20минуту.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="8.0" prefHeight="11.0" prefWidth="80.0" text="Символы в минуту" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="4.0" layoutY="18.0" prefHeight="11.0" prefWidth="80.0" text="(spm)" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="9.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="minSecButton" layoutX="29.0" layoutY="145.0" onMouseClicked="#minSecButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="24.0" prefWidth="57.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="87.0">
+                     <image>
+                        <Image url="@images/Слова%20в%20минуту.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="8.0" prefHeight="19.0" prefWidth="80.0" text="Минуты:секунды " textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="9.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="secButton" layoutX="128.0" layoutY="145.0" onMouseClicked="#secButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="24.0" prefWidth="57.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="87.0">
+                     <image>
+                        <Image url="@images/Слова%20в%20минуту.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="4.0" layoutY="12.0" prefHeight="8.0" prefWidth="80.0" stylesheets="@styles.css" text="Секунды" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="9.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

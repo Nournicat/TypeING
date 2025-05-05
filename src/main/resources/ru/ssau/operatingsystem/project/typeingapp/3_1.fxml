@@ -57,8 +57,7 @@
       <AnchorPane fx:id="preparingPanel" layoutX="-6.0" prefHeight="634.0" prefWidth="985.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a1f32" height="634.0" layoutX="-3.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="985.0" />
-            <VBox layoutX="1.0" layoutY="81.0" prefHeight="340.0" prefWidth="985.0" />
-            <Label alignment="CENTER" layoutX="6.0" layoutY="80.0" prefHeight="389.0" prefWidth="979.0">
+            <Label alignment="CENTER" layoutX="383.0" layoutY="234.0" prefHeight="82.0" prefWidth="210.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -70,12 +69,12 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="256.0" layoutY="184.0" text="Как только будете готовы, нажмите на " textFill="WHITE">
+            <Label alignment="CENTER" layoutX="243.0" layoutY="188.0" text="Как только будете готовы, нажмите " textFill="WHITE">
                <font>
                   <Font name="Inter Regular" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="397.0" layoutY="310.0" text="на клавиатуре" textFill="WHITE">
+            <Label layoutX="392.0" layoutY="316.0" text="на клавиатуре" textFill="WHITE">
                <font>
                   <Font name="Inter Regular" size="30.0" />
                </font>
@@ -138,7 +137,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="speedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="-1.0" prefHeight="30.0" prefWidth="69.0" text="Скорость: 0 слов/мин" textAlignment="CENTER" textFill="#d9d9d9" wrapText="true">
+            <Label fx:id="speedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="-1.0" prefHeight="30.0" prefWidth="90.0" text="Скорость: 0 слов/мин" textAlignment="CENTER" textFill="#d9d9d9" wrapText="true">
                <font>
                   <Font name="Inter Regular" size="10.0" />
                </font></Label>
@@ -162,7 +161,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="9.0" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 5;" text="0 : 00">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="9.0" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 5;" text="0:00">
          <font>
             <Font size="24.0" />
          </font>
@@ -174,19 +173,19 @@
             </InnerShadow>
          </effect>
       </Label>
-      <AnchorPane layoutX="386.0" layoutY="153.0" prefHeight="133.0" prefWidth="200.0">
+      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0">
          <children>
-            <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="-51.0" layoutY="-20.0">
+            <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="17.0" layoutY="15.0">
                <image>
                   <Image url="@images/ResultPanel2.png" />
                </image>
             </ImageView>
-            <Label layoutX="19.0" layoutY="-21.0" text="РЕЗУЛЬТАТЫ" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="87.0" layoutY="10.0" prefHeight="39.0" prefWidth="180.0" text="РЕЗУЛЬТАТЫ" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="27.0" />
+                  <Font size="27.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="200.0" layoutY="-35.0">
+            <AnchorPane fx:id="newRecordPanel" layoutX="268.0" visible="false">
                <children>
                   <Label>
                      <graphic>
@@ -204,39 +203,34 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="5.0" layoutY="18.0" text="Точность" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="73.0" layoutY="51.0" prefHeight="36.0" prefWidth="121.0" text="Точность" textFill="WHITE">
                <font>
                   <Font name="Literata Regular" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="140.0" layoutY="23.0" text="94.5%" textFill="WHITE">
+            <Label fx:id="resultAccuracyLabel" alignment="CENTER" layoutX="190.0" layoutY="56.0" prefHeight="30.0" prefWidth="78.0" text="94.5%" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="55.0" text="Время" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="92.0" layoutY="89.0" prefHeight="36.0" prefWidth="90.0" text="Время" textFill="WHITE">
                <font>
                   <Font name="Literata Regular" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="133.0" layoutY="61.0" text="0:45" textFill="WHITE">
+            <Label fx:id="resultTimeLabel" alignment="CENTER" layoutX="172.0" layoutY="93.0" prefHeight="30.0" prefWidth="78.0" text="0 : 45" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="-25.0" layoutY="92.0" text="Скорость" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="43.0" layoutY="126.0" prefHeight="36.0" prefWidth="122.0" text="Скорость" textFill="WHITE">
                <font>
                   <Font name="Literata Regular" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="103.0" layoutY="98.0" text="24.5" textFill="WHITE">
+            <Label fx:id="resultSpeedLabel" alignment="CENTER" layoutX="156.0" layoutY="131.0" prefHeight="30.0" prefWidth="166.0" text="24.5 слов/мин" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="98.0" text="слов/мин" textFill="WHITE">
-               <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
