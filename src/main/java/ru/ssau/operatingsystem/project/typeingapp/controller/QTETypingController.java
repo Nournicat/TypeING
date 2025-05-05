@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStatisticsCalculator;
 
 import java.net.URL;
@@ -37,7 +38,7 @@ public class QTETypingController implements Initializable, Controllers{
     public void initialize(URL location, ResourceBundle resources){
         backstage.sceneProperty().addListener((_, _, newScene) -> {
             if (newScene != null) {
-                calculator.getTimeline().startTimer(timerLabel);
+                calculator.getTimeline().startTimer(timerLabel, Utility.getCurrentTimeSetting());
                 backstage.requestFocus();
             }
         });
