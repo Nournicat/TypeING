@@ -10,9 +10,7 @@ import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.controller.*;
 import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserInfoService;
 import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserTimeService;
-import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
-import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
-import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
+import ru.ssau.operatingsystem.project.typeingapp.enums.*;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 
 import java.io.IOException;
@@ -23,6 +21,8 @@ public class Utility {
     @Setter @Getter private static Stage primaryStage;
     @Setter @Getter private static Mode currentMode = Mode.DEFAULT;
     @Setter @Getter private static boolean firstStart = true;
+    @Setter @Getter private static SpeedSetting currentSpeedSetting = SpeedSetting.WPM;
+    @Setter @Getter private static TimeSetting currentTimeSetting = TimeSetting.MINSEC;
     @Getter private static Language currentLanguage = Language.RUSSIAN;
     @Getter private static LanguageType currentLanguageType = LanguageType.LETTERS;
 
