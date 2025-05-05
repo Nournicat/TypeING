@@ -4,8 +4,8 @@ module ru.ssau.operatingsystem.project.typeingapp {
     requires jdk.jshell;
     requires java.naming;
     requires com.fasterxml.jackson.databind;
-    requires java.desktop;
     requires static lombok;
+    requires org.yaml.snakeyaml;
 
 
     opens ru.ssau.operatingsystem.project.typeingapp to javafx.fxml;

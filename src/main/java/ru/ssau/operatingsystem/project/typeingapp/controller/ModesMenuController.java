@@ -17,6 +17,8 @@ import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.TextProviderBuilder;
+import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
@@ -118,31 +120,42 @@ public class ModesMenuController implements Initializable {
 
     @FXML
     void mouseClickEventEnglishAlphabet(MouseEvent event) {
-        RandomStringTextProvider textProvider = wordsGenerator(1, new String[]{
-                        "abcdefghijklmnopqrstuvwxyz"
-                }
-        );
         Utility.changeLanguage(Language.ENGLISH, LanguageType.ALPHABET);
 
-        Utility.startTyping(textProvider);
+        Utility.startTyping(
+                TextProviderBuilder.of(
+                        Language.ENGLISH,
+                        LanguageType.ALPHABET));
     }
 
     @FXML
     void mouseClickEventEnglishLetters(MouseEvent event) {
-        RandomTextProvider textProvider = letterGenerator("dfjk");
         Utility.changeLanguage(Language.ENGLISH, LanguageType.LETTERS);
 
-        Utility.startTyping(textProvider);
+        Utility.startTyping(
+                TextProviderBuilder.of(
+                        Language.ENGLISH,
+                        LanguageType.LETTERS));
     }
 
     @FXML
     void mouseClickEventEnglishWords(MouseEvent event) {
+        Utility.changeLanguage(Language.ENGLISH, LanguageType.SHORT_WORDS);
 
+        Utility.startTyping(
+                TextProviderBuilder.of(
+                        Language.ENGLISH,
+                        LanguageType.SHORT_WORDS));
     }
 
     @FXML
     void mouseClickEventProgrammingCplus(MouseEvent event) {
+        Utility.changeLanguage(Language.CPP, LanguageType.SHORT_WORDS);
 
+        Utility.startTyping(
+                TextProviderBuilder.of(
+                        Language.CPP,
+                        LanguageType.NO_TYPE));
     }
 
     @FXML
@@ -152,15 +165,20 @@ public class ModesMenuController implements Initializable {
                     "Double", "Arrays.of(1, 2, 3).stream().min().get();",
                     "System.out.println(\"Hello World\");", "Random random = new Random();"
         };
-        RandomStringTextProvider textProvider = wordsGenerator(words.length, words);
         Utility.changeLanguage(Language.JAVA, LanguageType.NO_TYPE);
 
-        Utility.startTyping(textProvider);
+        Utility.startTyping(TextProviderBuilder.of(
+                Language.JAVA,
+                LanguageType.NO_TYPE));
     }
 
     @FXML
     void mouseClickEventProgrammingPython(MouseEvent event) {
+        Utility.changeLanguage(Language.PYTHON, LanguageType.NO_TYPE);
 
+        Utility.startTyping(TextProviderBuilder.of(
+                Language.PYTHON,
+                LanguageType.NO_TYPE));
     }
 
     @FXML
@@ -185,7 +203,9 @@ public class ModesMenuController implements Initializable {
         );
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.ALPHABET);
 
-        Utility.startTyping(textProvider);
+        Utility.startTyping(TextProviderBuilder.of(
+                Language.RUSSIAN,
+                LanguageType.ALPHABET));
     }
 
     @FXML
@@ -193,13 +213,17 @@ public class ModesMenuController implements Initializable {
         RandomTextProvider textProvider = letterGenerator("ваол");
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.LETTERS);
 
-        Utility.startTyping(textProvider);
+        Utility.startTyping(TextProviderBuilder.of(
+                Language.RUSSIAN,
+                LanguageType.LETTERS));
     }
 
     @FXML
     void mouseClickEventRussianWords(MouseEvent event) {
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.SHORT_WORDS);
-
+        TextProviderBuilder.of(
+                Language.RUSSIAN,
+                LanguageType.SHORT_WORDS);
     }
 
     RandomTextProvider letterGenerator(String str){

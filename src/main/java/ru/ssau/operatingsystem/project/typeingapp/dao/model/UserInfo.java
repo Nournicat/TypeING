@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalTime;
 
 @EqualsAndHashCode
@@ -14,7 +13,6 @@ import java.time.LocalTime;
 public class UserInfo {
     private Mode mode;
     private String name = "DefaultUser";
-    private BufferedImage avatar;
 
     private int countSymbols = 0;
     private float overallAccuracy = 0;
@@ -26,10 +24,9 @@ public class UserInfo {
     private float bestSpeed = 0;
     private float averageSpeed = 0;
 
-    public UserInfo(Mode mode, BufferedImage avatar, String name, int countSymbols, float overallAccuracy, float bestAccuracy, LocalTime averageTime, LocalTime bestTime, float bestSpeed, float averageSpeed) {
+    public UserInfo(Mode mode, String name, int countSymbols, float overallAccuracy, float bestAccuracy, LocalTime averageTime, LocalTime bestTime, float bestSpeed, float averageSpeed) {
         this.mode = mode;
         this.name = name;
-        this.avatar = avatar;
         this.countSymbols = countSymbols;
         this.overallAccuracy = overallAccuracy;
         this.bestAccuracy = bestAccuracy;
@@ -43,6 +40,5 @@ public class UserInfo {
         this.mode = mode;
         this.averageTime = LocalTime.of(0,0,0);
         this.bestTime = LocalTime.of(0,0,0);
-        this.avatar = null;
     }
 }
