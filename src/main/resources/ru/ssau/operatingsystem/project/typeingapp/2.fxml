@@ -24,6 +24,18 @@
             </DropShadow>
          </effect>
          <children>
+            <ImageView fitHeight="58.0" fitWidth="979.0" layoutY="-3.0">
+               <image>
+                  <Image url="@images/Panel.png" />
+               </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="166.1" offsetY="10.0" radius="86.06" width="180.14">
+                     <color>
+                        <Color opacity="0.3797872066497803" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
             <AnchorPane fx:id="changeModesButton" layoutX="24.0" layoutY="10.0" onMouseClicked="#modesChangePressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="33.0" prefWidth="141.0">
                <children>
                   <Label prefHeight="35.0" prefWidth="143.0">
