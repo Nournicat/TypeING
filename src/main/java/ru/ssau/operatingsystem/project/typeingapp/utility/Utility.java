@@ -61,7 +61,7 @@ public class Utility {
             Scene scene = new Scene(fxmlLoader.load(), 979, 634);
 
             Utility.changeScene(scene);
-            ((Controllers) fxmlLoader.getController()).startTyping(stringProvider);
+            ((Controller) fxmlLoader.getController()).startTyping(stringProvider);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

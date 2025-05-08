@@ -193,10 +193,6 @@ public class ModesMenuController implements Initializable {
     }
     @FXML
     void mouseClickEventRussianAlphabet(MouseEvent event) {
-        RandomStringTextProvider textProvider = wordsGenerator(1, new String[]{
-                "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-        }
-        );
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.ALPHABET);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -206,7 +202,6 @@ public class ModesMenuController implements Initializable {
 
     @FXML
     void mouseClickEventRussianLetters(MouseEvent event) {
-        RandomTextProvider textProvider = letterGenerator("ваол");
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.LETTERS);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -217,17 +212,20 @@ public class ModesMenuController implements Initializable {
     @FXML
     void mouseClickEventRussianWords(MouseEvent event) {
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.SHORT_WORDS);
-        TextProviderBuilder.of(
+
+        Utility.startTyping(TextProviderBuilder.of(
                 Language.RUSSIAN,
-                LanguageType.SHORT_WORDS);
+                LanguageType.SHORT_WORDS));
     }
 
+    @Deprecated(since = "2.2")
     RandomTextProvider letterGenerator(String str){
         RandomString stringGenerator = new RandomString(6, new SecureRandom(), str);
 
         return new RandomTextProvider(10, stringGenerator);
     }
 
+    @Deprecated(since = "2.2")
     RandomStringTextProvider wordsGenerator(int count, String[] words){
         return new RandomStringTextProvider(count, words);
     }

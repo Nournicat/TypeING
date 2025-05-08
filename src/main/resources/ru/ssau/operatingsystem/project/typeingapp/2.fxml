@@ -362,7 +362,6 @@
          </font>
          <stylesheets>
             <URL value="@styles.css" />
-            <URL value="@styles_1.css" />
          </stylesheets>
       </Label>
       <Label layoutX="518.0" layoutY="249.0" text="Разное " textFill="#d2d2d2">

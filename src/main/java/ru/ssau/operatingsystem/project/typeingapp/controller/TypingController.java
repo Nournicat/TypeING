@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import ru.ssau.operatingsystem.project.typeingapp.controller.strategy.HandleDefaultStrategy;
@@ -27,115 +28,36 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
-public class TypingController implements Initializable, Controllers{
+@Getter
+@Setter
+public class TypingController implements Initializable, Controller{
 
-    @FXML
-    @Getter
-    @Setter
-    private VBox backstage;
+    @FXML private VBox backstage;
+    @FXML private Label infoLabel;
+    @FXML private Label timerLabel;
+    @FXML private Label enteredText;
+    @FXML private Label errorText;
+    @FXML private Label overlayText;
+    @FXML private Label speedLabel;
+    @FXML private Label errorCountLabel;
+    @FXML private Label symbolsCountLabel;
+    @FXML private Label enteredButton;
+    @FXML private AnchorPane preparingPanel;
+    @FXML private AnchorPane resultPanel;
+    @FXML private AnchorPane newRecordPanel;
+    @FXML private Label resultAccuracyLabel;
+    @FXML private Label resultTimeLabel;
+    @FXML private Label resultSpeedLabel;
 
-    @FXML
-    @Getter
-    @Setter
-    private Label infoLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label timerLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label enteredText;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label errorText;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label overlayText;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label speedLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label errorCountLabel;
-    @FXML
-    @Getter
-    @Setter
-    private Label symbolsCountLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label enteredButton;
-
-    @FXML
-    @Getter
-    @Setter
-    private AnchorPane preparingPanel;
-
-
-    @FXML
-    @Getter
-    @Setter
-    private AnchorPane resultPanel;
-
-    @FXML
-    @Getter
-    @Setter
-    private AnchorPane newRecordPanel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label resultAccuracyLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label resultTimeLabel;
-
-    @FXML
-    @Getter
-    @Setter
-    private Label resultSpeedLabel;
-
-    @Getter
-    @Setter
-    private final TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
-    @Getter
-    @Setter
-    private int textLength;
-
-    @Getter
-    @Setter
     private TypingTextProvider provider;
+    private final TypingStatisticsCalculator calculator = new TypingStatisticsCalculator();
 
-    @Getter
-    @Setter
     private boolean typingStarted = false;
-
-    @Getter
-    @Setter
     private boolean typingInitialized = false; // флаг для сигнализации того, что инициализация ввода уже прошла(или не прошла)
-
-    @Getter
-    @Setter
     private boolean flagMistake = false;
-
-    @Getter
-    @Setter
     private boolean firstClick = true; // чтобы игнорировать первый ввод Enter, а последующие учитывать как обычные символы
 
+    private int textLength;
 
     private HandleStrategy strategy;
 
@@ -184,13 +106,9 @@ public class TypingController implements Initializable, Controllers{
 //        scene.setOnKeyTyped(this::handleKeyPressed);
 //        getBackstage().requestFocus();
     }
-
-    @Getter
-    @Setter
     private int currIndex = 0;
 
-    @Getter
-    @Setter
+    @Setter(AccessLevel.PRIVATE)
     private Stack<ElementStack> stack = new Stack<>();
 
     private String getText(TypingTextProvider stringProvider){
@@ -236,19 +154,6 @@ public class TypingController implements Initializable, Controllers{
     private void exitScene(){
         Utility.backToMenu();
     }
-
-    public VBox getBackstage(){ return backstage; }
-    public Label getSymbolsCountLabel(){ return symbolsCountLabel; }
-    public Label getErrorCountLabel(){ return errorCountLabel; }
-    public Label getSpeedLabel(){ return speedLabel; }
-    public Label getTimerLabel(){ return timerLabel; }
-    public Label getEnteredText(){ return enteredText; }
-    public Label getOverlayText(){ return overlayText; }
-    public AnchorPane getPreparingPanel(){ return preparingPanel; }
-    public AnchorPane getResultPanel() { return resultPanel; }
-    public AnchorPane getNewRecordPanel() { return newRecordPanel; }
-
-
 
     @FXML
     void mouseChangeEventEnter(MouseEvent event) {

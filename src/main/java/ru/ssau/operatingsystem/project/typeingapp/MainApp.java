@@ -7,9 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import lombok.Getter;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Settings;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class MainApp extends Application {
     @Getter
@@ -40,7 +42,8 @@ public class MainApp extends Application {
         Utility.setPrimaryStage(stage);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException {
+        Settings.loadProperties();
         launch();
     }
 }

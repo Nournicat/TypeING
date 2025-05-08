@@ -14,7 +14,7 @@ import ru.ssau.operatingsystem.project.typeingapp.utility.calculation.TypingStat
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class QTETypingController implements Initializable, Controllers{
+public class QTETypingController implements Initializable, Controller{
     @FXML
     private VBox backstage;
     @FXML
