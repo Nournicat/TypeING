@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="58.0" fitWidth="979.0">
          <image>
-            <Image url="@images/Panel.png" />
+            <Image url="@images/Профиль.png" />
          </image>
          <effect>
             <DropShadow blurType="GAUSSIAN" height="166.1" offsetY="10.0" radius="86.06" width="180.14">
