@@ -218,6 +218,11 @@ public class ModesMenuController implements Initializable {
                 LanguageType.SHORT_WORDS));
     }
 
+    @FXML
+    void mouseClickQTE(MouseEvent event) {
+        Utility.startQTE();
+    }
+
     @Deprecated(since = "2.2")
     RandomTextProvider letterGenerator(String str){
         RandomString stringGenerator = new RandomString(6, new SecureRandom(), str);
@@ -251,10 +256,6 @@ public class ModesMenuController implements Initializable {
         modeLabel.setText("OneLife");
     }
 
-    @FXML
-    void mousePressChangeQTEMode(MouseEvent event) {
-        Utility.setCurrentMode(Mode.QTE);
-    }
 
     @FXML
     private AnchorPane settingsMenu;
