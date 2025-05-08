@@ -150,7 +150,7 @@
             </InnerShadow>
          </effect>
       </Label>
-      <AnchorPane fx:id="resultPanel" layoutX="386.0" layoutY="153.0" prefHeight="133.0" prefWidth="200.0" visible="false">
+      <AnchorPane fx:id="resultPanel" layoutX="386.0" layoutY="153.0" prefHeight="133.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="-51.0" layoutY="-20.0">
                <image>
@@ -167,9 +167,9 @@
                   <Font name="Literata Regular" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="resultAccuracyLabel" layoutX="140.0" layoutY="23.0" text="94.5%" textFill="WHITE">
+            <Label fx:id="resultAccuracyLabel" alignment="CENTER" layoutX="130.0" layoutY="22.0" prefHeight="26.0" prefWidth="66.0" text="94.5%" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label layoutX="24.0" layoutY="55.0" text="Время" textFill="WHITE">
@@ -177,9 +177,9 @@
                   <Font name="Literata Regular" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="resultTimeLabel" layoutX="133.0" layoutY="61.0" text="0:45" textFill="WHITE">
+            <Label fx:id="resultTimeLabel" alignment="CENTER" layoutX="115.0" layoutY="60.0" prefHeight="26.0" prefWidth="59.0" text="0:45" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Label layoutX="-25.0" layoutY="92.0" text="Скорость" textFill="WHITE">
@@ -189,12 +189,12 @@
             </Label>
             <Label fx:id="resultSpeedLabel" layoutX="103.0" layoutY="98.0" text="24.5 симв/мин" textFill="WHITE">
                <font>
-                  <Font name="Inter Regular" size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="chooseModePanel" layoutX="391.0" layoutY="189.0" prefHeight="287.0" prefWidth="459.0" translateX="-120.0">
+      <AnchorPane fx:id="chooseModePanel" layoutX="391.0" layoutY="189.0" prefHeight="287.0" prefWidth="459.0" translateX="-120.0" visible="false">
          <children>
             <ImageView fitHeight="287.0" fitWidth="459.0">
                <image>
