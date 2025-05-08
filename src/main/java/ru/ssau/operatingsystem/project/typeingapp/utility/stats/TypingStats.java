@@ -11,7 +11,9 @@ public class TypingStats implements IStatistic {
     private double wpm;
     private double spm;
     private int errorCount;
+    private int correctCount;
     private double accuracy;
+
 
     public TypingStats(int characterCount, int wordCount, double wpm, double spm, int errorCount){
         this.characterCount = characterCount;
