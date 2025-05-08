@@ -133,25 +133,22 @@
                </font></Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="QTEbutton" layoutX="512.0" layoutY="313.0" prefHeight="186.0" prefWidth="166.0">
+      <AnchorPane layoutX="519.0" layoutY="309.0" onMouseClicked="#mouseClickQTE" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="64.0" prefWidth="127.0">
          <children>
-            <Button layoutY="49.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onMousePressed="#mousePressChangeQTEMode" prefHeight="136.0" prefWidth="232.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2" translateX="-50.0" translateY="-95.0">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@images/ВАОЛ.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label text="QTE(Quick Time Event)" textFill="#d2d2d2" translateX="13.0" translateY="12.0">
+            <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="122.0" style="-fx-background-color: #0A1F32; -fx-background-radius: 10;" textFill="#d2d2d2" />
+            <ImageView>
+               <image>
+                  <Image url="@images/ВАОЛ.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="8.0" layoutY="18.0" text="QTE(Quick Time Event)" textFill="#d2d2d2">
                <font>
                   <Font name="Inter Regular" size="10.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="373.0" fitWidth="1019.0" layoutX="-20.0" layoutY="273.0">
+      <ImageView fitHeight="373.0" fitWidth="1019.0" layoutX="-20.0" layoutY="273.0" visible="false">
          <image>
             <Image url="@images/Intersect.png" />
          </image>
