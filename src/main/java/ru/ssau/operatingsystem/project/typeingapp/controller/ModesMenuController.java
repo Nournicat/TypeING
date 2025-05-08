@@ -7,13 +7,12 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.*;
 import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserTimeService;
-import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
-import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
-import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
+import ru.ssau.operatingsystem.project.typeingapp.enums.*;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
@@ -21,6 +20,7 @@ import ru.ssau.operatingsystem.project.typeingapp.textProviders.TextProviderBuil
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
+import javax.lang.model.AnnotatedConstruct;
 import java.io.IOException;
 import java.net.URL;
 import java.security.SecureRandom;
@@ -81,10 +81,6 @@ public class ModesMenuController implements Initializable {
 
     }
 
-    @FXML
-    void changeSceneToSettings(MouseEvent event) {
-
-    }
 
     @FXML
     private Label modeLabel;
@@ -262,6 +258,42 @@ public class ModesMenuController implements Initializable {
         Utility.setCurrentMode(Mode.QTE);
     }
 
+    @FXML
+    private AnchorPane settingsMenu;
+
+    private boolean visibleSettingsMenu = false;
+    @FXML
+    void settingsButtonPressed(MouseEvent event){
+        if (!visibleSettingsMenu) {
+            settingsMenu.setVisible(true);
+            visibleSettingsMenu = true;
+        }
+        else{
+            settingsMenu.setVisible(false);
+            visibleSettingsMenu = false;
+        }
+    }
+
+    @FXML
+    void wpmButtonPressed(MouseEvent event){
+        Utility.setCurrentSpeedSetting(SpeedSetting.WPM);
+    }
+
+    @FXML
+    void spmButtonPressed(MouseEvent event){
+        Utility.setCurrentSpeedSetting(SpeedSetting.SPM);
+    }
+
+    @FXML
+    void minSecButtonPressed(MouseEvent event){
+        Utility.setCurrentTimeSetting(TimeSetting.MINSEC);
+    }
+
+    @FXML
+    void secButtonPressed(MouseEvent event){
+        Utility.setCurrentTimeSetting(TimeSetting.SEC);
+    }
+
     private void restartScene(){
         visibleRussianMenu = false;
         russianMenu.setVisible(false);
@@ -273,6 +305,9 @@ public class ModesMenuController implements Initializable {
         visibleModesMenu = false;
         modesMenu.setVisible(false);
 //        modeLabel.setText("Режим");
+
+        visibleSettingsMenu = false;
+        settingsMenu.setVisible(false);
     }
 
 }

@@ -1,0 +1,65 @@
+package ru.ssau.operatingsystem.project.typeingapp.controller.strategy;
+
+import javafx.scene.input.KeyEvent;
+import ru.ssau.operatingsystem.project.typeingapp.controller.TypingController;
+import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
+
+import java.time.LocalTime;
+
+public class HandleOneLifeStrategy implements HandleStrategy{
+
+    @Override
+    public void handleKeyPressed(KeyEvent event, TypingController context) {
+        if (("\r".equals(event.getCharacter()) || "\n".equals(event.getCharacter())) && context.isFirstClick()){
+            context.setFirstClick(false);
+            return;
+        }
+
+        if (!context.isTypingInitialized()) return;
+        if (context.isFlagMistake()) return;
+        if (context.getOverlayText().getText().isEmpty()) return;
+        if (event.getCharacter().isEmpty()) return;
+
+        char enteredKey = event.getCharacter().charAt(0);
+        context.setTextEnteredButton(event, enteredKey);
+        char currentKey = context.getOverlayText().getText().charAt(0);
+        if (enteredKey == currentKey){
+            context.getEnteredText().setText(context.getEnteredText().getText() + enteredKey);
+            context.getOverlayText().setText(context.getOverlayText().getText().substring(1));
+        }
+        else{
+            context.getCalculator().getTimeline().stopTimer();
+//            getResultPanel().setVisible(true);
+            int errorCount = context.getCalculator().getCurrStats().getErrorCount();
+            context.getCalculator().getCurrStats().setErrorCount(++errorCount);
+            context.setFlagMistake(true);
+        }
+        context.getCalculator().calculateStats(context.getEnteredText().getText());
+        context.getCalculator().updateStats(context.getSymbolsCountLabel(), context.getErrorCountLabel(), context.getSpeedLabel());
+        resultStatistic(context);
+    }
+
+    private void resultStatistic(TypingController context){
+        if (context.getOverlayText().getText().isEmpty() || context.isFlagMistake()){
+            context.getCalculator().getTimeline().stopTimer();
+            context.getResultPanel().setVisible(true);
+            context.getCalculator().setFinalTime(context.getTimerLabel().getText());
+            context.getCalculator().setDataResultPanel(
+                    context.getEnteredText().getText().length(),
+                    context.getResultAccuracyLabel(),
+                    context.getResultTimeLabel(),
+                    context.getResultSpeedLabel()
+            );
+
+            if (!context.isFlagMistake()){
+            boolean isBest = Utility.getUserTimeService().updateBestTime(
+                    Utility.getCurrentMode(),
+                    Utility.getCurrentLanguage(),
+                    Utility.getCurrentLanguageType(),
+                    LocalTime.ofSecondOfDay(context.getCalculator().getTimeline().getElapsedSeconds())
+            );
+            if (isBest) context.getNewRecordPanel().setVisible(true);
+            }
+        }
+    }
+}
