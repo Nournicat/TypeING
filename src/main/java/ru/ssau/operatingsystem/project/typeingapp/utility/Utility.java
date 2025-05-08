@@ -67,6 +67,18 @@ public class Utility {
             throw new RuntimeException(e);
         }
     }
+    public static void startQTE(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("qte_1.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 979, 634);
+
+            Utility.changeScene(scene);
+            ((QTETypingController) fxmlLoader.getController()).startTyping();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void backToMenu(){
         Scene scene;
