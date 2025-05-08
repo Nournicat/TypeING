@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
+import ru.ssau.operatingsystem.project.typeingapp.utility.stats.IStatistic;
 import ru.ssau.operatingsystem.project.typeingapp.utility.stats.TypingStats;
 
 public class TypingStatisticsCalculator {
     private long startTime;
     private boolean started;
 
-    private TypingStats currStatistic = new TypingStats(0, 0, 0, 0, 0);
+    private IStatistic currStatistic = new TypingStats(0, 0, 0, 0, 0);
     @Getter
     @Setter
     private Timer timeline = new Timer();
@@ -56,7 +57,7 @@ public class TypingStatisticsCalculator {
         else speedLabel.setText(String.format("Скорость: %.1f символов/мин" , currStatistic.getSpm()));
     }
 
-    public TypingStats getCurrStats(){ return currStatistic; }
+    public IStatistic getCurrStats(){ return currStatistic; }
 
     private void calculateAccuracy(int textLength){
         System.out.println(currStatistic.getErrorCount());
@@ -72,6 +73,7 @@ public class TypingStatisticsCalculator {
         System.out.println(currStatistic.getAccuracy());
         resultAccuracy.setText(String.format("%.2f%%", currStatistic.getAccuracy()));
         resultTime.setText(finalTime);
-        resultSpeed.setText(String.format("%.1f слов/мин", currStatistic.getWpm()));
+        if (Utility.getCurrentSpeedSetting() == SpeedSetting.WPM) resultSpeed.setText(String.format("%.1f слов/мин", currStatistic.getWpm()));
+        else resultSpeed.setText(String.format("%.1f симв/мин", currStatistic.getSpm()));
     }
 }
