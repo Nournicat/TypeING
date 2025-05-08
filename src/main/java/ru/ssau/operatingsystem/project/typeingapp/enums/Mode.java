@@ -6,8 +6,7 @@ import lombok.Getter;
 public enum Mode {
     DEFAULT("Default"),
     ONE_LIFE("OneLife"),
-    WITH_ERASING("WithErasing"),
-    QTE("QTE");
+    WITH_ERASING("WithErasing");
 
     private final String name;
 
