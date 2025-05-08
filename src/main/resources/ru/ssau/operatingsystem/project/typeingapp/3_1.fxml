@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,10 +14,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController">
    <children>
-      <VBox fx:id="backstage" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="977.0" style="-fx-background-color: #0A1F32;" />
-      <ImageView fitHeight="421.0" fitWidth="1018.0" layoutX="-20.0" layoutY="223.0">
+      <VBox fx:id="backstage" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="979.0" style="-fx-background-color: #0A1F32;" />
+      <ImageView fitHeight="425.0" fitWidth="1029.0" layoutX="-22.0" layoutY="225.0">
          <image>
             <Image url="@images/Intersect.png" />
          </image>
@@ -55,9 +56,9 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="preparingPanel" layoutX="-6.0" prefHeight="634.0" prefWidth="985.0">
+      <AnchorPane fx:id="preparingPanel" layoutX="-6.0" prefHeight="634.0" prefWidth="997.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a1f32" height="634.0" layoutX="-3.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="985.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a1f32" height="634.0" layoutX="3.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="986.0" />
             <Label alignment="CENTER" layoutX="383.0" layoutY="234.0" prefHeight="82.0" prefWidth="210.0">
                <font>
                   <Font size="20.0" />
@@ -87,13 +88,25 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Label>
-      <AnchorPane fx:id="symbolsCount" layoutX="669.0" prefHeight="30.0" prefWidth="73.0" translateY="22.0">
+      <ImageView fitHeight="58.0" fitWidth="979.0">
+         <image>
+            <Image url="@images/Panel.png" />
+         </image>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="123.99" offsetY="10.0" radius="75.5325" width="180.14">
+               <color>
+                  <Color opacity="0.6077507734298706" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <AnchorPane fx:id="symbolsCount" layoutX="668.0" layoutY="-4.0" prefHeight="18.0" prefWidth="95.0" translateY="22.0">
          <children>
-            <Label>
+            <Label prefHeight="18.0" prefWidth="95.0">
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@images/Symbols.png" />
+                        <Image url="@images/Mistakes.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -101,10 +114,11 @@
             <Label fx:id="symbolsCountLabel" alignment="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Символы: 0" textFill="#d9d9d9">
                <font>
                   <Font name="Inter Regular" size="12.0" />
-               </font></Label>
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mistakesCount" layoutX="765.0" layoutY="18.0" prefHeight="22.0" prefWidth="92.0" translateY="4.0">
+      <AnchorPane fx:id="mistakesCount" layoutX="764.0" layoutY="14.0" prefHeight="22.0" prefWidth="92.0" translateY="4.0">
          <children>
             <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
                <font>
@@ -124,7 +138,7 @@
                </font></Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="speedPanel" layoutX="861.0" layoutY="18.0" prefHeight="30.0" prefWidth="43.0">
+      <AnchorPane fx:id="speedPanel" layoutX="860.0" layoutY="14.0" prefHeight="30.0" prefWidth="43.0">
          <children>
             <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
                <font>
@@ -174,7 +188,7 @@
             </InnerShadow>
          </effect>
       </Label>
-      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0">
+      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0" visible="false">
          <children>
             <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="17.0" layoutY="15.0">
                <image>
