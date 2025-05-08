@@ -188,7 +188,7 @@
             </InnerShadow>
          </effect>
       </Label>
-      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0" visible="false">
+      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0">
          <children>
             <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="17.0" layoutY="15.0">
                <image>

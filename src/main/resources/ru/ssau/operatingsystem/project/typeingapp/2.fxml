@@ -141,7 +141,7 @@
                   <Image url="@images/ВАОЛ.png" />
                </image>
             </ImageView>
-            <Label layoutX="8.0" layoutY="18.0" text="QTE(Quick Time Event)" textFill="#d2d2d2">
+            <Label alignment="CENTER" layoutX="8.0" layoutY="18.0" prefHeight="15.0" prefWidth="110.0" text="QTE(Quick Time Event)" textFill="#d2d2d2">
                <font>
                   <Font name="Inter Regular" size="10.0" />
                </font>
