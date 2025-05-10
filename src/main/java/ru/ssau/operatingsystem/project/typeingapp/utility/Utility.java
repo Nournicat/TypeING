@@ -21,8 +21,8 @@ public class Utility {
     @Setter @Getter private static Stage primaryStage;
     @Setter @Getter private static Mode currentMode = Mode.DEFAULT;
     @Setter @Getter private static boolean firstStart = true;
-    @Setter @Getter private static SpeedSetting currentSpeedSetting = SpeedSetting.WPM;
-    @Setter @Getter private static TimeSetting currentTimeSetting = TimeSetting.MINSEC;
+    @Setter @Getter private static SpeedSetting currentSpeedSetting = SpeedSetting.valueOf(Settings.getSpeedSetting());
+    @Setter @Getter private static TimeSetting currentTimeSetting = TimeSetting.valueOf(Settings.getTimeSetting());
     @Getter private static Language currentLanguage = Language.RUSSIAN;
     @Getter private static LanguageType currentLanguageType = LanguageType.LETTERS;
 

@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import lombok.Getter;
+import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Settings;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
@@ -28,15 +29,12 @@ public class MainApp extends Application {
                 1
         );
 
-
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("2.fxml"));
         Scene mainMenu = new Scene(fxmlLoader.load(), 979, 634);
         stage.setTitle("TypingApp");
         stage.setResizable(false);
         stage.getIcons().add(new Image("Keyboard.png"));
         stage.setScene(mainMenu);
-
-        mainMenu.getStylesheets().add((MainApp.class.getResource("styles.css")).toExternalForm());
 
         stage.show();
         Utility.setPrimaryStage(stage);

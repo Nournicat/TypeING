@@ -2,6 +2,7 @@ package ru.ssau.operatingsystem.project.typeingapp.utility;
 
 
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
+import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,14 @@ public class Settings {
     private static Properties properties;
 
     private Settings(){
+    }
+
+    public static String getSpeedSetting(){
+        return getString("speed-setting");
+    }
+
+    public static String getTimeSetting(){
+        return getString("time-setting");
     }
 
     public static String getString(String key) {
