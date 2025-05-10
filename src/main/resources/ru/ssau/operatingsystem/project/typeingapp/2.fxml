@@ -63,17 +63,13 @@
                   <Insets top="-34.0" />
                </padding>
             </AnchorPane>
-            <AnchorPane fx:id="settingsButton" layoutX="752.0" layoutY="12.0" onMouseClicked="#settingsButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
+            <AnchorPane fx:id="settingsButton" layoutX="752.0" layoutY="12.0" onMouseClicked="#settingsButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="34.0" prefWidth="100.0">
                <children>
-                  <Button layoutX="5.0" layoutY="5.0" minHeight="24.0" minWidth="87.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="87.0">
-                     <graphic>
-                        <ImageView>
-                           <image>
-                              <Image url="@images/settings.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/settings.png" />
+                     </image>
+                  </ImageView>
                   <Label layoutX="33.0" layoutY="9.0" text="Настройки" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="11.0" />
