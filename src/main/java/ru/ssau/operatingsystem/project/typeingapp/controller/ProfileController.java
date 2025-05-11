@@ -28,8 +28,10 @@ public class ProfileController implements Initializable {
     @FXML private Label generalAccuracy;
     @FXML private Label generalCountSymbols;
     @FXML private Label nicknameUser;
+    @FXML private Label settingButtonLabel;
     @FXML private VBox vboxModes;
     @FXML private VBox vboxSettings;
+
 
     @FXML private Label languageLabel1;
     @FXML private Label languageLabel2;
@@ -160,6 +162,7 @@ public class ProfileController implements Initializable {
     @FXML void mouseChangeModeToDefault() {
         if(Utility.getCurrentMode() != Mode.DEFAULT) {
             Utility.setCurrentMode(Mode.DEFAULT);
+            settingButtonLabel.setText(Mode.DEFAULT.getName());
             updateLabels();
         }
     }
@@ -167,6 +170,7 @@ public class ProfileController implements Initializable {
     @FXML void mouseChangeModeToOneLife() {
         if(Utility.getCurrentMode() != Mode.ONE_LIFE) {
             Utility.setCurrentMode(Mode.ONE_LIFE);
+            settingButtonLabel.setText(Mode.ONE_LIFE.getName());
             updateLabels();
         }
     }
@@ -174,6 +178,7 @@ public class ProfileController implements Initializable {
     @FXML void mouseChangeModeToWithErase() {
         if(Utility.getCurrentMode() != Mode.WITH_ERASING) {
             Utility.setCurrentMode(Mode.WITH_ERASING);
+            settingButtonLabel.setText(Mode.WITH_ERASING.getName());
             updateLabels();
         }
     }
