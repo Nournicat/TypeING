@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,10 +16,8 @@ import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomString;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomStringTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.RandomTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.textProviders.TextProviderBuilder;
-import ru.ssau.operatingsystem.project.typeingapp.textProviders.TypingTextProvider;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
-import javax.lang.model.AnnotatedConstruct;
 import java.io.IOException;
 import java.net.URL;
 import java.security.SecureRandom;
@@ -33,6 +30,10 @@ public class ModesMenuController implements Initializable {
     @FXML private Label russianAlphabetTime;
     @FXML private Label russianLetterTime;
     @FXML private Label russianWordsTime;
+    @FXML private HBox russianMenu;
+
+    private boolean visibleRussianMenu = false;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateLabelTime(Utility.getCurrentMode());
@@ -54,33 +55,14 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseChangeEventEnter(MouseEvent event) {
+    void mouseChangeEventEnter() {
         Utility.changeCursor(Cursor.HAND);
     }
 
     @FXML
-    void mouseChangeEventExit(MouseEvent event) {
+    void mouseChangeEventExit() {
         Utility.changeCursor(Cursor.DEFAULT);
     }
-
-    @FXML
-    void changeSceneToMenu(MouseEvent event) {
-        Scene scene;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("1.fxml"));
-        try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Utility.changeScene(scene);
-    }
-
-    @FXML
-    void changeSceneToProfile(MouseEvent event) {
-
-    }
-
 
     @FXML
     private Label modeLabel;
@@ -88,7 +70,7 @@ public class ModesMenuController implements Initializable {
     private VBox modesMenu;
     private boolean visibleModesMenu = false;
     @FXML
-    void modesChangePressed(MouseEvent event){
+    void modesChangePressed(){
         if (!visibleModesMenu) {
             modesMenu.setVisible(true);
             visibleModesMenu = true;
@@ -103,7 +85,7 @@ public class ModesMenuController implements Initializable {
     private HBox englishMenu;
     private boolean visibleEnglishMenu = false;
     @FXML
-    void englishButtonPressed(MouseEvent event){
+    void englishButtonPressed(){
         if (!visibleEnglishMenu) {
             englishMenu.setVisible(true);
             visibleEnglishMenu = true;
@@ -115,7 +97,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventEnglishAlphabet(MouseEvent event) {
+    void mouseClickEventEnglishAlphabet() {
         Utility.changeLanguage(Language.ENGLISH, LanguageType.ALPHABET);
 
         Utility.startTyping(
@@ -125,7 +107,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventEnglishLetters(MouseEvent event) {
+    void mouseClickEventEnglishLetters() {
         Utility.changeLanguage(Language.ENGLISH, LanguageType.LETTERS);
 
         Utility.startTyping(
@@ -135,7 +117,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventEnglishWords(MouseEvent event) {
+    void mouseClickEventEnglishWords() {
         Utility.changeLanguage(Language.ENGLISH, LanguageType.SHORT_WORDS);
 
         Utility.startTyping(
@@ -145,8 +127,8 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventProgrammingCplus(MouseEvent event) {
-        Utility.changeLanguage(Language.CPP, LanguageType.SHORT_WORDS);
+    void mouseClickEventProgrammingCplus() {
+        Utility.changeLanguage(Language.CPP, LanguageType.NO_TYPE);
 
         Utility.startTyping(
                 TextProviderBuilder.of(
@@ -155,12 +137,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventProgrammingJava(MouseEvent event) {
-        String[] words = new String[]{
-            "int", "public static void", "String", "new ArrayList<>()",
-                    "Double", "Arrays.of(1, 2, 3).stream().min().get();",
-                    "System.out.println(\"Hello World\");", "Random random = new Random();"
-        };
+    void mouseClickEventProgrammingJava() {
         Utility.changeLanguage(Language.JAVA, LanguageType.NO_TYPE);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -169,7 +146,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventProgrammingPython(MouseEvent event) {
+    void mouseClickEventProgrammingPython() {
         Utility.changeLanguage(Language.PYTHON, LanguageType.NO_TYPE);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -178,10 +155,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    private HBox russianMenu;
-    private boolean visibleRussianMenu = false;
-    @FXML
-    void russianButtonPressed(MouseEvent event){
+    void russianButtonPressed(){
         if (!visibleRussianMenu) {
             russianMenu.setVisible(true);
             visibleRussianMenu = true;
@@ -192,7 +166,7 @@ public class ModesMenuController implements Initializable {
         }
     }
     @FXML
-    void mouseClickEventRussianAlphabet(MouseEvent event) {
+    void mouseClickEventRussianAlphabet() {
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.ALPHABET);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -201,7 +175,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventRussianLetters(MouseEvent event) {
+    void mouseClickEventRussianLetters() {
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.LETTERS);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -210,7 +184,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickEventRussianWords(MouseEvent event) {
+    void mouseClickEventRussianWords() {
         Utility.changeLanguage(Language.RUSSIAN, LanguageType.SHORT_WORDS);
 
         Utility.startTyping(TextProviderBuilder.of(
@@ -219,7 +193,7 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mouseClickQTE(MouseEvent event) {
+    void mouseClickQTE() {
         Utility.startQTE();
     }
 
@@ -236,21 +210,21 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void mousePressChangeDefaultMode(MouseEvent event) {
+    void mousePressChangeDefaultMode() {
         Utility.setCurrentMode(Mode.DEFAULT);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("Default");
     }
 
     @FXML
-    void mousePressChangeEraseMode(MouseEvent event) {
+    void mousePressChangeEraseMode() {
         Utility.setCurrentMode(Mode.WITH_ERASING);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("WithErasing");
     }
 
     @FXML
-    void mousePressChangeOneHPMode(MouseEvent event) {
+    void mousePressChangeOneHPMode() {
         Utility.setCurrentMode(Mode.ONE_LIFE);
         updateLabelTime(Utility.getCurrentMode());
         modeLabel.setText("OneLife");
@@ -262,7 +236,7 @@ public class ModesMenuController implements Initializable {
 
     private boolean visibleSettingsMenu = false;
     @FXML
-    void settingsButtonPressed(MouseEvent event){
+    void settingsButtonPressed(){
         if (!visibleSettingsMenu) {
             settingsMenu.setVisible(true);
             visibleSettingsMenu = true;
@@ -274,22 +248,35 @@ public class ModesMenuController implements Initializable {
     }
 
     @FXML
-    void wpmButtonPressed(MouseEvent event){
+    void profileButtonPressed(){
+        Scene scene;
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("profile.fxml"));
+        try {
+            scene = new Scene(fxmlLoader.load(), 979, 634);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Utility.changeScene(scene);
+    }
+
+    @FXML
+    void wpmButtonPressed(){
         Utility.setCurrentSpeedSetting(SpeedSetting.WPM);
     }
 
     @FXML
-    void spmButtonPressed(MouseEvent event){
+    void spmButtonPressed(){
         Utility.setCurrentSpeedSetting(SpeedSetting.SPM);
     }
 
     @FXML
-    void minSecButtonPressed(MouseEvent event){
+    void minSecButtonPressed(){
         Utility.setCurrentTimeSetting(TimeSetting.MINSEC);
     }
 
     @FXML
-    void secButtonPressed(MouseEvent event){
+    void secButtonPressed(){
         Utility.setCurrentTimeSetting(TimeSetting.SEC);
     }
 

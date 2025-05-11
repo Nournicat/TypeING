@@ -9,10 +9,13 @@ russian:
 
 # Разделением является символ переноса строки
 programming:
-  cpp: "int*
-    void"
-  python: "print"
-  java: "int
+  cpp: |
+    int*
+    void
+  python: |
+    print
+  java: |
+    int
     public
     static
     void
@@ -20,5 +23,5 @@ programming:
     new ArrayList<>()
     Double
     Arrays.of(1, 2, 3).stream().min().get();
-    System.out.println(\"Hello World\");
-    Random random = new Random();"
+    System.out.println("Hello World");
+    Random random = new Random();

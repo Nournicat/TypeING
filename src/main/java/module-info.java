@@ -23,4 +23,6 @@ module ru.ssau.operatingsystem.project.typeingapp {
     exports ru.ssau.operatingsystem.project.typeingapp.enums;
     opens ru.ssau.operatingsystem.project.typeingapp.enums to javafx.fxml;
     exports ru.ssau.operatingsystem.project.typeingapp.dao.model;
+    opens ru.ssau.operatingsystem.project.typeingapp.dao to javafx.fxml;
+    exports ru.ssau.operatingsystem.project.typeingapp.dao.service;
 }

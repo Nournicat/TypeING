@@ -23,20 +23,17 @@ public class Utility {
     @Setter @Getter private static boolean firstStart = true;
     @Setter @Getter private static SpeedSetting currentSpeedSetting = SpeedSetting.valueOf(Settings.getSpeedSetting());
     @Setter @Getter private static TimeSetting currentTimeSetting = TimeSetting.valueOf(Settings.getTimeSetting());
-    @Getter private static Language currentLanguage = Language.RUSSIAN;
-    @Getter private static LanguageType currentLanguageType = LanguageType.LETTERS;
+    @Getter @Setter private static Language currentLanguage = Language.RUSSIAN;
+    @Getter @Setter private static LanguageType currentLanguageType = LanguageType.LETTERS;
+
+    public static void updateInfo(int count_symbols, float accuracy, LocalTime time, float speed){
+        Utility.getUserInfoService().addResult(currentMode, currentLanguage, currentLanguageType, count_symbols, accuracy, time, speed);
+        Utility.getUserTimeService().updateBestTime(currentMode, currentLanguage, currentLanguageType, time);
+    }
 
     public static void changeLanguage(Language language, LanguageType type){
         currentLanguage = language;
         currentLanguageType = type;
-    }
-
-    public static void setCurrentLanguage(Language currentLanguage) {
-        Utility.currentLanguage = currentLanguage;
-    }
-
-    public static void setCurrentLanguageType(LanguageType currentLanguageType) {
-        Utility.currentLanguageType = currentLanguageType;
     }
 
     private Utility() {
@@ -89,6 +86,7 @@ public class Utility {
             throw new RuntimeException(e);
         }
 
+        Utility.changeLanguage(Language.RUSSIAN, LanguageType.LETTERS);
         Utility.changeScene(scene);
     }
 

@@ -4,6 +4,7 @@ import javafx.scene.input.KeyEvent;
 import ru.ssau.operatingsystem.project.typeingapp.controller.TypingController;
 import ru.ssau.operatingsystem.project.typeingapp.utility.ElementStack;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
+import ru.ssau.operatingsystem.project.typeingapp.utility.stats.IStatistic;
 
 import java.time.LocalTime;
 
@@ -91,6 +92,11 @@ public class HandleWithErasingStrategy implements HandleStrategy{
                     LocalTime.ofSecondOfDay(context.getCalculator().getTimeline().getElapsedSeconds())
             );
             if (isBest) context.getNewRecordPanel().setVisible(true);
+
+            IStatistic stats = context.getCalculator().getCurrStats();
+            Utility.updateInfo(stats.getCharacterCount(), (float)stats.getAccuracy(),
+                    LocalTime.ofSecondOfDay(context.getCalculator().getTimeline().getElapsedSeconds()),
+                    (float)stats.getWpm());
         }
     }
 }

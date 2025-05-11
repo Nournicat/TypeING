@@ -8,24 +8,21 @@ import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class TextProviderBuilder {
-    private static Yaml yaml = new Yaml();
+    private static final Yaml yaml = new Yaml();
     private TextProviderBuilder(){}
 
     public static TypingTextProvider of(Language language, LanguageType type){
         try (InputStream input = MainApp.class.getResourceAsStream("dictionary/dictionary.yaml")) {
             Map<String, Object> dictionary = yaml.load(input);
-
             switch(language){
                 case CPP:
                 case PYTHON:
                 case JAVA: {
                     return new RandomStringTextProvider(10,
-                            ((String) ((Map<?, ?>) dictionary.get("programming")).get(language.name().toLowerCase())).split("\n")
+                            ((Map<?, ?>)dictionary.get("programming")).get(language.name().toLowerCase()).toString().split("\n")
                     );
                 }
             }

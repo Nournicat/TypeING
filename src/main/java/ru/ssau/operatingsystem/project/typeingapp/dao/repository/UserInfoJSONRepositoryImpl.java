@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import ru.ssau.operatingsystem.project.typeingapp.dao.model.UserInfo;
+import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
+import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 
 import java.io.File;
@@ -22,9 +24,16 @@ public class UserInfoJSONRepositoryImpl implements UserInfoRepository {
             try {
                 file.createNewFile();
                 List<UserInfo> list = new ArrayList<>();
-                list.add(new UserInfo(Mode.DEFAULT));
-                list.add(new UserInfo(Mode.ONE_LIFE));
-                list.add(new UserInfo(Mode.WITH_ERASING));
+                for(Mode mode: List.of(Mode.DEFAULT, Mode.ONE_LIFE, Mode.WITH_ERASING)){
+                    for(Language language: List.of(Language.RUSSIAN, Language.ENGLISH)){
+                        for(LanguageType languageType: List.of(LanguageType.LETTERS, LanguageType.SHORT_WORDS, LanguageType.ALPHABET))
+                            list.add(new UserInfo(mode, language, languageType));
+                    }
+
+                    for(Language language: List.of(Language.JAVA, Language.PYTHON, Language.CPP))
+                        list.add(new UserInfo(mode, language, LanguageType.NO_TYPE));
+                }
+
                 objectMapper.writeValue(file, list);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -33,8 +42,8 @@ public class UserInfoJSONRepositoryImpl implements UserInfoRepository {
     }
 
     @Override
-    public UserInfo findByMode(Mode mode) {
-        return findAll().stream().filter(e->e.getMode() == mode).findFirst().orElse(new UserInfo(mode));
+    public UserInfo findByModeLanguageAndType(Mode mode, Language language, LanguageType languageType) {
+        return findAll().stream().filter(e->(e.getMode() == mode && e.getLanguage() == language && e.getLanguageType() == languageType)).findFirst().orElse(new UserInfo(mode, language, languageType));
     }
 
     @Override
@@ -54,7 +63,7 @@ public class UserInfoJSONRepositoryImpl implements UserInfoRepository {
         List<UserInfo> list = findAll();
         int needUpdateIndex = -1;
         for (UserInfo user: list) {
-            if(user.getMode() == arg.getMode()) {
+            if(user.getMode() == arg.getMode() && user.getLanguage() == arg.getLanguage() && user.getLanguageType() == arg.getLanguageType()) {
                 needUpdateIndex = list.indexOf(user);
                 break;
             }
