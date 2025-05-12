@@ -116,7 +116,6 @@ public class QTETypingController implements Initializable{
                         currentSeconds+=1;
                     }
                     else{
-                        System.out.println("Не успел");
                         changeButton();
                         currentSeconds = 0;
                         int currentError = calculator.getCurrStats().getErrorCount();
@@ -146,6 +145,8 @@ public class QTETypingController implements Initializable{
         if (counterIterations == 0) return;
 
         KeyCode code = event.getCode();
+        System.out.println(KeyCodeMapper.getName(code));
+        System.out.println(KeyCodeMapper.getName(currentKey));
         if (code == currentKey) {
             calculator.getCurrStats().setCorrectCount(calculator.getCurrStats().getCorrectCount() + 1);
             changeButton();
@@ -205,7 +206,7 @@ public class QTETypingController implements Initializable{
         String strKey = KeyCodeMapper.getName(currentKey);
         currentButtonLabel.setText(strKey);
         if (typingInitialized) counterIterations--;
-        System.out.println(counterIterations);
+//        System.out.println(counterIterations);
     }
 
     private void resultStatistic(){
@@ -239,6 +240,7 @@ public class QTETypingController implements Initializable{
     void mouseChangeEventExit(MouseEvent event) {
         Utility.changeCursor(Cursor.DEFAULT);
     }
+
 }
 
 
