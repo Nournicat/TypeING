@@ -1,5 +1,6 @@
 package ru.ssau.operatingsystem.project.typeingapp.dao.model;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.time.LocalTime;
 @EqualsAndHashCode
 @Getter
 @Setter
+@AllArgsConstructor
 public class UserInfo {
     private Mode mode;
     private Language language;
@@ -27,23 +29,11 @@ public class UserInfo {
     private LocalTime averageTime;
     private LocalTime bestTime;
 
-    private float bestSpeed = 0;
-    private float averageSpeed = 0;
+    private float bestSpeedWPM = 0;
+    private float averageSpeedWPM = 0;
 
-    public UserInfo(Mode mode, Language language, LanguageType languageType, String name, int countSymbols, float overallAccuracy, float bestAccuracy, LocalTime averageTime, LocalTime bestTime, float bestSpeed, float averageSpeed, int countStarts) {
-        this.mode = mode;
-        this.language = language;
-        this.languageType = languageType;
-        this.name = name;
-        this.countSymbols = countSymbols;
-        this.overallAccuracy = overallAccuracy;
-        this.bestAccuracy = bestAccuracy;
-        this.averageTime = averageTime;
-        this.bestTime = bestTime;
-        this.bestSpeed = bestSpeed;
-        this.averageSpeed = averageSpeed;
-        this.countStarts = countStarts;
-    }
+    private float bestSpeedSPM = 0;
+    private float averageSpeedSPM = 0;
 
     public UserInfo(Mode mode, Language language, LanguageType languageType) {
         this.mode = mode;

@@ -26,8 +26,8 @@ public class Utility {
     @Getter @Setter private static Language currentLanguage = Language.RUSSIAN;
     @Getter @Setter private static LanguageType currentLanguageType = LanguageType.LETTERS;
 
-    public static void updateInfo(int count_symbols, float accuracy, LocalTime time, float speed){
-        Utility.getUserInfoService().addResult(currentMode, currentLanguage, currentLanguageType, count_symbols, accuracy, time, speed);
+    public static void updateInfo(int count_symbols, float accuracy, LocalTime time, float speedWPM, float speedSPM){
+        Utility.getUserInfoService().addResult(currentMode, currentLanguage, currentLanguageType, count_symbols, accuracy, time, speedWPM, speedSPM);
         Utility.getUserTimeService().updateBestTime(currentMode, currentLanguage, currentLanguageType, time);
     }
 

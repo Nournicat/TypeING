@@ -22,16 +22,19 @@ public class UserInfoService {
         return instance;
     }
 
-    public void addResult(Mode mode, Language language, LanguageType languageType, int count_symbols, float accuracy, LocalTime time, float speed){
+    public void addResult(Mode mode, Language language, LanguageType languageType, int count_symbols, float accuracy, LocalTime time, float speedWPM, float speedSPM){
         UserInfo user = getUserByModeLanguageAndType(mode, language, languageType);
         user.setCountSymbols(user.getCountSymbols() + count_symbols);
         if(!user.getBestTime().isBefore(time) || user.getBestTime().equals(LocalTime.of(0, 0, 0))) {
             user.setBestTime(time);
             user.setBestAccuracy(Math.max(user.getBestAccuracy(), accuracy));
-            user.setBestSpeed(Math.max(user.getBestSpeed(), speed));
+            user.setBestSpeedWPM(Math.max(user.getBestSpeedWPM(), speedWPM));
+            user.setBestSpeedSPM(Math.max(user.getBestSpeedSPM(), speedSPM));
         }
 
-        user.setAverageSpeed(user.getAverageSpeed() * ((float) user.getCountStarts() / (user.getCountStarts() + 1)) + speed/(user.getCountStarts() + 1));
+        user.setAverageSpeedWPM(user.getAverageSpeedWPM() * ((float) user.getCountStarts() / (user.getCountStarts() + 1)) + speedWPM/(user.getCountStarts() + 1));
+        user.setAverageSpeedSPM(user.getAverageSpeedSPM() * ((float) user.getCountStarts() / (user.getCountStarts() + 1)) + speedSPM/(user.getCountStarts() + 1));
+
         user.setOverallAccuracy(user.getOverallAccuracy() * ((float) user.getCountStarts() / (user.getCountStarts() + 1)) + accuracy/(user.getCountStarts() + 1));
 
         LocalTime averageTime = user.getAverageTime();

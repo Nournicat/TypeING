@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import ru.ssau.operatingsystem.project.typeingapp.dao.model.UserInfo;
 import ru.ssau.operatingsystem.project.typeingapp.dao.service.UserInfoService;
@@ -184,15 +183,15 @@ public class ProfileController implements Initializable {
     }
 
     @FXML void changeSpeedToCPM() {
-        if(Utility.getCurrentSpeedSetting() != SpeedSetting.WPM) {
-            Utility.setCurrentSpeedSetting(SpeedSetting.WPM);
+        if(Utility.getCurrentSpeedSetting() != SpeedSetting.SPM) {
+            Utility.setCurrentSpeedSetting(SpeedSetting.SPM);
             updateLabels();
         }
     }
 
     @FXML void changeSpeedToWPM() {
-        if(Utility.getCurrentSpeedSetting() != SpeedSetting.SPM) {
-            Utility.setCurrentSpeedSetting(SpeedSetting.SPM);
+        if(Utility.getCurrentSpeedSetting() != SpeedSetting.WPM) {
+            Utility.setCurrentSpeedSetting(SpeedSetting.WPM);
             updateLabels();
         }
     }
@@ -229,8 +228,8 @@ public class ProfileController implements Initializable {
 
         generalCountSymbols.setText(String.valueOf(service.getOverallCountSymbols()));
 
-        averageSpeed.setText(String.valueOf((int)user.getAverageSpeed()));
-        bestSpeed.setText(String.valueOf((int)user.getBestSpeed()));
+        averageSpeed.setText(String.valueOf(Utility.getCurrentSpeedSetting() == SpeedSetting.SPM ?(int) user.getAverageSpeedSPM() :(int)user.getAverageSpeedWPM()));
+        bestSpeed.setText(String.valueOf(Utility.getCurrentSpeedSetting() == SpeedSetting.SPM ?(int) user.getBestSpeedSPM() :(int)user.getBestSpeedWPM()));
 
         averageTime.setText(user.getAverageTime().format(DateTimeFormatter.ofPattern("m:ss")));
         bestTime.setText(user.getBestTime().format(DateTimeFormatter.ofPattern("m:ss")));
