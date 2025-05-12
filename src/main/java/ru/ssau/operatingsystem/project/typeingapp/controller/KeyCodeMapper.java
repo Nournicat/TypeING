@@ -14,10 +14,10 @@ public class KeyCodeMapper {
     private static final List<KeyCode> allowedKeys = new ArrayList<>();
 
     static {
-        // Добавим буквы A-Z
+        // Добавим буквы A-Z и цифры основного блока (без клавиш NumPad)
         for (KeyCode code : KeyCode.values()) {
             String name = code.getName();
-            if (code.isLetterKey() || code.isDigitKey()) {
+            if (code.isLetterKey() || (code.isDigitKey() && !code.isKeypadKey())) {
                 keyCodeNames.put(code, name);
                 allowedKeys.add(code);
             }
