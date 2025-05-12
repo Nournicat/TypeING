@@ -13,18 +13,19 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfoJSONRepositoryImpl implements UserInfoRepository {
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules().enable(SerializationFeature.INDENT_OUTPUT);
-    private final File file = Path.of(Path.of(new File(MainApp.class.getProtectionDomain().getCodeSource().getLocation()
-            .toURI()).getPath()).getParent() + "\\stats.json").toFile();
+    private final File file = Path.of(System.getenv("APPDATA") + "\\TypeING\\stats.json").toFile();
 
     public UserInfoJSONRepositoryImpl() throws URISyntaxException {
         if(!file.exists()) {
             try {
+                new File(file.getParent()).mkdirs();
                 file.createNewFile();
                 List<UserInfo> list = new ArrayList<>();
                 for(Mode mode: List.of(Mode.DEFAULT, Mode.ONE_LIFE, Mode.WITH_ERASING)){

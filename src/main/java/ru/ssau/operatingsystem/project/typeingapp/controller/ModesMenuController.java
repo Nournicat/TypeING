@@ -30,7 +30,10 @@ public class ModesMenuController implements Initializable {
     @FXML private Label russianAlphabetTime;
     @FXML private Label russianLetterTime;
     @FXML private Label russianWordsTime;
+    @FXML private Label modeLabel;
     @FXML private HBox russianMenu;
+    @FXML private VBox modesMenu;
+    @FXML private HBox englishMenu;
 
     private boolean visibleRussianMenu = false;
 
@@ -54,23 +57,17 @@ public class ModesMenuController implements Initializable {
         russianAlphabetTime.setText(Utility.timeToString(service.getTime(mode, Language.RUSSIAN, LanguageType.ALPHABET)));
     }
 
-    @FXML
-    void mouseChangeEventEnter() {
+    @FXML void mouseChangeEventEnter() {
         Utility.changeCursor(Cursor.HAND);
     }
 
-    @FXML
-    void mouseChangeEventExit() {
+    @FXML void mouseChangeEventExit() {
         Utility.changeCursor(Cursor.DEFAULT);
     }
 
-    @FXML
-    private Label modeLabel;
-    @FXML
-    private VBox modesMenu;
     private boolean visibleModesMenu = false;
-    @FXML
-    void modesChangePressed(){
+
+    @FXML void modesChangePressed(){
         if (!visibleModesMenu) {
             modesMenu.setVisible(true);
             visibleModesMenu = true;
@@ -81,8 +78,6 @@ public class ModesMenuController implements Initializable {
         }
     }
 
-    @FXML
-    private HBox englishMenu;
     private boolean visibleEnglishMenu = false;
     @FXML
     void englishButtonPressed(){

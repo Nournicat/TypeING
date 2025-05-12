@@ -47,15 +47,16 @@ public class Settings {
 
     public static void loadProperties() throws URISyntaxException {
         InputStream defaultConfig = MainApp.class.getResourceAsStream("config.properties");
-        Path jarPath = Path.of(Path.of(new File(MainApp.class.getProtectionDomain().getCodeSource().getLocation()
-                .toURI()).getPath()).getParent() + "\\config.properties");
+        Path jarPath = Path.of(System.getenv("APPDATA") + "\\TypeING\\config.properties");
 
         try {
-            if(!jarPath.toFile().exists())
+            if(!jarPath.toFile().exists()) {
+                new File(String.valueOf(jarPath.getParent())).mkdirs();
                 Files.copy(
                         defaultConfig,
                         Paths.get(jarPath.toUri())
                 );
+            }
 
             Properties appProperties = new Properties();
             appProperties.load(new FileInputStream(String.valueOf(jarPath)));

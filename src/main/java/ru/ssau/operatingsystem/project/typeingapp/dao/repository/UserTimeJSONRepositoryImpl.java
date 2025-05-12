@@ -17,12 +17,12 @@ import java.util.List;
 
 public class UserTimeJSONRepositoryImpl implements UserTimeRepository{
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules().enable(SerializationFeature.INDENT_OUTPUT);
-    private final File file = Path.of(Path.of(new File(MainApp.class.getProtectionDomain().getCodeSource().getLocation()
-            .toURI()).getPath()).getParent() + "\\time.json").toFile();
+    private final File file = Path.of(System.getenv("APPDATA") + "\\TypeING\\time.json").toFile();
 
     public UserTimeJSONRepositoryImpl() throws URISyntaxException {
         if(!file.exists()) {
             try {
+                new File(file.getParent()).mkdirs();
                 file.createNewFile();
                 List<UserModeTime> list = new ArrayList<>();
                 list.add(new UserModeTime(Mode.DEFAULT));
