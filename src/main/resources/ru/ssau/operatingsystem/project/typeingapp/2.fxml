@@ -75,21 +75,18 @@
                      </font></Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="profileButton" layoutX="866.0" layoutY="10.0" onMouseClicked="#profileButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit">
+            <AnchorPane fx:id="profileButton" layoutX="861.0" layoutY="12.0" onMouseClicked="#profileButtonPressed" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="34.0" prefWidth="80.0">
                <children>
-                  <Button layoutX="5.0" layoutY="3.0" minHeight="29.0" minWidth="63.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="88.0">
-                           <image>
-                              <Image url="@images/Profile.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="23.0" layoutY="10.0" text="Профиль" textFill="#d2d2d2">
+                  <ImageView fitHeight="35.0" fitWidth="88.0">
+                     <image>
+                        <Image url="@images/Profile.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="23.0" layoutY="9.0" prefHeight="16.0" prefWidth="63.0" text="Профиль" textFill="#d2d2d2">
                      <font>
                         <Font name="Inter Regular" size="11.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
