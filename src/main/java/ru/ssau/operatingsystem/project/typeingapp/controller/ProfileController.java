@@ -213,6 +213,10 @@ public class ProfileController implements Initializable {
         speedSetting.put(SpeedSetting.SPM, "симв/мин");
     }
 
+    private String performStringFloatLabel(double arg){
+        return Double.compare(arg, Double.valueOf(arg).intValue()) == 0 ? String.valueOf(Double.valueOf(arg).intValue()) : String.format("%.1f", arg);
+    }
+
     private void updateLabels(){
         UserInfoService service = Utility.getUserInfoService();
         UserInfo user = service.getUserByModeLanguageAndType(Utility.getCurrentMode(), Utility.getCurrentLanguage(), Utility.getCurrentLanguageType());
@@ -220,15 +224,15 @@ public class ProfileController implements Initializable {
         labelSWPM1.setText(speedSetting.get(Utility.getCurrentSpeedSetting()));
         labelSWPM2.setText(speedSetting.get(Utility.getCurrentSpeedSetting()));
 
-        generalAccuracy.setText(String.format("%.1f", service.getOverallAccuracy()) + "%");
-        bestAccuracy.setText(String.format("%.1f", user.getBestAccuracy()) + "%");
+        generalAccuracy.setText(performStringFloatLabel(service.getOverallAccuracy()) + "%");
+        bestAccuracy.setText(performStringFloatLabel(user.getBestAccuracy()) + "%");
 
         generalCountSymbols.setText(String.valueOf(service.getOverallCountSymbols()));
 
         averageSpeed.setText(String.valueOf((int)user.getAverageSpeed()));
         bestSpeed.setText(String.valueOf((int)user.getBestSpeed()));
 
-        averageTime.setText(user.getAverageTime().format(DateTimeFormatter.ofPattern("mm:ss")));
-        bestTime.setText(user.getBestTime().format(DateTimeFormatter.ofPattern("mm:ss")));
+        averageTime.setText(user.getAverageTime().format(DateTimeFormatter.ofPattern("m:ss")));
+        bestTime.setText(user.getBestTime().format(DateTimeFormatter.ofPattern("m:ss")));
     }
 }

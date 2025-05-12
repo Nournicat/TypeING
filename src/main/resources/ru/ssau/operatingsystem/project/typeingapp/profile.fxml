@@ -199,7 +199,7 @@
             </Label>
          </VBox>
       </AnchorPane>
-      <Label fx:id="bestAccuracy" text="94.5%" textFill="WHITE">
+      <Label fx:id="bestAccuracy" prefHeight="55.0" prefWidth="155.0" text="94.5%" textFill="WHITE">
          <font>
             <Font name="Inter Regular" size="45.0" />
          </font>
@@ -294,7 +294,7 @@
                </VBox>
             </children>
          </AnchorPane>
-         <Label fx:id="bestTime" text="0:45" textFill="WHITE">
+         <Label fx:id="bestTime" prefHeight="55.0" prefWidth="115.0" text="0:45" textFill="WHITE">
             <font>
                <Font name="Inter Regular" size="45.0" />
             </font>
@@ -303,7 +303,7 @@
    </HBox>
    <HBox alignment="CENTER" layoutX="674.0" layoutY="320.0" prefHeight="77.0" prefWidth="264.0">
       <children>
-         <Label fx:id="averageTime" text="1:05" textFill="WHITE">
+         <Label fx:id="averageTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="110.0" text="1:05" textFill="WHITE">
             <font>
                <Font name="Inter Regular" size="45.0" />
             </font>
@@ -321,7 +321,7 @@
    </HBox>
    <HBox alignment="CENTER" layoutX="540.0" layoutY="192.0" prefHeight="35.0" prefWidth="254.0">
       <children>
-         <Label fx:id="generalAccuracy" text="93.6%" textFill="WHITE">
+         <Label fx:id="generalAccuracy" alignment="CENTER" prefHeight="36.0" prefWidth="141.0" text="93.6%" textFill="WHITE">
             <font>
                <Font name="Inter Regular" size="30.0" />
             </font>
