@@ -1,27 +1,206 @@
 english:
    letters: "dfjk"
    alphabet: "abcdefghijklmnopqrstuvwxyz"
-   short_words: "snake yaml test melon fortnite"
+   short_words: "student raw steward seat beach cheese offensive gallery empirical key volunteer youth photocopy resignation squash retailer sand pony intention ancestor mistreat sentiment betray ditch feedback forest solo theater get rotation raid football road book welfare figure hook refund mist day"
 russian:
   letters: "ваол"
   alphabet: "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-  short_words: "тест арбуз лимон"
+  short_words: "штат вывод имя повышение трава глубина мужчина телефон вывести вызвать помощник перевод квартира президент оказываться изображать протянуть верный садиться квадратный бюджетный роль письмо вина отказ"
 
 # Разделением является символ переноса строки
 programming:
   cpp: |
-    int*
-    void
-  python: |
-    print
-  java: |
+    alignas
+    alignof
+    and
+    and_eq
+    asm
+    auto
+    bitand
+    bitor
+    bool
+    break
+    case
+    catch
+    char
+    char8_t
+    char16_t
+    char32_t
+    class
+    compl
+    concept
+    const
+    const_cast
+    consteval
+    constexpr
+    constinit
+    continue
+    co_await
+    co_return
+    co_yield
+    decltype
+    default
+    delete
+    do
+    double
+    dynamic_cast
+    else
+    enum
+    explicit
+    export
+    extern
+    false
+    float
+    for
+    friend
+    goto
+    if
+    inline
     int
+    long
+    mutable
+    namespace
+    new
+    noexcept
+    not
+    not_eq
+    nullptr
+    operator
+    or
+    or_eq
+    private
+    protected
     public
+    register
+    reinterpret_cast
+    requires
+    return
+    short
+    signed
+    sizeof
     static
+    static_assert
+    static_cast
+    struct
+    switch
+    template
+    this
+    thread_local
+    throw
+    true
+    try
+    typedef
+    typeid
+    typename
+    union
+    unsigned
+    using
+    virtual
     void
+    volatile
+    wchar_t
+    while
+    xor
+    xor_eq
+  python: |
+    False
+    None
+    True
+    and
+    as
+    assert
+    async
+    await
+    break
+    class
+    continue
+    def
+    del
+    elif
+    else
+    except
+    finally
+    for
+    from
+    global
+    if
+    import
+    in
+    is
+    lambda
+    pass
+    raise
+    return
+    try
+    while
+    with
+    yield
+  java: |
+    abstract
+    assert
+    boolean
+    break
+    byte
+    case
+    catch
+    char
+    class
+    const
+    continue
+    default
+    do
+    double
+    else
+    enum
+    extends
+    final
+    finally
+    float
+    for
+    goto
+    if
+    implements
+    import
+    instanceof
+    int
+    interface
+    long
+    native
+    new
+    package
+    private
+    protected
+    public
+    return
+    short
+    static
+    strictfp
+    super
+    switch
+    synchronized
+    this
+    throw
+    throws
+    transient
+    try
+    void
+    volatile
+    while
+    var
+    true
+    null
+    false
     String
     new ArrayList<>()
     Double
-    Arrays.of(1, 2, 3).stream().min().get();
-    System.out.println("Hello World");
-    Random random = new Random();
+    Arrays.of(1,2,3).stream().min().get()
+    System.out.println("Hello World")
+    Random random = new Random()
+    Object.toString()
+    Integer.parseInt("123")
+    Double.valueOf(123)
+    equals
+    Collections.sort(list)
+    List.of(1,2,3).length()
+    LocalDate.now()
+    

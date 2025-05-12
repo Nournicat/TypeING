@@ -96,7 +96,7 @@ public class HandleWithErasingStrategy implements HandleStrategy{
             IStatistic stats = context.getCalculator().getCurrStats();
             Utility.updateInfo(stats.getCharacterCount(), (float)stats.getAccuracy(),
                     LocalTime.ofSecondOfDay(context.getCalculator().getTimeline().getElapsedSeconds()),
-                    (float)stats.getWpm());
+                    (float)stats.getWpm(), (float)stats.getSpm());
         }
     }
 }
