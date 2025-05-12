@@ -7,18 +7,24 @@ import ru.ssau.operatingsystem.project.typeingapp.enums.Language;
 import ru.ssau.operatingsystem.project.typeingapp.enums.LanguageType;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class UserInfoDAO {
     private static UserInfoDAO instance;
     private final UserInfoRepository userInfoRepository = new UserInfoJSONRepositoryImpl();
 
-    private UserInfoDAO() {
+    private UserInfoDAO() throws URISyntaxException {
     }
 
     public static UserInfoDAO getInstance(){
-        if(instance == null)
-            instance = new UserInfoDAO();
+        if(instance == null) {
+            try {
+                instance = new UserInfoDAO();
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         return instance;
     }

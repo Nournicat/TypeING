@@ -5,18 +5,24 @@ import ru.ssau.operatingsystem.project.typeingapp.dao.repository.UserTimeJSONRep
 import ru.ssau.operatingsystem.project.typeingapp.dao.repository.UserTimeRepository;
 import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class UserTimeDAO {
     private static UserTimeDAO instance;
     private final UserTimeRepository repository = new UserTimeJSONRepositoryImpl();
 
-    private UserTimeDAO() {
+    private UserTimeDAO() throws URISyntaxException {
     }
 
     public static UserTimeDAO getInstance(){
-        if(instance == null)
-            instance = new UserTimeDAO();
+        if(instance == null) {
+            try {
+                instance = new UserTimeDAO();
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         return instance;
     }

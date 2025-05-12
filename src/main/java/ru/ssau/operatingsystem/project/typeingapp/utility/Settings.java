@@ -6,9 +6,12 @@ import ru.ssau.operatingsystem.project.typeingapp.MainApp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -43,19 +46,19 @@ public class Settings {
     }
 
     public static void loadProperties() throws URISyntaxException {
-        URI rootPath = MainApp.class.getResource("").toURI();
-        URI appConfigPath = URI.create(rootPath + "config.properties");
-        URI defaultConfig = MainApp.class.getResource("config.properties").toURI();
+        InputStream defaultConfig = MainApp.class.getResourceAsStream("config.properties");
+        Path jarPath = Path.of(Path.of(new File(MainApp.class.getProtectionDomain().getCodeSource().getLocation()
+                .toURI()).getPath()).getParent() + "\\config.properties");
 
         try {
-            if(!new File(appConfigPath).exists())
+            if(!jarPath.toFile().exists())
                 Files.copy(
-                        Paths.get(defaultConfig),
-                        Paths.get(appConfigPath)
+                        defaultConfig,
+                        Paths.get(jarPath.toUri())
                 );
 
             Properties appProperties = new Properties();
-            appProperties.load(new FileInputStream(appConfigPath.getPath()));
+            appProperties.load(new FileInputStream(String.valueOf(jarPath)));
             properties = appProperties;
         }
         catch (IOException e) {

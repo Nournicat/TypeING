@@ -11,6 +11,8 @@ import ru.ssau.operatingsystem.project.typeingapp.enums.SpeedSetting;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Settings;
 import ru.ssau.operatingsystem.project.typeingapp.utility.Utility;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 

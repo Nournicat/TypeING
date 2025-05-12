@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: ru.ssau.operatingsystem.project.typeingapp.MainApp
+Class-Path: snakeyaml-2.4.jar jackson-core-2.18.3.jar javafx-controls-22
+ .0.1.jar javafx-graphics-22.0.1.jar javafx-controls-22.0.1-win.jar java
+ fx-base-22.0.1-win.jar javafx-fxml-22.0.1-win.jar jackson-databind-2.18
+ .3.jar fontawesomefx-commons-9.1.2.jar javafx-fxml-22.0.1.jar javafx-gr
+ aphics-22.0.1-win.jar jackson-annotations-2.18.3.jar javafx-base-22.0.1
+ .jar fontawesomefx-fontawesome-4.7.0-9.1.2.jar jackson-datatype-jsr310-
+ 2.13.3.jar
+

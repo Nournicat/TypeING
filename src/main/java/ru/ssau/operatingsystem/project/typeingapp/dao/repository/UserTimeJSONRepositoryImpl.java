@@ -10,14 +10,17 @@ import ru.ssau.operatingsystem.project.typeingapp.enums.Mode;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserTimeJSONRepositoryImpl implements UserTimeRepository{
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules().enable(SerializationFeature.INDENT_OUTPUT);
-    private final File file = new File(URI.create(MainApp.class.getResource("") + "time.json"));
+    private final File file = Path.of(Path.of(new File(MainApp.class.getProtectionDomain().getCodeSource().getLocation()
+            .toURI()).getPath()).getParent() + "\\time.json").toFile();
 
-    public UserTimeJSONRepositoryImpl() {
+    public UserTimeJSONRepositoryImpl() throws URISyntaxException {
         if(!file.exists()) {
             try {
                 file.createNewFile();
