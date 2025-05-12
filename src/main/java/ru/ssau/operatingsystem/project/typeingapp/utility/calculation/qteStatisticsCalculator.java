@@ -44,7 +44,7 @@ public class qteStatisticsCalculator {
     public void setDataResultPanel(int textLength, Label resultAccuracy, Label resultTime, Label resultSpeed){
         calculateAccuracy(textLength);
         System.out.println(currStatistic.getAccuracy());
-        resultAccuracy.setText(String.format("%.2f%%", currStatistic.getAccuracy()));
+        resultAccuracy.setText(String.format("%.1f%%", currStatistic.getAccuracy()));
         resultTime.setText(finalTime);
         resultSpeed.setText(String.format("%.1f симв/мин", currStatistic.getSpm()));
     }
