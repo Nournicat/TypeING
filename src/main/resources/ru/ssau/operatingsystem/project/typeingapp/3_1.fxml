@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ssau.operatingsystem.project.typeingapp.controller.TypingController">
+   <children>
+      <VBox fx:id="backstage" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="979.0" style="-fx-background-color: #0A1F32;" />
+      <ImageView fitHeight="425.0" fitWidth="1029.0" layoutX="-22.0" layoutY="225.0">
+         <image>
+            <Image url="@images/Intersect.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="AreaText" layoutX="-3336.0" prefHeight="326.0" prefWidth="9174.0">
+         <children>
+            <Label fx:id="enteredText" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="1515.0" maxWidth="1.7976931348623157E308" prefHeight="36.0" textFill="WHITE" AnchorPane.rightAnchor="5355.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="overlayText" contentDisplay="CENTER" layoutX="5003.0" prefHeight="36.0" prefWidth="5000.0" text="Hello" textFill="#737373" AnchorPane.leftAnchor="3820.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="409.0" layoutY="515.0" prefHeight="68.0" prefWidth="132.0">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="160.0">
+               <image>
+                  <Image url="@images/LastPressedButton.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="enteredButton" alignment="CENTER" layoutX="7.0" layoutY="8.0" prefHeight="36.0" prefWidth="145.0" text="BACKSPACE" textFill="#d9d9d9">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="preparingPanel" layoutX="-6.0" prefHeight="634.0" prefWidth="997.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a1f32" height="634.0" layoutX="3.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="986.0" />
+            <Label alignment="CENTER" layoutX="383.0" layoutY="234.0" prefHeight="82.0" prefWidth="210.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="82.0" fitWidth="200.0">
+                     <image>
+                        <Image url="@images/EnterButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" layoutX="243.0" layoutY="188.0" text="Как только будете готовы, нажмите " textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="392.0" layoutY="316.0" text="на клавиатуре" textFill="WHITE">
+               <font>
+                  <Font name="Inter Regular" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="979.0" style="-fx-background-color: #2D384A; -fx-background-radius: 18;" wrapText="true">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </Label>
+      <ImageView fitHeight="58.0" fitWidth="979.0">
+         <image>
+            <Image url="@images/Panel.png" />
+         </image>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="123.99" offsetY="10.0" radius="75.5325" width="180.14">
+               <color>
+                  <Color opacity="0.6077507734298706" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <AnchorPane fx:id="symbolsCount" layoutX="668.0" layoutY="-4.0" prefHeight="18.0" prefWidth="95.0" translateY="22.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="95.0">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/Mistakes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="symbolsCountLabel" alignment="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Символы: 0" textFill="#d9d9d9">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mistakesCount" layoutX="764.0" layoutY="14.0" prefHeight="22.0" prefWidth="92.0" translateY="4.0">
+         <children>
+            <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/Mistakes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="errorCountLabel" alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="18.0" prefWidth="78.0" text="Ошибки: 0" textFill="#d9d9d9">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="speedPanel" layoutX="860.0" layoutY="14.0" prefHeight="30.0" prefWidth="43.0">
+         <children>
+            <Label layoutX="3.0" style="-fx-background-radius: 16; -fx-background-color: #2D384A;" textFill="#d9d9d9">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@images/SPM.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="speedLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="-1.0" prefHeight="30.0" prefWidth="90.0" text="Скорость: 0 слов/мин" textAlignment="CENTER" textFill="#d9d9d9" wrapText="true">
+               <font>
+                  <Font name="Inter Regular" size="10.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="restartButton" alignment="CENTER" contentDisplay="TOP" layoutX="136.0" layoutY="15.0" minHeight="27.0" minWidth="59.0" mnemonicParsing="false" onAction="#restartTyping" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="27.0" prefWidth="59.0">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@images/Restart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exitButton" contentDisplay="CENTER" layoutX="25.0" layoutY="14.0" minHeight="29.0" minWidth="84.0" mnemonicParsing="false" onAction="#exitScene" onMouseEntered="#mouseChangeEventEnter" onMouseExited="#mouseChangeEventExit" prefHeight="29.0" prefWidth="84.0">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@images/BackToMenu.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="9.0" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 5;" text="0:00">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="37.38" offsetY="4.0" radius="8.845" width="0.0">
+               <color>
+                  <Color red="0.3263157904148102" green="0.3263157904148102" blue="0.3263157904148102" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <AnchorPane fx:id="resultPanel" layoutX="290.0" layoutY="148.0" prefHeight="197.0" prefWidth="388.0">
+         <children>
+            <ImageView fitHeight="165.0" fitWidth="319.0" layoutX="17.0" layoutY="15.0">
+               <image>
+                  <Image url="@images/ResultPanel2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="87.0" layoutY="10.0" prefHeight="39.0" prefWidth="180.0" text="РЕЗУЛЬТАТЫ" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="newRecordPanel" layoutX="268.0" visible="false">
+               <children>
+                  <Label>
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/NEW%20RECORD.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="21.0" rotate="14.5" text="НОВЫЙ РЕКОРД!" textFill="WHITE">
+                     <font>
+                        <Font name="Inter Regular" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox layoutX="73.0" layoutY="51.0" prefHeight="36.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="125.0" text="Точность" textFill="WHITE">
+                     <font>
+                        <Font name="Literata Regular" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="resultAccuracyLabel" alignment="CENTER" prefHeight="36.0" prefWidth="79.0" text="94.5%" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" layoutX="92.0" layoutY="89.0" prefHeight="36.0" prefWidth="90.0" text="Время" textFill="WHITE">
+               <font>
+                  <Font name="Literata Regular" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultTimeLabel" alignment="CENTER" layoutX="172.0" layoutY="93.0" prefHeight="30.0" prefWidth="78.0" text="0 : 45" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="43.0" layoutY="126.0" prefHeight="36.0" prefWidth="122.0" text="Скорость" textFill="WHITE">
+               <font>
+                  <Font name="Literata Regular" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultSpeedLabel" alignment="CENTER" layoutX="156.0" layoutY="131.0" prefHeight="30.0" prefWidth="166.0" text="24.5 слов/мин" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
